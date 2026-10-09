@@ -20,9 +20,34 @@ Academic Year: 2026 / 2027
 
 ---
 
+## Repository structure
+
+```
+PVDH/
+├── dataset/                
+│   └── kosovo_overall_biodiversity.csv
+├── processed/              
+├── notebooks/            
+│   └── 01_mbledhja_kualiteti.py
+├── reports/             
+├── requirements.txt
+└── README.md
+```
+
+## Setup
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate        
+pip install -r requirements.txt
+python notebooks/01_mbledhja_kualiteti.py
+```
+
+---
+
 ## Dataset
 
-**File:** `kosovo_overall_biodiversity.csv`
+**File:** `dataset/kosovo_overall_biodiversity.csv`
 
 Species occurrence records for Kosovo, exported from GBIF (Global Biodiversity Information Facility).
 
@@ -74,10 +99,17 @@ Other observations:
 
 Goal: prepare the dataset for analysis and visualization.
 
-### 1. Data collection, data types and data quality
-- [ ] Describe the data source (GBIF) and the meaning of each attribute
-- [ ] Assign correct data types (`eventDate` → datetime, `year`/`month`/`day` → integer, categorical columns → `category`)
-- [ ] Assess data quality: missing values, invalid coordinates, outliers, inconsistent values, GBIF `issue` flags
+### 1. Data collection, data types and data quality — [`01_mbledhja_kualiteti.py`](notebooks/01_mbledhja_kualiteti.py)
+- [x] Describe the data source (GBIF) and the meaning of each attribute
+- [x] Assign correct data types (`eventDate` → datetime, `year`/`month`/`day` → integer, categorical columns → `category`)
+- [x] Assess data quality: missing values, invalid coordinates, outliers, inconsistent values, GBIF `issue` flags
+
+Key findings (full tables in [`reports/`](reports/)):
+- `eventDate` uses 11 different ISO 8601 formats, including year-only, year-month and date ranges (447 records); the start date and its precision were extracted
+- 3,336 records share the same taxon, coordinates and date (possible duplicates across sources)
+- 3,634 records have `elevation = 0` (37% of filled elevations), which acts as a placeholder for "unknown"
+- `individualCount` is highly skewed (median 2, max 10,200); `coordinateUncertaintyInMeters` reaches 4,226 km
+- All coordinates fall inside Kosovo; no future dates; `eventDate` and `year` are consistent
 
 ### 2. Integration, aggregation, sampling, cleaning and missing values
 - [ ] **Integration** – merge records coming from different `datasetKey` sources and harmonize column values
