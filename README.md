@@ -30,6 +30,7 @@ PVDH/
 ├── notebooks/            
 │   ├── 01_mbledhja_kualiteti.py
 │   └── 02_pastrimi.py
+│   └── 03_vetite.py
 ├── reports/             
 ├── requirements.txt
 └── README.md
@@ -130,7 +131,8 @@ Current outputs:
 - [`processed/missing_report.csv`](processed/missing_report.csv) – number and percentage of missing values for every column
 - [`reports/02_issue_list.csv`](reports/02_issue_list.csv) – initial list of structural/data-quality issues observed during exploration
 
-### 3. Dimensionality reduction, feature selection, feature creation, discretization and binarization, transformation
+### 3. Dimensionality reduction, feature selection, feature creation, discretization, binarization and transformation — [`03_vetite.py`](notebooks/03_vetite.py)
+- [x] Document preprocessing plan v1 with decision and rationale
 - [ ] **Dimensionality reduction** – remove redundant attributes (`iucnRedListStatus` vs. `iucnRedListCategory`, `taxonKey` vs. `scientificName`)
 - [ ] **Feature subset selection** – keep the attributes relevant for the analysis (taxonomy, time, location, conservation status)
 - [ ] **Feature creation** – e.g. `season` from `month`, `decade` from `year`, `isThreatened` from IUCN category, record count per species
