@@ -28,7 +28,8 @@ PVDH/
 │   └── kosovo_overall_biodiversity.csv
 ├── processed/              
 ├── notebooks/            
-│   └── 01_mbledhja_kualiteti.py
+│   ├── 01_mbledhja_kualiteti.py
+│   └── 02_pastrimi.py
 ├── reports/             
 ├── requirements.txt
 └── README.md
@@ -41,6 +42,7 @@ python -m venv .venv
 .venv\Scripts\activate        
 pip install -r requirements.txt
 python notebooks/01_mbledhja_kualiteti.py
+python notebooks/02_pastrimi.py
 ```
 
 ---
@@ -111,12 +113,22 @@ Key findings (full tables in [`reports/`](reports/)):
 - `individualCount` is highly skewed (median 2, max 10,200); `coordinateUncertaintyInMeters` reaches 4,226 km
 - All coordinates fall inside Kosovo; no future dates; `eventDate` and `year` are consistent
 
-### 2. Integration, aggregation, sampling, cleaning and missing values
+### 2. Integration, aggregation, sampling, cleaning and missing values — [`02_pastrimi.py`](notebooks/02_pastrimi.py)
+- [x] Create the documentation template and `log_step()` helper for cleaning steps
+- [x] Initialize [`processed/cleaning_log.csv`](processed/cleaning_log.csv)
+- [x] Inspect the initial structure: `shape`, `df.info()`, `dtypes` and 5 sample values per column
+- [x] Create an issue list for mixed date formats, boolean values, bilingual names and `;`-separated lists
+- [x] Create [`processed/missing_report.csv`](processed/missing_report.csv), sorted by missing-value percentage
 - [ ] **Integration** – merge records coming from different `datasetKey` sources and harmonize column values
 - [ ] **Aggregation** – summarize occurrences per species, district, municipality, year and IUCN category
 - [ ] **Sampling** – draw a stratified sample (e.g. by `kingdom` or `district`) for faster exploration
 - [ ] **Cleaning** – drop columns that are almost empty (`iasAppliesFrom`, `establishmentMeans`), remove records not identified to species level where needed, fix inconsistent text values
 - [ ] **Missing value strategy** – drop rows where key fields are missing (`species`, `year`), impute `month`/`day` from `eventDate`, fill `protectedArea` with "Not protected", mark unknowns explicitly
+
+Current outputs:
+- [`processed/cleaning_log.csv`](processed/cleaning_log.csv) – empty cleaning log with the standard documentation columns
+- [`processed/missing_report.csv`](processed/missing_report.csv) – number and percentage of missing values for every column
+- [`reports/02_issue_list.csv`](reports/02_issue_list.csv) – initial list of structural/data-quality issues observed during exploration
 
 ### 3. Dimensionality reduction, feature selection, feature creation, discretization and binarization, transformation
 - [ ] **Dimensionality reduction** – remove redundant attributes (`iucnRedListStatus` vs. `iucnRedListCategory`, `taxonKey` vs. `scientificName`)
