@@ -52,7 +52,56 @@ python notebooks/02_pastrimi.py
 
 **File:** `dataset/kosovo_overall_biodiversity.csv`
 
-Species occurrence records for Kosovo, exported from GBIF (Global Biodiversity Information Facility).
+### Source: GBIF
+
+[GBIF – Global Biodiversity Information Facility](https://www.gbif.org) is an international open-data network, funded by governments, that aggregates biodiversity records from museums, herbaria, research institutions and citizen-science platforms worldwide. Records follow the Darwin Core standard. Each record is an *occurrence*: one organism observed or collected at a given place and time.
+
+Our dataset combines records from **125 GBIF datasets** published by **108 institutions**. The largest contributors are:
+
+| Institution | Records | Source |
+|---|---|---|
+| CLO | 26,009 | eBird (Cornell Lab of Ornithology) |
+| HabiProt | 8,122 | – |
+| iNaturalist | 4,286 | iNaturalist research-grade observations |
+| NABU \| naturgucker | 721 | – |
+| GZU | 659 | – |
+
+### Download details
+
+| Property | Value |
+|---|---|
+| Country filter | Kosovo (GBIF country code `XK`) |
+| Download date | **TODO** – exact date of the GBIF download (the latest record is from 2026-08-22, and the file is dated 2026-10-05) |
+| Download DOI | **TODO** – `https://doi.org/10.15468/dl.xxxxxx` |
+| Format | CSV, comma-separated, UTF-8, with a header row |
+| Size | 22 MB (23,101,890 bytes) |
+| Rows × columns | 46,831 records × 42 columns |
+
+All coordinates fall inside Kosovo's borders. GBIF flags 7,505 records (16%) with `COUNTRY_DERIVED_FROM_COORDINATES`, meaning their country was assigned from the coordinates rather than given by the publisher.
+
+Of the 42 columns, 34 are standard GBIF / Darwin Core fields. The other 8 are added attributes specific to Kosovo: `iucnRedListStatus`, `municipality`, `district`, `protectedArea`, `protectedAreaDesignation`, `strictlyProtected`, `iasUnionConcern` and `iasAppliesFrom`.
+
+### Licenses
+
+Each record keeps the license chosen by its publisher:
+
+| License | Records | Datasets | Terms |
+|---|---|---|---|
+| CC BY 4.0 | 31,757 (67.8%) | 80 | Free use with attribution |
+| CC BY-NC 4.0 | 14,267 (30.5%) | 25 | Attribution, non-commercial use only |
+| CC0 1.0 | 807 (1.7%) | 22 | Public domain, no restrictions |
+
+Because part of the data is CC BY-NC, the dataset as a whole may be used only for non-commercial purposes, such as this academic project. Attribution is satisfied by citing the GBIF download DOI.
+
+### How to cite
+
+GBIF requires citing the download through its DOI:
+
+> GBIF.org (**TODO: DD Month YYYY**) GBIF Occurrence Download https://doi.org/10.15468/dl.xxxxxx
+
+The DOI links to the full list of the 125 contributing datasets, so this single citation credits every publisher. See [GBIF citation guidelines](https://www.gbif.org/citation-guidelines).
+
+### Overview
 
 - **Records:** 46,831 rows, 42 columns, no duplicate rows
 - **Time span:** 1826 – 2026 (median year 2020)
