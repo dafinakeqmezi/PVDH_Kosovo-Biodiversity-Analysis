@@ -56,15 +56,23 @@ python notebooks/02_pastrimi.py
 
 [GBIF – Global Biodiversity Information Facility](https://www.gbif.org) is an international open-data network, funded by governments, that aggregates biodiversity records from museums, herbaria, research institutions and citizen-science platforms worldwide. Records follow the Darwin Core standard. Each record is an *occurrence*: one organism observed or collected at a given place and time.
 
-Our dataset combines records from **125 GBIF datasets** published by **108 institutions**. The largest contributors are:
+Our dataset combines records from **125 GBIF datasets** published by **80 publishing organizations** (108 distinct `institutionCode` values). The CSV has no publisher columns, so the publisher of each dataset was retrieved from the GBIF API (`/v1/dataset/{datasetKey}` → `/v1/organization/{key}`) in [`01b_analiza_burimeve.py`](notebooks/01b_analiza_burimeve.py). The main sources are:
 
-| Institution | Records | Source |
-|---|---|---|
-| CLO | 26,009 | eBird (Cornell Lab of Ornithology) |
-| HabiProt | 8,122 | – |
-| iNaturalist | 4,286 | iNaturalist research-grade observations |
-| NABU \| naturgucker | 721 | – |
-| GZU | 659 | – |
+| Publisher | Main dataset | Records | % | Cumulative % | Basis of record | License |
+|---|---|---|---|---|---|---|
+| Cornell Lab of Ornithology (US) | EOD – eBird Observation Dataset | 26,009 | 55.54 | 55.54 | Human observation | CC BY 4.0 |
+| HabiProt (RS) | Arthropod observations from the HabiProt Alciphron database | 8,122 | 17.34 | 72.88 | Human observation | CC BY-NC 4.0 |
+| iNaturalist.org (US) | iNaturalist Research-grade Observations | 4,286 | 9.15 | 82.03 | Human observation | CC BY-NC / CC BY / CC0 |
+| Observation.org | Observation.org, Nature data from around the World | 1,436 | 3.07 | 85.10 | Human observation | CC BY-NC 4.0 |
+| naturgucker.de | NABU\|naturgucker | 721 | 1.54 | 86.64 | Human observation | CC BY 4.0 |
+| Pl@ntNet | Pl@ntNet automatically identified occurrences | 660 | 1.41 | 88.05 | Human observation | CC BY 4.0 |
+| University of Graz | Herbarium GZU | 659 | 1.41 | 89.46 | Preserved specimen | CC BY 4.0 |
+| VectorNet | VectorNet observations | 587 | 1.25 | 90.71 | Human observation | CC BY 4.0 |
+| Macedonian Ecological Society | High-altitude endemic beetles of the western Balkans | 483 | 1.03 | 91.74 | Occurrence | CC BY-NC 4.0 |
+| CIAT | Global database of crop wild relatives | 386 | 0.82 | 92.56 | Occurrence | CC BY 4.0 |
+| *70 other publishers* | | 3,482 | 7.44 | 100.00 | | |
+
+Three publishers supply 82% of all records, and 90.7% of records are human observations (mostly citizen science). The full breakdown by publisher × dataset × basis of record × license is in [`processed/sources_summary.csv`](processed/sources_summary.csv).
 
 ### Download details
 
@@ -155,6 +163,7 @@ Goal: prepare the dataset for analysis and visualization.
 - [x] Describe the data source (GBIF) and the meaning of each attribute
 - [x] Assign correct data types (`eventDate` → datetime, `year`/`month`/`day` → integer, categorical columns → `category`)
 - [x] Assess data quality: missing values, invalid coordinates, outliers, inconsistent values, GBIF `issue` flags
+- [x] Source analysis — [`01b_analiza_burimeve.py`](notebooks/01b_analiza_burimeve.py): publisher of each dataset from the GBIF API, grouped by publisher / dataset, `basisOfRecord` and `license` → [`processed/sources_summary.csv`](processed/sources_summary.csv)
 
 Key findings (full tables in [`reports/`](reports/)):
 - `eventDate` uses 11 different ISO 8601 formats, including year-only, year-month and date ranges (447 records); the start date and its precision were extracted
