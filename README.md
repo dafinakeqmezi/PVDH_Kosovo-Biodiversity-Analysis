@@ -28,9 +28,10 @@ PVDH/
 │   └── kosovo_overall_biodiversity.csv
 ├── processed/              
 ├── notebooks/            
-│   ├── 01_mbledhja_kualiteti.py
-│   └── 02_pastrimi.py
-│   └── 03_vetite.py
+│   ├── 01_mbledhja_kualiteti.ipynb
+│   ├── 01b_analiza_burimeve.ipynb
+│   ├── 02_pastrimi.ipynb
+│   └── 03_vetite.ipynb
 ├── reports/             
 ├── requirements.txt
 └── README.md
@@ -42,8 +43,7 @@ PVDH/
 python -m venv .venv
 .venv\Scripts\activate        
 pip install -r requirements.txt
-python notebooks/01_mbledhja_kualiteti.py
-python notebooks/02_pastrimi.py
+jupyter notebook notebooks/
 ```
 
 ---
@@ -56,7 +56,7 @@ python notebooks/02_pastrimi.py
 
 [GBIF – Global Biodiversity Information Facility](https://www.gbif.org) is an international open-data network, funded by governments, that aggregates biodiversity records from museums, herbaria, research institutions and citizen-science platforms worldwide. Records follow the Darwin Core standard. Each record is an *occurrence*: one organism observed or collected at a given place and time.
 
-Our dataset combines records from **125 GBIF datasets** published by **80 publishing organizations** (108 distinct `institutionCode` values). The CSV has no publisher columns, so the publisher of each dataset was retrieved from the GBIF API (`/v1/dataset/{datasetKey}` → `/v1/organization/{key}`) in [`01b_analiza_burimeve.py`](notebooks/01b_analiza_burimeve.py). The main sources are:
+Our dataset combines records from **125 GBIF datasets** published by **80 publishing organizations** (108 distinct `institutionCode` values). The CSV has no publisher columns, so the publisher of each dataset was retrieved from the GBIF API (`/v1/dataset/{datasetKey}` → `/v1/organization/{key}`) in [`01b_analiza_burimeve.ipynb`](notebooks/01b_analiza_burimeve.ipynb). The main sources are:
 
 | Publisher | Main dataset | Records | % | Cumulative % | Basis of record | License |
 |---|---|---|---|---|---|---|
@@ -159,11 +159,11 @@ Other observations:
 
 Goal: prepare the dataset for analysis and visualization.
 
-### 1. Data collection, data types and data quality — [`01_mbledhja_kualiteti.py`](notebooks/01_mbledhja_kualiteti.py)
+### 1. Data collection, data types and data quality — [`01_mbledhja_kualiteti.ipynb`](notebooks/01_mbledhja_kualiteti.ipynb)
 - [x] Describe the data source (GBIF) and the meaning of each attribute
 - [x] Assign correct data types (`eventDate` → datetime, `year`/`month`/`day` → integer, categorical columns → `category`)
 - [x] Assess data quality: missing values, invalid coordinates, outliers, inconsistent values, GBIF `issue` flags
-- [x] Source analysis — [`01b_analiza_burimeve.py`](notebooks/01b_analiza_burimeve.py): publisher of each dataset from the GBIF API, grouped by publisher / dataset, `basisOfRecord` and `license` → [`processed/sources_summary.csv`](processed/sources_summary.csv)
+- [x] Source analysis — [`01b_analiza_burimeve.ipynb`](notebooks/01b_analiza_burimeve.ipynb): publisher of each dataset from the GBIF API, grouped by publisher / dataset, `basisOfRecord` and `license` → [`processed/sources_summary.csv`](processed/sources_summary.csv)
 
 Key findings (full tables in [`reports/`](reports/)):
 - `eventDate` uses 11 different ISO 8601 formats, including year-only, year-month and date ranges (447 records); the start date and its precision were extracted
@@ -172,7 +172,7 @@ Key findings (full tables in [`reports/`](reports/)):
 - `individualCount` is highly skewed (median 2, max 10,200); `coordinateUncertaintyInMeters` reaches 4,226 km
 - All coordinates fall inside Kosovo; no future dates; `eventDate` and `year` are consistent
 
-### 2. Integration, aggregation, sampling, cleaning and missing values — [`02_pastrimi.py`](notebooks/02_pastrimi.py)
+### 2. Integration, aggregation, sampling, cleaning and missing values — [`02_pastrimi.ipynb`](notebooks/02_pastrimi.ipynb)
 - [x] Create the documentation template and `log_step()` helper for cleaning steps
 - [x] Initialize [`processed/cleaning_log.csv`](processed/cleaning_log.csv)
 - [x] Inspect the initial structure: `shape`, `df.info()`, `dtypes` and 5 sample values per column
@@ -189,7 +189,7 @@ Current outputs:
 - [`processed/missing_report.csv`](processed/missing_report.csv) – number and percentage of missing values for every column
 - [`reports/02_issue_list.csv`](reports/02_issue_list.csv) – initial list of structural/data-quality issues observed during exploration
 
-### 3. Dimensionality reduction, feature selection, feature creation, discretization, binarization and transformation — [`03_vetite.py`](notebooks/03_vetite.py)
+### 3. Dimensionality reduction, feature selection, feature creation, discretization, binarization and transformation — [`03_vetite.ipynb`](notebooks/03_vetite.ipynb)
 - [x] Document preprocessing plan v1 with decision and rationale
 - [ ] **Dimensionality reduction** – remove redundant attributes (`iucnRedListStatus` vs. `iucnRedListCategory`, `taxonKey` vs. `scientificName`)
 - [ ] **Feature subset selection** – keep the attributes relevant for the analysis (taxonomy, time, location, conservation status)
