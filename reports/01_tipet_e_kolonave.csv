@@ -1,0 +1,43 @@
+kolona,tipi_pandas,tipi_konceptual,tipi_i_synuar,tipi_pas,vlera_unike,na_para,na_pas
+gbifID,int64,ID,int64,int64,46831,0,0
+scientificName,str,nominal,category,category,4647,37,37
+species,str,nominal,category,category,4095,1213,1213
+vernacularName,str,nominal,category,category,3314,3873,3873
+kingdom,str,nominal,category,category,7,37,37
+phylum,str,nominal,category,category,25,69,69
+class,str,nominal,category,category,68,388,388
+order,str,nominal,category,category,226,334,334
+family,str,nominal,category,category,683,158,158
+genus,str,nominal,category,category,2421,195,195
+taxonRank,str,ordinal,category (ordered),category (ordered),11,37,251
+taxonKey,float64,ID,Int64,Int64,4647,37,37
+speciesKey,float64,ID,Int64,Int64,4097,1213,1213
+iucnRedListCategory,str,ordinal,category (ordered),category (ordered),8,1213,16935
+iucnRedListStatus,str,ordinal,category (ordered),category (ordered),8,1213,16935
+eventDate,str,datë,datetime64,datetime64,7416,2190,2190
+year,float64,interval,Int64,Int64,102,2268,2268
+month,float64,ordinal,Int64,Int64,12,2867,2867
+day,float64,ordinal,Int64,Int64,31,3219,3219
+decimalLatitude,float64,interval,float64,float64,7093,0,0
+decimalLongitude,float64,interval,float64,float64,7255,0,0
+coordinateUncertaintyInMeters,float64,ratio,float64,float64,676,32004,32004
+elevation,float64,interval,float64,float64,1128,37011,37011
+locality,str,tekst,str,str,1448,15251,15251
+municipality,str,nominal,category,category,38,0,0
+district,str,nominal,category,category,7,0,0
+protectedArea,str,nominal,category,category,20,25762,25762
+protectedAreaDesignation,str,nominal,category,category,5,25762,25762
+strictlyProtected,bool,binar,bool,bool,2,0,0
+basisOfRecord,str,nominal,category,category,7,0,0
+individualCount,float64,ratio,Int64,Int64,279,17697,17697
+establishmentMeans,str,nominal,category,category,2,46591,46591
+recordedBy,str,tekst,str,str,1519,3853,3853
+identifiedBy,str,tekst,str,str,889,39096,39096
+institutionCode,str,nominal,category,category,108,3711,3711
+collectionCode,str,nominal,category,category,88,13469,13469
+catalogNumber,str,ID,str,str,34021,12559,12559
+datasetKey,str,ID,category,category,125,0,0
+license,str,nominal,category,category,3,0,0
+issue,str,tekst,str,str,208,1426,1426
+iasUnionConcern,bool,binar,bool,bool,2,0,0
+iasAppliesFrom,str,datë,datetime64,datetime64,3,46807,46807
