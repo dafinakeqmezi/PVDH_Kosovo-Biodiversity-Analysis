@@ -178,16 +178,23 @@ Key findings (full tables in [`reports/`](reports/)):
 - [x] Inspect the initial structure: `shape`, `df.info()`, `dtypes` and 5 sample values per column
 - [x] Create an issue list for mixed date formats, boolean values, bilingual names and `;`-separated lists
 - [x] Create [`processed/missing_report.csv`](processed/missing_report.csv), sorted by missing-value percentage
+- [x] Audit hidden missing-value tokens and document the decision for `elevation = 0`
+- [x] Compare missingness by source, `basisOfRecord`, class and district, with cautious interpretation of missingness mechanisms
+- [x] Define a column-specific missing-value strategy using analytical importance and recoverability
 - [ ] **Integration** – merge records coming from different `datasetKey` sources and harmonize column values
 - [ ] **Aggregation** – summarize occurrences per species, district, municipality, year and IUCN category
 - [ ] **Sampling** – draw a stratified sample (e.g. by `kingdom` or `district`) for faster exploration
-- [ ] **Cleaning** – drop columns that are almost empty (`iasAppliesFrom`, `establishmentMeans`), remove records not identified to species level where needed, fix inconsistent text values
-- [ ] **Missing value strategy** – drop rows where key fields are missing (`species`, `year`), impute `month`/`day` from `eventDate`, fill `protectedArea` with "Not protected", mark unknowns explicitly
+- [ ] **Cleaning** – apply the documented column-specific decisions, use species-level exclusions only where needed, and fix inconsistent text values
+- [ ] **Apply missing-value strategy** – implement [`reports/missing_strategy.md`](reports/missing_strategy.md) in a derived dataset and log transformations; recover only explicit date components, use analysis-specific exclusions, and verify protection coverage before assigning "Not protected"
 
 Current outputs:
 - [`processed/cleaning_log.csv`](processed/cleaning_log.csv) – empty cleaning log with the standard documentation columns
 - [`processed/missing_report.csv`](processed/missing_report.csv) – number and percentage of missing values for every column
 - [`reports/02_issue_list.csv`](reports/02_issue_list.csv) – initial list of structural/data-quality issues observed during exploration
+- [`reports/hidden_missing_values.csv`](reports/hidden_missing_values.csv) and [`reports/effective_missing_report.csv`](reports/effective_missing_report.csv) – literal-token audit and effective missingness without double counting
+- [`reports/elevation_zero_by_group.csv`](reports/elevation_zero_by_group.csv), [`reports/elevation_zero_records.csv`](reports/elevation_zero_records.csv) and [`reports/elevation_zero_decision.md`](reports/elevation_zero_decision.md) – source/location evidence and the zero-elevation decision
+- [`reports/missingness_by_group.csv`](reports/missingness_by_group.csv) and [`reports/missingness_mechanisms.md`](reports/missingness_mechanisms.md) – group denominators, missingness rates and interpretation limits
+- [`reports/missing_strategy.md`](reports/missing_strategy.md) – decisions for all 42 columns; implementation remains pending
 
 ### 3. Dimensionality reduction, feature selection, feature creation, discretization, binarization and transformation — [`03_vetite.ipynb`](notebooks/03_vetite.ipynb)
 - [x] Document preprocessing plan v1 with decision and rationale

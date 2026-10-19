@@ -1,0 +1,17 @@
+# Mekanizmat e mungesës
+
+Përqindjet bazohen në maskat efektive të seksionit paraprak. CSV-ja ruan edhe numërimet dhe përqindjet origjinale NaN. Grupimet janë margjinale, jo kombinime të katër faktorëve. Të gjitha grupet ruhen në CSV; më poshtë krahasohen vetëm grupet me n >= 30 për të mos mbështetur interpretimin te grupe tepër të vogla. Ky kufi është vetëm për përmbledhjen, jo prag imputimi apo test statistikor.
+
+- **elevation**: datasetKey: 0.00% (03269e13-84ae-430f-990e-f11069413e36, n=52) deri 100.00% (07044577-bd82-4089-9f3a-f4a9d2170b2e, n=386); basisOfRecord: 42.62% (PRESERVED_SPECIMEN, n=1748) deri 100.00% (MACHINE_OBSERVATION, n=376); class: 3.76% (Lecanoromycetes, n=612) deri 100.00% (Amphibia, n=109); district: 45.24% (Gjilan / Gnjilane, n=4156) deri 98.16% (Prishtinë / Priština, n=25734).
+
+- **individualCount**: datasetKey: 0.00% (03269e13-84ae-430f-990e-f11069413e36, n=52) deri 100.00% (040c5662-da76-4782-a48e-cdea1892d14c, n=341); basisOfRecord: 31.55% (MATERIAL_CITATION, n=317) deri 96.54% (MACHINE_OBSERVATION, n=376); class: 10.63% (Aves, n=28785) deri 100.00% (Bivalvia, n=40); district: 15.00% (Prishtinë / Priština, n=25734) deri 71.87% (Prizren, n=5268).
+
+- **coordinateUncertaintyInMeters**: datasetKey: 0.00% (6ac3f774-d9fb-4796-b3e9-92bf6c81c084, n=721) deri 100.00% (03269e13-84ae-430f-990e-f11069413e36, n=52); basisOfRecord: 66.57% (HUMAN_OBSERVATION, n=42479) deri 97.79% (MATERIAL_CITATION, n=317); class: 11.36% (Mammalia, n=273) deri 100.00% (Clitellata, n=43); district: 30.38% (Mitrovicë / Kosovska Mitrovica, n=3196) deri 87.13% (Prishtinë / Priština, n=25734).
+
+- **eventDate**: datasetKey: 0.00% (03269e13-84ae-430f-990e-f11069413e36, n=52) deri 100.00% (69bbc9fb-a432-4945-bb4f-654bff3bc2de, n=46); basisOfRecord: 0.00% (MACHINE_OBSERVATION, n=376) deri 52.01% (OCCURRENCE, n=1269); class: 0.00% (Agaricomycetes, n=187) deri 95.00% (Bivalvia, n=40); district: 0.85% (Prishtinë / Priština, n=25734) deri 16.49% (Mitrovicë / Kosovska Mitrovica, n=3196).
+
+- **species**: datasetKey: 0.00% (03269e13-84ae-430f-990e-f11069413e36, n=52) deri 94.51% (bd14614c-4d72-4763-8710-1cea514311cc, n=182); basisOfRecord: 0.00% (MACHINE_OBSERVATION, n=376) deri 55.23% (MATERIAL_SAMPLE, n=641); class: 0.00% (Amphibia, n=109) deri 62.50% (Bivalvia, n=40); district: 1.44% (Gjilan / Gnjilane, n=4156) deri 7.66% (Pejë / Peć, n=3187).
+
+**Decision + Rationale:** Përqindjet ndryshojnë sipas karakteristikave të vëzhguara. The missingness pattern appears consistent with MAR conditional on observed source and record characteristics, but MAR is not established by these descriptive comparisons. Prandaj MCAR nuk merret si supozim pune dhe nuk përdoret imputim i përgjithshëm me mesatare ose modë.
+
+Kufizime: tabelat nuk provojnë MAR dhe nuk përjashtojnë MNAR; vlerat e pavëzhguara nuk mund të testohen nga ky CSV. Burimi, klasa, rajoni dhe basisOfRecord janë të ndërvarura; nuk interpretohen si shkaqe të pavarura. Vëzhgimet nuk janë mostër e rastësishme dhe mund të kenë varësi hapësinore, kohore ose dublikime. Për species mungesa mund të lidhet me rangun taksonomik; për individualCount me mënyrën e raportimit; për elevation me konventat e burimit. Këto janë shpjegime të mundshme, jo mekanizma të provuar. Datat e pjesshme të plotësuara nuk janë NaN: precision duhet ruajtur veçmas në pastrim. Nevojiten metadata të burimeve dhe analizë ndjeshmërie para imputimit modelor.
