@@ -163,6 +163,7 @@ Goal: prepare the dataset for analysis and visualization.
 - [x] Describe the data source (GBIF) and the meaning of each attribute
 - [x] Assign correct data types for all 42 columns: pandas type, conceptual type and target type → [`reports/data_types.md`](reports/data_types.md), [`reports/01_tipet_e_kolonave.csv`](reports/01_tipet_e_kolonave.csv)
 - [x] Assess data quality: missing values, invalid coordinates, outliers, inconsistent values, GBIF `issue` flags
+- [x] Quality framework: completeness, validity, consistency, uniqueness and timeliness, with 35 checks (metric, rule, columns, baseline value) → [`reports/quality_framework.md`](reports/quality_framework.md), [`reports/01_korniza_e_kualitetit.csv`](reports/01_korniza_e_kualitetit.csv)
 - [x] Source analysis — [`01b_analiza_burimeve.ipynb`](notebooks/01b_analiza_burimeve.ipynb): publisher of each dataset from the GBIF API, grouped by publisher / dataset, `basisOfRecord` and `license` → [`processed/sources_summary.csv`](processed/sources_summary.csv)
 
 Key findings (full tables in [`reports/`](reports/)):

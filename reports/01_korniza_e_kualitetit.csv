@@ -1,0 +1,36 @@
+id,dimensioni,metrika,kontrolli,kolonat,njesia,aplikohen,nuk_plotesojne,perqindja,veprimi
+P1,Plotësia,% e rreshtave me të 8 kolonat kryesore të plota,Të gjitha kolonat kryesore të plota,"species, eventDate, decimalLatitude, decimalLongitude, municipality, district, basisOfRecord, kingdom",rreshta,46831,3205,93.16,analiza kryesore vetëm me rreshtat e plotë
+P2,Plotësia,% e rreshtave me species të plotë,Identifikim deri në species,species,rreshta,46831,1213,97.41,përjashto nga analiza sipas species
+P3,Plotësia,% e rreshtave me eventDate të plotë,Data e njohur,eventDate,rreshta,46831,2190,95.32,përjashto nga analiza kohore
+P4,Plotësia,% e rreshtave me kategori IUCN të vlerësuar (LC–EX),Statusi IUCN i vlerësuar (NE/DD = mungesë),iucnRedListCategory,rreshta,46831,16935,63.84,shëno 'i pavlerësuar'
+P5,Plotësia,% e rreshtave me elevation të plotë dhe ≠ 0,Lartësia e njohur (0 m = mungesë),elevation,rreshta,46831,40645,13.21,0 -> NaN; përdor vetëm si veti ndihmëse
+P6,Plotësia,% e rreshtave me coordinateUncertaintyInMeters të plotë,Pasiguria e koordinatave e dhënë,coordinateUncertaintyInMeters,rreshta,46831,32004,31.66,shëno 'e panjohur' te diskretizimi
+P7,Plotësia,% e rreshtave me individualCount të plotë,Numri i individëve i dhënë,individualCount,rreshta,46831,17697,62.21,mos e imputo; analizo vetëm vlerat e dhëna
+P8,Plotësia,% e kolonave me ≤ 80% mungesa,Kolona me jo më shumë se 80% mungesa,"establishmentMeans, identifiedBy, iasAppliesFrom",kolona,42,3,92.86,hiq kolonat
+V1,Vlefshmëria,% e koordinatave brenda kutisë gjeografike të Kosovës,"Koordinatat brenda Kosovës (lat 41.85–43.27, lon 20.01–21.80)","decimalLatitude, decimalLongitude",rreshta,46831,0,100.0,largo rreshtin
+V2,Vlefshmëria,% e lartësive (≠ 0) brenda 297–2656 m,Lartësia brenda 297–2656 m,elevation,rreshta,6186,9,99.85,vendos NaN
+V3,Vlefshmëria,"% e pasigurive të dhëna në intervalin (0, 10 000] m",Pasiguria > 0 dhe ≤ 10 km,coordinateUncertaintyInMeters,rreshta,14827,90,99.39,shëno; përjashto nga analiza hapësinore e detajuar
+V4,Vlefshmëria,% e eventDate të dhëna që lexohen si datë,eventDate e lexueshme si ISO 8601,eventDate,rreshta,44641,0,100.0,vendos NaN
+V5,Vlefshmëria,% e datave ≤ data e sotme,Data jo në të ardhmen,"eventDate, year",rreshta,44641,0,100.0,vendos NaN
+V6,Vlefshmëria,% e treshave year-month-day që formojnë datë reale,"month 1–12, day 1–31 dhe data year-month-day ekziston","year, month, day",rreshta,43612,0,100.0,vendos NaN
+V7,Vlefshmëria,% e individualCount të dhëna ≥ 1,individualCount ≥ 1,individualCount,rreshta,29134,0,100.0,vendos NaN
+V8,Vlefshmëria,% e rreshtave me të gjitha vlerat kategorike brenda fjalorit,Vlerat kategorike brenda fjalorit të lejuar (GBIF/DwC/IUCN),"kingdom, taxonRank, basisOfRecord, iucnRedListCategory, license, establishmentMeans",rreshta,46831,0,100.0,korrigjo ose vendos NaN
+V9,Vlefshmëria,% e rreshtave pa asnjë flamur GBIF të pavlefshmërisë,Pa flamuj GBIF të pavlefshmërisë,issue,rreshta,46831,1617,96.55,shëno me flamur binar
+V10,Vlefshmëria,% e individualCount të dhëna ≤ Q3 + 1.5·IQR,"individualCount jo outlier (IQR, > 13.5)",individualCount,rreshta,29134,3630,87.54,shëno; log1p te transformimi
+K1,Konsistenca,% e rreshtave ku viti/muaji/dita e eventDate = year/month/day,eventDate përputhet me year/month/day (sipas precizionit),"eventDate, year, month, day",rreshta,44563,0,100.0,përdor eventDate; plotëso year/month/day prej saj
+K2,Konsistenca,% e rreshtave ku çdo takson ka një prind brenda kingdom,Hierarkia taksonomike: çdo takson ka një prind (brenda kingdom),"genus, family, order, class, phylum, kingdom",rreshta,46794,4,99.99,rishiko taksonët me më shumë se një prind
+K3,Konsistenca,% e rreshtave ku fjala e parë e species = genus,species fillon me genus,"species, genus",rreshta,45618,78,99.83,rishiko
+K4,Konsistenca,% e rreshtave ku taxonRank dhe species përputhen,taxonRank SPECIES ose më i ulët ⇔ species e plotë,"taxonRank, species",rreshta,46580,0,100.0,rishiko
+K5,Konsistenca,% e rreshtave ku kodi dhe emri IUCN lidhen 1:1,iucnRedListCategory ↔ iucnRedListStatus 1:1,"iucnRedListCategory, iucnRedListStatus",rreshta,45618,0,100.0,mbaj iucnRedListCategory
+K6,Konsistenca,% e rreshtave ku komuna lidhet me një rajon,Çdo komunë i përket një rajoni,"municipality, district",rreshta,46831,0,100.0,korrigjo rajonin
+K7,Konsistenca,% e rreshtave ku zona e mbrojtur dhe lloji i saj përputhen,protectedArea dhe protectedAreaDesignation bashkë; një zonë = një lloj,"protectedArea, protectedAreaDesignation",rreshta,46831,0,100.0,korrigjo llojin
+K8,Konsistenca,% e rreshtave me iasAppliesFrom ku iasUnionConcern = TRUE,iasAppliesFrom e plotë ⇒ iasUnionConcern = TRUE,"iasAppliesFrom, iasUnionConcern",rreshta,24,0,100.0,rishiko
+K9,Konsistenca,% e rreshtave pa hapësira të tepërta ose variante shkronjash,Kategoritë pa hapësira të tepërta dhe pa variante të shkronjave,"scientificName, species, vernacularName, kingdom, phylum, class, order, family, genus, municipality, district, protectedArea, protectedAreaDesignation, basisOfRecord, establishmentMeans, institutionCode, collectionCode, license",rreshta,46831,53,99.89,strip + njësim i shkronjave
+U1,Unikaliteti,% e gbifID unike,gbifID unik,gbifID,rreshta,46831,0,100.0,largo dyfishin
+U2,Unikaliteti,% e rreshtave që nuk janë kopje e një rreshti tjetër,Pa rreshta identikë,të gjitha,rreshta,46831,0,100.0,largo dyfishin
+U3,Unikaliteti,% e catalogNumber unike brenda datasetKey,catalogNumber unik brenda dataset-it,"datasetKey, catalogNumber",rreshta,34272,82,99.76,rishiko (mund të jenë disa pjesë të një ekzemplari)
+U4,Unikaliteti,% e vëzhgimeve pa dyfish (takson + koordinata + data),Pa vëzhgime të dyfishta (takson + koordinata + data),"scientificName, decimalLatitude, decimalLongitude, eventDate",rreshta,44617,2830,93.66,shëno; vendos te integrimi
+U5,Unikaliteti,% e vëzhgimeve pa dyfish nga një dataset tjetër,Pa dyfishime ndërmjet burimeve të ndryshme (datasetKey),"scientificName, decimalLatitude, decimalLongitude, eventDate, datasetKey",rreshta,44617,34,99.92,mbaj një rresht për grup
+A1,Aktualiteti,% e regjistrimeve me year ≥ 2017,Regjistrim nga 10 vitet e fundit (year ≥ 2017),year,rreshta,44563,9709,78.21,krahaso periudhat; mos i përziej pa shënim
+A2,Aktualiteti,% e regjistrimeve me year ≥ 2000,Regjistrim nga viti 2000 e tutje,year,rreshta,44563,4502,89.9,shëno si historik
+A3,Aktualiteti,% e regjistrimeve nga dataset-e me të dhëna pas 2016,Dataset-i ka regjistrime pas vitit 2016,"datasetKey, year",rreshta,44563,1621,96.36,shëno burimin si joaktiv
