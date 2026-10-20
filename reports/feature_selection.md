@@ -79,7 +79,7 @@ Nënbashkësia analitike ka 29 kolona. 13 kolonat e tjera nuk hyjnë në të, se
 ## Dokumentimi i detyrës
 
 - **Varësia:** `reports/column_importance.md` (12.10.2026), `reports/redundancy.md` (11.10.2026), `processed/missing_report.csv` (11.10.2026), `reports/data_types.md` (12.10.2026).
-- **Input:** katër burimet e mësipërme dhe pyetjet e projektit.
+- **Input:** `reports/column_importance.md`, `reports/redundancy.md`, `processed/missing_report.csv`, `reports/data_types.md`.
 - **Çka u bë:** Për 42 kolonat u vendos mbahet ose largohet. Plani i 9 tetorit u përditësua.
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 në CSV / 29 në nënbashkësinë analitike.
