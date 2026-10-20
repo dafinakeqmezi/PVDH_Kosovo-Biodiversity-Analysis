@@ -1,0 +1,18 @@
+kategoria,tabela,rreshta,perqindja
+të 4 fushat kyçe të plota,rreshta të plotë,43626,93.16
+të paktën një fushë kyçe mungon,rreshta të plotë,3205,6.84
+species,fusha kyçe e plotë,45618,97.41
+data (eventDate),fusha kyçe e plotë,44641,95.32
+koordinata (lat + lon),fusha kyçe e plotë,46831,100.0
+komuna (municipality),fusha kyçe e plotë,46831,100.0
+0 fusha kyçe mungojnë,numri i fushave që mungojnë,43626,93.16
+1 fushë kyçe mungon,numri i fushave që mungojnë,3007,6.42
+2 fusha kyçe mungojnë,numri i fushave që mungojnë,198,0.42
+mungon: data,çfarë mungon,1992,4.25
+mungon: species,çfarë mungon,1015,2.17
+mungon: species + data,çfarë mungon,198,0.42
+< 50%,plotësia e të 42 kolonave,22,0.05
+50–75%,plotësia e të 42 kolonave,3356,7.17
+75–90%,plotësia e të 42 kolonave,18998,40.57
+90–100%,plotësia e të 42 kolonave,24455,52.22
+100%,plotësia e të 42 kolonave,0,0.0

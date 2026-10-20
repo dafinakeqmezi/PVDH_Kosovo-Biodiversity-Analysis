@@ -1,0 +1,43 @@
+kolona,aplikohen,nan,te_fshehura,vlerat_e_fshehura,mungesa_reale,te_rikuperueshme,plotesia_e_dukshme,plotesia_reale,shenim
+establishmentMeans,46831,46591,0,,46591,0,0.51,0.51,
+elevation,46831,37011,3634,0 m,40645,0,20.97,13.21,
+identifiedBy,46831,39096,15,"0, Anon., unknown",39111,0,16.52,16.48,
+coordinateUncertaintyInMeters,46831,32004,0,,32004,0,31.66,31.66,
+individualCount,46831,17697,0,,17697,0,62.21,62.21,
+iucnRedListCategory,46831,1213,15722,"NE, DD",16935,0,97.41,63.84,
+iucnRedListStatus,46831,1213,15722,"Not Evaluated, Data Deficient",16935,0,97.41,63.84,
+locality,46831,15251,38,unknown,15289,0,67.43,67.35,
+collectionCode,46831,13469,0,,13469,0,71.24,71.24,
+catalogNumber,46831,12559,0,,12559,0,73.18,73.18,
+vernacularName,46831,3873,0,,3873,0,91.73,91.73,
+recordedBy,46831,3853,1,unknown,3854,0,91.77,91.77,
+institutionCode,46831,3711,0,,3711,0,92.08,92.08,
+day,46831,3219,0,,3219,401,93.13,93.13,plotësohet nga eventDate
+month,46831,2867,0,,2867,222,93.88,93.88,plotësohet nga eventDate
+year,46831,2268,0,,2268,78,95.16,95.16,plotësohet nga eventDate
+eventDate,46831,2190,0,,2190,0,95.32,95.32,
+issue,46831,1426,0,,1426,0,96.96,96.96,
+species,46831,1213,0,,1213,0,97.41,97.41,
+speciesKey,46831,1213,0,,1213,0,97.41,97.41,
+class,46831,388,0,,388,0,99.17,99.17,
+order,46831,334,0,,334,0,99.29,99.29,
+taxonRank,46831,37,214,UNRANKED,251,0,99.92,99.46,
+genus,46831,195,0,,195,0,99.58,99.58,
+family,46831,158,0,,158,0,99.66,99.66,
+phylum,46831,69,0,,69,0,99.85,99.85,
+scientificName,46831,37,0,,37,0,99.92,99.92,
+kingdom,46831,37,0,,37,0,99.92,99.92,
+taxonKey,46831,37,0,,37,0,99.92,99.92,
+iasAppliesFrom,24,46807,0,,0,0,0.05,100.0,vlen vetëm kur iasUnionConcern = TRUE
+protectedArea,46831,25762,0,,0,0,44.99,100.0,NaN = jashtë zonës së mbrojtur
+protectedAreaDesignation,46831,25762,0,,0,0,44.99,100.0,NaN = jashtë zonës së mbrojtur
+gbifID,46831,0,0,,0,0,100.0,100.0,
+decimalLatitude,46831,0,0,,0,0,100.0,100.0,
+decimalLongitude,46831,0,0,,0,0,100.0,100.0,
+municipality,46831,0,0,,0,0,100.0,100.0,
+district,46831,0,0,,0,0,100.0,100.0,
+strictlyProtected,46831,0,0,,0,0,100.0,100.0,
+basisOfRecord,46831,0,0,,0,0,100.0,100.0,
+datasetKey,46831,0,0,,0,0,100.0,100.0,
+license,46831,0,0,,0,0,100.0,100.0,
+iasUnionConcern,46831,0,0,,0,0,100.0,100.0,
