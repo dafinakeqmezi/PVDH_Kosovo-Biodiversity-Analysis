@@ -1,0 +1,74 @@
+hapi,vlera_te_ndryshuara_ose_te_shenuara,rreshta_para,rreshta_pas,kolona_para,kolona_pas,arsyeja
+tokens:locality,38,46831,46831,42,42,Token literal i mungesës -> NA; pa ndryshuar tekstet e tjera.
+tokens:recordedBy,1,46831,46831,42,42,Token literal i mungesës -> NA; pa ndryshuar tekstet e tjera.
+tokens:identifiedBy,1,46831,46831,42,42,Token literal i mungesës -> NA; pa ndryshuar tekstet e tjera.
+elevation_zero,3634,46831,46831,42,43,Vetëm flamur për zerot origjinale; zëvendësimi me NA shtyhet te vlerat e pavlefshme.
+drop:iucnRedListStatus,46831,46831,46831,43,42,Redundant sipas reports/redundancy.md; jo vendim i bazuar në përqindjen e mungesës.
+drop:establishmentMeans,46831,46831,46831,42,41,Pothuajse bosh dhe jashtë pyetjeve kryesore sipas rëndësisë; ruaj origjinalin për analizë të specializuar.
+flag:scientificName,37,46831,46831,41,42,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:taxonRank,37,46831,46831,42,43,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:species,1213,46831,46831,43,44,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:speciesKey,1213,46831,46831,44,45,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:kingdom,37,46831,46831,45,46,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:phylum,69,46831,46831,46,47,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:class,388,46831,46831,47,48,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:order,334,46831,46831,48,49,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:family,158,46831,46831,49,50,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:genus,195,46831,46831,50,51,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:taxonKey,37,46831,46831,51,52,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:iucnRedListCategory,1213,46831,46831,52,53,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:eventDate,2190,46831,46831,53,54,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:year,2268,46831,46831,54,55,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:month,2867,46831,46831,55,56,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:day,3219,46831,46831,56,57,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:decimalLatitude,0,46831,46831,57,58,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:decimalLongitude,0,46831,46831,58,59,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:coordinateUncertaintyInMeters,32004,46831,46831,59,60,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:elevation,37011,46831,46831,60,61,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:locality,15289,46831,46831,61,62,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:protectedArea,25762,46831,46831,62,63,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:protectedAreaDesignation,25762,46831,46831,63,64,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:individualCount,17697,46831,46831,64,65,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:recordedBy,3854,46831,46831,65,66,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:identifiedBy,39097,46831,46831,66,67,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:issue,1426,46831,46831,67,68,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+flag:iasAppliesFrom,46807,46831,46831,68,69,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
+protected_area_status,25762,46831,46831,69,70,Pa metadata hapësinore nuk vërtetohet jashtë zonës; zero zëvendësime të protectedArea.
+ias_date_status,46807,46831,46831,70,71,Dallo not_applicable nga unknown sipas iasUnionConcern; data nuk mbushet artificialisht.
+event_dates,44641,46831,46831,71,77,Ruaj dy skajet dhe precision; kufijtë kalendarikë nuk janë data të imputuara.
+dtype:year,44563,46831,46831,77,77,Numër i plotë nullable; mungesat ruhen.
+dtype:month,43964,46831,46831,77,77,Numër i plotë nullable; mungesat ruhen.
+dtype:day,43612,46831,46831,77,77,Numër i plotë nullable; mungesat ruhen.
+dtype:taxonKey,46794,46831,46831,77,77,Numër i plotë nullable; mungesat ruhen.
+dtype:speciesKey,45618,46831,46831,77,77,Numër i plotë nullable; mungesat ruhen.
+dtype:individualCount,29134,46831,46831,77,77,Numër i plotë nullable; mungesat ruhen.
+dtype:strictlyProtected,46831,46831,46831,77,77,TRUE/FALSE -> bool; nullable boolean nëse ka mungesa.
+dtype:iasUnionConcern,46831,46831,46831,77,77,TRUE/FALSE -> bool; nullable boolean nëse ka mungesa.
+dtype:iasAppliesFrom,24,46831,46831,77,77,"Datë ISO; mungesa strukturore ruhet si NaT, statusi veçmas."
+dtype:scientificName,46794,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:species,45618,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:vernacularName,42958,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:kingdom,46794,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:phylum,46762,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:class,46443,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:order,46497,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:family,46673,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:genus,46636,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:taxonRank,46794,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:iucnRedListCategory,45618,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:municipality,46831,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:district,46831,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:protectedArea,21069,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:protectedAreaDesignation,21069,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:basisOfRecord,46831,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:institutionCode,43120,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:collectionCode,33362,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:datasetKey,46831,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:license,46831,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:protected_area_status,46831,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:ias_date_status,46831,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:date_precision,44641,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:event_start_precision,44641,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:event_end_precision,44641,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+dtype:date_parse_status,46831,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
+export,0,46831,46831,77,77,CSV e veçantë + schema; verifikuar rikthimi i tipeve dhe hash-i i origjinalit.

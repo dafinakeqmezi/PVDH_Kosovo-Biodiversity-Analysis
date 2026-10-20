@@ -187,16 +187,28 @@ Key findings (full tables in [`reports/`](reports/)):
 - [ ] **Aggregation** – summarize occurrences per species, district, municipality, year and IUCN category
 - [ ] **Sampling** – draw a stratified sample (e.g. by `kingdom` or `district`) for faster exploration
 - [ ] **Cleaning** – apply the documented column-specific decisions, use species-level exclusions only where needed, and fix inconsistent text values
-- [ ] **Apply missing-value strategy** – implement [`reports/missing_strategy.md`](reports/missing_strategy.md) in a derived dataset and log transformations; recover only explicit date components, use analysis-specific exclusions, and verify protection coverage before assigning "Not protected"
+- [ ] **Apply missing-value strategy** – implement [`reports/strategjia_e_mungesave.md`](reports/strategjia_e_mungesave.md) in a derived dataset and log transformations; recover only explicit date components, use analysis-specific exclusions, and verify protection coverage before assigning "Not protected"
+- [x] Apply column removals, confirmed missing tokens and missingness flags to a separate working dataset; flag zero elevations without replacing them yet
+- [x] Separate IAS structural missingness with status flags; retain unknown protected-area values
+- [ ] Verify protected-area spatial coverage before replacing blanks with "outside protected area"
+- [x] Parse dates into `event_start`, `event_end` and `date_precision`, preserving interval endpoints and original text
+- [x] Convert nullable integers, booleans and unordered categories; leave IUCN ordinal encoding to notebook 03
 
 Current outputs:
-- [`processed/cleaning_log.csv`](processed/cleaning_log.csv) – empty cleaning log with the standard documentation columns
+- [`processed/cleaning_log.csv`](processed/cleaning_log.csv) – per-step transformation log; reruns update this notebook's steps without duplicating them
 - [`processed/missing_report.csv`](processed/missing_report.csv) – number and percentage of missing values for every column
-- [`reports/02_issue_list.csv`](reports/02_issue_list.csv) – initial list of structural/data-quality issues observed during exploration
-- [`reports/hidden_missing_values.csv`](reports/hidden_missing_values.csv) and [`reports/effective_missing_report.csv`](reports/effective_missing_report.csv) – literal-token audit and effective missingness without double counting
-- [`reports/elevation_zero_by_group.csv`](reports/elevation_zero_by_group.csv), [`reports/elevation_zero_records.csv`](reports/elevation_zero_records.csv) and [`reports/elevation_zero_decision.md`](reports/elevation_zero_decision.md) – source/location evidence and the zero-elevation decision
-- [`reports/missingness_by_group.csv`](reports/missingness_by_group.csv) and [`reports/missingness_mechanisms.md`](reports/missingness_mechanisms.md) – group denominators, missingness rates and interpretation limits
-- [`reports/missing_strategy.md`](reports/missing_strategy.md) – decisions for all 42 columns; implementation remains pending
+- [`reports/02_lista_e_problemeve.csv`](reports/02_lista_e_problemeve.csv) – initial list of structural/data-quality issues observed during exploration
+- [`reports/mungesat_e_fshehura.csv`](reports/mungesat_e_fshehura.csv) and [`reports/raporti_i_mungesave_efektive.csv`](reports/raporti_i_mungesave_efektive.csv) – literal-token audit and effective missingness without double counting
+- [`reports/lartesia_zero_sipas_grupeve.csv`](reports/lartesia_zero_sipas_grupeve.csv), [`reports/regjistrimet_me_lartesi_zero.csv`](reports/regjistrimet_me_lartesi_zero.csv) and [`reports/vendimi_per_lartesine_zero.md`](reports/vendimi_per_lartesine_zero.md) – source/location evidence and the zero-elevation decision
+- [`reports/mungesat_sipas_grupeve.csv`](reports/mungesat_sipas_grupeve.csv) and [`reports/mekanizmat_e_mungeses.md`](reports/mekanizmat_e_mungeses.md) – group denominators, missingness rates and interpretation limits
+- [`reports/strategjia_e_mungesave.md`](reports/strategjia_e_mungesave.md) – strategy for all 42 columns; column cleaning and flags are implemented, while conditional recovery and protected-area verification remain pending
+- [`processed/kosovo_biodiversity_clean.csv`](processed/kosovo_biodiversity_clean.csv) – intermediate working dataset through the type-conversion stage; not the final `biodiversity_clean.csv` checkpoint. The original CSV remains unchanged and all records are retained
+- [`processed/kosovo_biodiversity_clean_schema.json`](processed/kosovo_biodiversity_clean_schema.json) – type/category metadata and source hash; use `load_clean_dataset()` in notebook 02 to restore CSV types
+- [`reports/kolonat_para_pas_pastrimit.csv`](reports/kolonat_para_pas_pastrimit.csv), [`reports/numerimet_e_pastrimit.csv`](reports/numerimet_e_pastrimit.csv) and [`reports/tipet_para_pas_pastrimit.csv`](reports/tipet_para_pas_pastrimit.csv) – column changes, affected counts and types before/after
+- [`reports/vendimet_per_mungesat_strukturore.md`](reports/vendimet_per_mungesat_strukturore.md) and [`reports/numerimet_e_mungesave_strukturore.csv`](reports/numerimet_e_mungesave_strukturore.csv) – evidence limits, flags and replacement counts
+- [`reports/formatet_e_datave.csv`](reports/formatet_e_datave.csv) and [`reports/problemet_e_parsimit_te_datave.csv`](reports/problemet_e_parsimit_te_datave.csv) – observed date formats and parsing failures
+
+Current scope for notebook 02: tasks through 18 October only. Protected-area replacement remains pending evidence. Later tasks (year/month recovery, duplicates, category harmonization, invalid-value replacement, individualCount treatment and the final checkpoint) are not implemented here. Zero elevations remain in the intermediate CSV with a flag; the earlier diagnostic missingness reports count them as unusable values for strategy planning.
 
 ### 3. Dimensionality reduction, feature selection, feature creation, discretization, binarization and transformation — [`03_vetite.ipynb`](notebooks/03_vetite.ipynb)
 - [x] Document preprocessing plan v1 with decision and rationale

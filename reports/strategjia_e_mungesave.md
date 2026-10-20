@@ -1,8 +1,8 @@
 # Strategjia për vlerat e zbrazëta
 
-Input: dataset-i origjinal, `effective_missing_report.csv`, `missingness_by_group.csv`, `missingness_mechanisms.md`, `column_importance.md` dhe `redundancy.md`.
+Input: dataset-i origjinal, `raporti_i_mungesave_efektive.csv`, `mungesat_sipas_grupeve.csv`, `mekanizmat_e_mungeses.md`, `column_importance.md` dhe `redundancy.md`.
 
-**Missing %** është përqindja efektive: bashkimi i NaN, tokenëve literalë të mungesës dhe elevation = 0. Inventari fillestar mbetet në `processed/missing_report.csv`; numërimet e krahasueshme janë në `reports/effective_missing_report.csv`. NE/DD janë kategori IUCN; mungesat potencialisht strukturore ende numërohen dhe interpretohen veçmas.
+**Missing %** është përqindja efektive: bashkimi i NaN, tokenëve literalë të mungesës dhe elevation = 0. Inventari fillestar mbetet në `processed/missing_report.csv`; numërimet e krahasueshme janë në `reports/raporti_i_mungesave_efektive.csv`. NE/DD janë kategori IUCN; mungesat potencialisht strukturore ende numërohen dhe interpretohen veçmas.
 
 **Decision + Rationale:** Nuk ka prag fiks. Vendimet mbështeten në rëndësi, kuptim, mundësi rikuperimi dhe modelin e mungesës. Delete vlen vetëm për pamjen e specifikuar; keep ruan vlerën dhe NaN; flag shton në fazën e zbatimit një tregues mungese; impute lejohet vetëm për rikuperim determinist të verifikuar. Asnjë vendim në tabelë nuk është zbatuar mbi dataset-in. Nuk ka fshirje globale rreshtash për species/year. Përqindjet e larta nuk justifikojnë vetë heqjen.
 
@@ -68,7 +68,7 @@ Për protectedArea raporti i mëparshëm e interpreton boshllëkun si jashtë zo
 - **Çka u bë:** U vendos strategji për të 42 kolonat me rëndësi, rikuperim dhe arsyetim.
 - **Rreshta para / pas:** 46,831 / 46,831; **kolona para / pas:** 42 / 42.
 - **Pse u bë:** Për të shmangur humbje informacioni dhe imputime pa mbështetje semantike.
-- **Output:** reports/missing_strategy.md, 42 vendime.
+- **Output:** reports/strategjia_e_mungesave.md, 42 vendime.
 - **Commit:** Add hidden missingness analysis and column strategies (mesazh i propozuar).
 
 Këto janë hapa diagnostikimi dhe planifikimi; cleaning_log.csv ruhet për transformimet reale. Zbatimi i vendimeve duhet të regjistrojë ndryshimet me log_step().
