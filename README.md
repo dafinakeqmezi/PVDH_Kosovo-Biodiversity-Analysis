@@ -165,6 +165,7 @@ Goal: prepare the dataset for analysis and visualization.
 - [x] Assess data quality: missing values, invalid coordinates, outliers, inconsistent values, GBIF `issue` flags
 - [x] Quality framework: completeness, validity, consistency, uniqueness and timeliness, with 35 checks (metric, rule, columns, baseline value) → [`reports/quality_framework.md`](reports/quality_framework.md), [`reports/01_korniza_e_kualitetit.csv`](reports/01_korniza_e_kualitetit.csv)
 - [x] Completeness per column (including hidden missing values) and per row (key fields: species, date, coordinates, municipality) → [`reports/completeness.md`](reports/completeness.md)
+- [x] Validity: coordinates inside Kosovo, year range, month/day ranges, `eventDate` formats, frequency of 7071 in `coordinateUncertaintyInMeters`, `elevation` range → [`reports/validity.md`](reports/validity.md)
 - [x] Source analysis — [`01b_analiza_burimeve.ipynb`](notebooks/01b_analiza_burimeve.ipynb): publisher of each dataset from the GBIF API, grouped by publisher / dataset, `basisOfRecord` and `license` → [`processed/sources_summary.csv`](processed/sources_summary.csv)
 
 Key findings (full tables in [`reports/`](reports/)):

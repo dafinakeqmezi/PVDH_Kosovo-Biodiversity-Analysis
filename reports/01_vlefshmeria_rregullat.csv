@@ -1,0 +1,18 @@
+Rregulla,Rreshta që dështojnë,%
+"VL1 – Koordinatat brenda kutisë së Kosovës (lat 41.85–43.27, lon 20.01–21.80)",0,0.0
+VL2 – Pika ka komunë të Kosovës,0,0.0
+VL3 – Pa flamuj GBIF për koordinata të gabuara,0,0.0
+VL4 – Koordinata me të paktën 3 shifra dhjetore (≤ ~110 m),784,1.67
+VL5 – Viti brenda 1758–2026,0,0.0
+VL6 – Viti ≥ 1900 (jo regjistrim historik),16,0.04
+VL7 – month 1–12,0,0.0
+VL8 – day 1–31,0,0.0
+VL9 – year-month-day formon datë reale (p.sh. jo 30 shkurt),0,0.0
+VL10 – eventDate lexohet si ISO 8601,0,0.0
+VL11 – Te intervalet: data e fundit ≥ data e fillimit,0,0.0
+VL12 – Te intervalet: gjatësia ≤ 1 vit,53,11.86
+VL13 – Pa flamurin GBIF RECORDED_DATE_INVALID,508,1.08
+VL14 – coordinateUncertaintyInMeters > 0 dhe ≤ 10 km,90,0.61
+"VL15 – coordinateUncertaintyInMeters ≠ 7071 (pikë, jo qendër e qelizës 10 km)",8225,55.47
+VL16 – elevation ≠ 0 (0 = e panjohur),3634,37.01
+VL17 – elevation brenda 297–2656 m,9,0.15
