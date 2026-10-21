@@ -71,4 +71,6 @@ dtype:date_precision,44641,46831,46831,77,77,Kategori pa renditje; asnjë vlerë
 dtype:event_start_precision,44641,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
 dtype:event_end_precision,44641,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
 dtype:date_parse_status,46831,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
-export,0,46831,46831,77,77,CSV e veçantë + schema; verifikuar rikthimi i tipeve dhe hash-i i origjinalit.
+recover:year,0,46831,46831,77,78,Plotësim determinist nga eventDate e plotë ose interval brenda të njëjtit muaj; pa mbishkrim.
+recover:month,0,46831,46831,78,79,Plotësim determinist nga eventDate e plotë ose interval brenda të njëjtit muaj; pa mbishkrim.
+export,0,46831,46831,79,79,CSV e veçantë + schema; verifikuar rikthimi i tipeve dhe hash-i i origjinalit.

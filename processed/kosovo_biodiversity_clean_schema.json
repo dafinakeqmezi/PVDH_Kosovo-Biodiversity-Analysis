@@ -16259,6 +16259,12 @@
       ],
       "ordered": false,
       "categories_dtype": "str"
+    },
+    "year_was_filled": {
+      "dtype": "bool"
+    },
+    "month_was_filled": {
+      "dtype": "bool"
     }
   }
 }

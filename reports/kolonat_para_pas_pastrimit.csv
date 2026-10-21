@@ -78,3 +78,5 @@ date_precision,False,True,added
 event_start_precision,False,True,added
 event_end_precision,False,True,added
 date_parse_status,False,True,added
+year_was_filled,False,True,added
+month_was_filled,False,True,added
