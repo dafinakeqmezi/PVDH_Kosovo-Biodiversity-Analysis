@@ -153,7 +153,7 @@ Rreshtat që nuk plotësojnë kontrollet e aktualitetit nuk janë të gabuar. At
 - **Vlefshmëria është e lartë.** Koordinatat, datat dhe fjalorët janë 100% të vlefshëm. Problemet janë të vogla: 9 lartësi jashtë intervalit, 90 pasiguri mbi 10 km dhe 1,645 rreshta me flamuj seriozë të GBIF.
 - **Konsistenca ka tri probleme konkrete:**
   - K2: gjinia `Aspicilia` (likene) ka dy familje, 4 rreshta.
-  - K3: te 78 rreshta, GBIF e ka zëvendësuar species me sinonimin e pranuar, por gjinia ka mbetur e vjetër, p.sh. `Pararge` / `Lasiommata maera`.
+  - K3: te 78 rreshta, emri i species dhe gjinia vijnë nga trajtime taksonomike të ndryshme, p.sh. GBIF e klasifikon `Lasiommata maera` nën gjininë `Pararge`.
   - K9: `institutionCode` ka `BHAM_Maxted` dhe `BHAM_MAXTED`.
 - **Unikaliteti:** 2,830 vëzhgime përsërisin taksonin, koordinatat dhe datën. Vetëm 34 prej tyre vijnë nga dataset-e të ndryshme, pra shumica janë brenda të njëjtit burim, p.sh. disa vëzhgues në të njëjtin vend. Te U3, një dataset vendos emrin e koleksionit ("UP-Spiders of Kosovo") te `catalogNumber`.
 - **Aktualiteti:** 78% e regjistrimeve janë nga 10 vitet e fundit, por 10% janë para vitit 2000.

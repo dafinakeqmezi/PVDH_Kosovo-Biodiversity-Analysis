@@ -1,0 +1,8 @@
+rregulla,vlera,vlera_jokonsistente,aplikohen,rreshta_jokonsistente,perqindja_konsistente,shembuj
+species → genus (çdo specie ka një gjini),4095,0,45618,0,100.0,
+species → genus (fjala e parë e species = genus),4095,9,45618,78,99.83,Dicallomera fascelina → Calliteara; Hippurites archiaci → Vaccinites; Hippurites vesiculosus → Vaccinites
+genus → family (pa kusht),2408,3,46615,119,99.74,Aspicilia → Hymeneliaceae / Megasporaceae; Linaria → Fringillidae / Plantaginaceae; Prunella → Lamiaceae / Prunellidae
+genus → family (brenda kingdom),2410,1,46615,4,99.99,Aspicilia → Hymeneliaceae / Megasporaceae
+family → order → class → phylum → kingdom,980,0,185868,0,100.0,
+municipality → district (çdo komunë një rajon),38,0,46831,0,100.0,
+"municipality → district (sipas ndarjes zyrtare, 7 rajone / 38 komuna)",38,0,46831,0,100.0,
