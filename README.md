@@ -188,6 +188,7 @@ Key findings (full tables in [`reports/`](reports/)):
 - [x] Compare missingness by source, `basisOfRecord`, class and district, with cautious interpretation of missingness mechanisms
 - [x] Define a column-specific missing-value strategy using analytical importance and recoverability
 - [x] External data for integration: area (km²) and population of the 38 municipalities with source, year and link → [`processed/municipalities.csv`](processed/municipalities.csv), [`reports/municipalities_source.md`](reports/municipalities_source.md)
+- [x] Join: municipality key from the bilingual names, left join with area and population, 38/38 matched and 46,831 rows before and after → [`processed/biodiversity_municipalities.csv`](processed/biodiversity_municipalities.csv), [`reports/municipalities_join.md`](reports/municipalities_join.md)
 - [ ] **Integration** – merge records coming from different `datasetKey` sources and harmonize column values
 - [ ] **Aggregation** – summarize occurrences per species, district, municipality, year and IUCN category
 - [ ] **Sampling** – draw a stratified sample (e.g. by `kingdom` or `district`) for faster exploration
