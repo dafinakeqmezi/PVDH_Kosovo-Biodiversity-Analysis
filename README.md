@@ -187,6 +187,7 @@ Key findings (full tables in [`reports/`](reports/)):
 - [x] Audit hidden missing-value tokens and document the decision for `elevation = 0`
 - [x] Compare missingness by source, `basisOfRecord`, class and district, with cautious interpretation of missingness mechanisms
 - [x] Define a column-specific missing-value strategy using analytical importance and recoverability
+- [x] External data for integration: area (km²) and population of the 38 municipalities with source, year and link → [`processed/municipalities.csv`](processed/municipalities.csv), [`reports/municipalities_source.md`](reports/municipalities_source.md)
 - [ ] **Integration** – merge records coming from different `datasetKey` sources and harmonize column values
 - [ ] **Aggregation** – summarize occurrences per species, district, municipality, year and IUCN category
 - [ ] **Sampling** – draw a stratified sample (e.g. by `kingdom` or `district`) for faster exploration
