@@ -190,6 +190,7 @@ Key findings (full tables in [`reports/`](reports/)):
 - [x] External data for integration: area (km²) and population of the 38 municipalities with source, year and link → [`processed/municipalities.csv`](processed/municipalities.csv), [`reports/municipalities_source.md`](reports/municipalities_source.md)
 - [x] Join: municipality key from the bilingual names, left join with area and population, 38/38 matched and 46,831 rows before and after → [`processed/biodiversity_municipalities.csv`](processed/biodiversity_municipalities.csv), [`reports/municipalities_join.md`](reports/municipalities_join.md)
 - [ ] **Integration** – merge records coming from different `datasetKey` sources and harmonize column values
+- [x] Aggregation by municipality: records, unique species, threatened species, species/km², records per 1,000 residents, plus the municipality × taxon_group matrix for PCA → [`processed/agg_municipality.csv`](processed/agg_municipality.csv), [`processed/agg_municipality_taxon.csv`](processed/agg_municipality_taxon.csv), [`reports/aggregation_municipality.md`](reports/aggregation_municipality.md)
 - [ ] **Aggregation** – summarize occurrences per species, district, municipality, year and IUCN category
 - [ ] **Sampling** – draw a stratified sample (e.g. by `kingdom` or `district`) for faster exploration
 - [ ] **Cleaning** – apply the documented column-specific decisions, use species-level exclusions only where needed, and fix inconsistent text values
