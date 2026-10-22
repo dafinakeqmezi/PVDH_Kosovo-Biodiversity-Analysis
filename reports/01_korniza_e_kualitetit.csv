@@ -15,7 +15,7 @@ V5,Vlefshmëria,% e datave ≤ data e sotme,Data jo në të ardhmen,"eventDate, 
 V6,Vlefshmëria,% e treshave year-month-day që formojnë datë reale,"month 1–12, day 1–31 dhe data year-month-day ekziston","year, month, day",rreshta,43612,0,100.0,vendos NaN
 V7,Vlefshmëria,% e individualCount të dhëna ≥ 1,individualCount ≥ 1,individualCount,rreshta,29134,0,100.0,vendos NaN
 V8,Vlefshmëria,% e rreshtave me të gjitha vlerat kategorike brenda fjalorit,Vlerat kategorike brenda fjalorit të lejuar (GBIF/DwC/IUCN),"kingdom, taxonRank, basisOfRecord, iucnRedListCategory, license, establishmentMeans",rreshta,46831,0,100.0,korrigjo ose vendos NaN
-V9,Vlefshmëria,% e rreshtave pa asnjë flamur GBIF të pavlefshmërisë,Pa flamuj GBIF të pavlefshmërisë,issue,rreshta,46831,1617,96.55,shëno me flamur binar
+V9,Vlefshmëria,% e rreshtave pa asnjë flamur serioz të GBIF,Pa flamuj seriozë të GBIF (seksioni 3.5),issue,rreshta,46831,1645,96.49,shëno me flamur binar
 V10,Vlefshmëria,% e individualCount të dhëna ≤ Q3 + 1.5·IQR,"individualCount jo outlier (IQR, > 13.5)",individualCount,rreshta,29134,3630,87.54,shëno; log1p te transformimi
 K1,Konsistenca,% e rreshtave ku viti/muaji/dita e eventDate = year/month/day,eventDate përputhet me year/month/day (sipas precizionit),"eventDate, year, month, day",rreshta,44563,0,100.0,përdor eventDate; plotëso year/month/day prej saj
 K2,Konsistenca,% e rreshtave ku çdo takson ka një prind brenda kingdom,Hierarkia taksonomike: çdo takson ka një prind (brenda kingdom),"genus, family, order, class, phylum, kingdom",rreshta,46794,4,99.99,rishiko taksonët me më shumë se një prind

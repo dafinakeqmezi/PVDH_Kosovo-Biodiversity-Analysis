@@ -45,7 +45,7 @@ Për secilin dimension: metrika, kontrolli dhe kolonat. Vlerat fillestare dhe ve
 |  | % e treshave year-month-day që formojnë datë reale | **V6** – month 1–12, day 1–31 dhe data year-month-day ekziston | `year`, `month`, `day` |
 |  | % e individualCount të dhëna ≥ 1 | **V7** – individualCount ≥ 1 | `individualCount` |
 |  | % e rreshtave me të gjitha vlerat kategorike brenda fjalorit | **V8** – Vlerat kategorike brenda fjalorit të lejuar (GBIF/DwC/IUCN) | `kingdom`, `taxonRank`, `basisOfRecord`, `iucnRedListCategory`, `license`, `establishmentMeans` |
-|  | % e rreshtave pa asnjë flamur GBIF të pavlefshmërisë | **V9** – Pa flamuj GBIF të pavlefshmërisë | `issue` |
+|  | % e rreshtave pa asnjë flamur serioz të GBIF | **V9** – Pa flamuj seriozë të GBIF (seksioni 3.5) | `issue` |
 |  | % e individualCount të dhëna ≤ Q3 + 1.5·IQR | **V10** – individualCount jo outlier (IQR, > 13.5) | `individualCount` |
 | **Konsistenca** | % e rreshtave ku viti/muaji/dita e eventDate = year/month/day | **K1** – eventDate përputhet me year/month/day (sipas precizionit) | `eventDate`, `year`, `month`, `day` |
 |  | % e rreshtave ku çdo takson ka një prind brenda kingdom | **K2** – Hierarkia taksonomike: çdo takson ka një prind (brenda kingdom) | `genus`, `family`, `order`, `class`, `phylum`, `kingdom` |
@@ -104,10 +104,10 @@ Plotësia matet edhe për mungesat e fshehura: `NE`/`DD` te IUCN (15,722) dhe `e
 | V6 | `month` 1–12, `day` 1–31 dhe data ekziston | `year`, `month`, `day` | 43,612 | 0 | 100.00 | Vendos NaN |
 | V7 | `individualCount` ≥ 1 | `individualCount` | 29,134 | 0 | 100.00 | Vendos NaN |
 | V8 | Vlerat kategorike brenda fjalorit të lejuar | `kingdom`, `taxonRank`, `basisOfRecord`, `iucnRedListCategory`, `license`, `establishmentMeans` | 46,831 | 0 | 100.00 | Korrigjo ose vendos NaN |
-| V9 | Pa flamuj GBIF të pavlefshmërisë¹ | `issue` | 46,831 | 1,617 | 96.55 | Shëno me flamur binar |
+| V9 | Pa flamuj seriozë të GBIF¹ | `issue` | 46,831 | 1,645 | 96.49 | Shëno me flamur binar |
 | V10 | `individualCount` jo outlier (IQR: > 13.5) | `individualCount` | 29,134 | 3,630 | 87.54 | Shëno; `log1p` te transformimi |
 
-¹ `TAXON_MATCH_NONE`, `TAXON_MATCH_FUZZY`, `TAXON_MATCH_HIGHERRANK`, `RECORDED_DATE_INVALID`, `INDIVIDUAL_COUNT_INVALID`, `BASIS_OF_RECORD_INVALID`, `COORDINATE_PRECISION_INVALID`, `COORDINATE_UNCERTAINTY_METERS_INVALID`. Flamujt informues (p.sh. `COORDINATE_ROUNDED`, `COUNTRY_DERIVED_FROM_COORDINATES`) nuk numërohen, sepse tregojnë si e ka interpretuar GBIF vlerën, jo që vlera është e gabuar.
+¹ 10 flamujt seriozë sipas klasifikimit te `reports/gbif_flags.md` (seksioni 3.5 i notebook-ut): `TAXON_MATCH_HIGHERRANK`, `TAXON_MATCH_FUZZY`, `TAXON_MATCH_NONE`, `TAXON_MATCH_NAME_AND_ID_AMBIGUOUS`, `SCIENTIFIC_NAME_AND_ID_INCONSISTENT`, `RECORDED_DATE_INVALID`, `RECORDED_DATE_MISMATCH`, `INDIVIDUAL_COUNT_INVALID`, `BASIS_OF_RECORD_INVALID`, `COORDINATE_UNCERTAINTY_METERS_INVALID`. Flamujt informativë (p.sh. `COORDINATE_ROUNDED`, `COUNTRY_DERIVED_FROM_COORDINATES`) nuk numërohen, sepse tregojnë si e ka interpretuar GBIF vlerën, jo që vlera është e gabuar.
 
 V10 është kontroll i besueshmërisë, jo i vlefshmërisë së rreptë: një tufë me 10,200 zogj është e mundshme, prandaj rreshtat vetëm shënohen.
 
@@ -150,7 +150,7 @@ Rreshtat që nuk plotësojnë kontrollet e aktualitetit nuk janë të gabuar. At
 ## Gjetjet kryesore
 
 - **Plotësia është dimensioni më i dobët.** Kolonat kryesore janë të plota në 93.16% të rreshtave, por kolonat ndihmëse kanë shumë mungesa: lartësia e njohur vetëm 13.21%, pasiguria e koordinatave 31.66%. Statusi IUCN mungon në 36% të rreshtave pasi `NE`/`DD` trajtohen si mungesë.
-- **Vlefshmëria është e lartë.** Koordinatat, datat dhe fjalorët janë 100% të vlefshëm. Problemet janë të vogla: 9 lartësi jashtë intervalit, 90 pasiguri mbi 10 km dhe 1,617 rreshta me flamuj GBIF të pavlefshmërisë.
+- **Vlefshmëria është e lartë.** Koordinatat, datat dhe fjalorët janë 100% të vlefshëm. Problemet janë të vogla: 9 lartësi jashtë intervalit, 90 pasiguri mbi 10 km dhe 1,645 rreshta me flamuj seriozë të GBIF.
 - **Konsistenca ka tri probleme konkrete:**
   - K2: gjinia `Aspicilia` (likene) ka dy familje, 4 rreshta.
   - K3: te 78 rreshta, GBIF e ka zëvendësuar species me sinonimin e pranuar, por gjinia ka mbetur e vjetër, p.sh. `Pararge` / `Lasiommata maera`.
