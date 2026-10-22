@@ -1,0 +1,19 @@
+rasti,gbifID,rreshta_ne_grup,vendimi_manual,lloji_automatik,rregulla_perputhet,arsyeja
+"eBird, Garrulus glandarius, Liqeni i Badovcit",5688208496,2,duplikat,vëzhgim i përsëritur me numër të njëjtë,True,"I njëjti vëzhgues, vend dhe ditë, numri 1 në dy lista (OBS të ndryshme): i njëjti shpend në dy lista."
+"eBird, Picus viridis, Bozevce",5304671044,2,duplikat,vëzhgim i përsëritur me numër të njëjtë,True,Dy lista të të njëjtit vëzhgues në të njëjtën ditë; numri 1 te të dyja.
+"eBird, Poecile palustris, Bozevce",5505753852,2,duplikat,vëzhgim i përsëritur me numër të njëjtë,True,"Të njëjtat dy lista si rasti i mësipërm, numri 2 te të dyja: lista e përsëritur, jo shpendë të tjerë."
+"Observation.org, Phoenicurus ochruros, Mitrovicë",6447736029,2,duplikat,vëzhgim i përsëritur me numër të njëjtë,True,"I njëjti përdorues, pikë (35 m) dhe ditë, numri 1 te të dy: vëzhgimi i ngarkuar dy herë."
+"Macedonian Ecological Society, Nebria attemsi, Ljuboten 1906",3071190713,4,duplikat,vëzhgim i përsëritur me numër të njëjtë,True,"4 rreshta pa asnjë dallim (pa numër, pa catalogNumber): i njëjti grumbullim i shënuar disa herë."
+"ENA + BOLD, Euscorpius hadzii, 2021",6434425548,2,duplikat,i njëjti rresht në dataset-e të ndryshme,True,S00009 dhe UP SC00009: i njëjti ekzemplar në dy databaza.
+"Herbarium WU + NHM Wien, Paramoltkia doerfleri, 1918",1584382204,2,duplikat,i njëjti rresht në dataset-e të ndryshme,True,Dörfler nr. 848 në dy herbariume: dublikatë herbariumi të të njëjtit grumbullim.
+"Observation.org, Chlidonias niger, Liqeni 1",6448581086,2,jo duplikat,numërime të ndryshme të së njëjtës ditë,True,"I njëjti vend dhe ditë, por 15 dhe 20 individë: dy numërime të ndara."
+"HabiProt, Caliaeschna microstigma",5284987599,2,jo duplikat,qendër e rrjetës 10 km (7071 m),True,"7 dhe 10 individë, koordinata = qendra e qelizës 10 km: ka gjasa dy vende brenda qelizës."
+"HabiProt, Carpocoris purpureipennis",5284716226,4,jo duplikat,qendër e rrjetës 10 km (7071 m),True,"4 rreshta me 10, 1, 1, 1 individë në qelizën 10 km: vende ose numërime të ndryshme."
+"HabiProt, Everes sebrus",5284977542,2,jo duplikat,qendër e rrjetës 10 km (7071 m),True,"Numri 1 te të dy, por pa koordinata të sakta (7071 m) nuk dihet nëse është i njëjti vend; mbahen."
+"Macedonian Ecological Society, Otiorhynchus relictus, 1906",3071190766,8,jo duplikat,numërime të ndryshme të së njëjtës ditë,True,8 rreshta me 1 ose 2 individë: ekzemplarë ose burime literature të ndryshme.
+"ENA, Rhyacophila fasciata, 2024",6471379490,2,jo duplikat,ekzemplarë të ndryshëm (catalogNumber),True,MNCN-ADN 200133 dhe 200132: dy ekzemplarë të ndryshëm nga i njëjti grumbullim.
+"ENA, Rhyacophila macedonica, 2023",6471376553,2,jo duplikat,ekzemplarë të ndryshëm (catalogNumber),True,MNCN-ADN 200131 dhe 200130: dy ekzemplarë të ndryshëm.
+"Adam Mickiewicz Univ., Alinda fallax, 1935-06-01",3478785497,16,jo duplikat,ekzemplarë të ndryshëm (catalogNumber),True,16 ekzemplarë me catalogNumber të njëpasnjëshëm: individë të ndryshëm të një grumbullimi.
+"Adam Mickiewicz Univ., Alinda biplicata, 1906",3478937662,24,jo duplikat,datë jo ditore (vit/muaj),True,24 ekzemplarë të ndryshëm; data ka vetëm vitin.
+"ENA, Phlebotomus perfiliewi, 2022",6191368728,2,jo duplikat,datë jo ditore (vit/muaj),True,"Data vetëm me vit dhe ekzemplarë të ndryshëm (77_63, 07_3)."
+"ENA, Phlebotomus tobbi, 2022",6191513544,5,jo duplikat,datë jo ditore (vit/muaj),True,5 ekzemplarë të ndryshëm; data vetëm me vit.

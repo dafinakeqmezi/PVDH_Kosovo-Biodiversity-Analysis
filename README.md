@@ -167,6 +167,7 @@ Goal: prepare the dataset for analysis and visualization.
 - [x] Completeness per column (including hidden missing values) and per row (key fields: species, date, coordinates, municipality) → [`reports/completeness.md`](reports/completeness.md)
 - [x] Validity: coordinates inside Kosovo, year range, month/day ranges, `eventDate` formats, frequency of 7071 in `coordinateUncertaintyInMeters`, `elevation` range → [`reports/validity.md`](reports/validity.md)
 - [x] GBIF flags: count and % for each of the 35 `issue` flags, classified as serious or informative with a reason → [`reports/gbif_flags.md`](reports/gbif_flags.md)
+- [x] Uniqueness: `gbifID` unique; logical duplicates by species + date + coordinates + observer, 18 groups reviewed manually, proposed definition → [`reports/uniqueness.md`](reports/uniqueness.md), [`processed/duplicate_candidates.csv`](processed/duplicate_candidates.csv)
 - [x] Source analysis — [`01b_analiza_burimeve.ipynb`](notebooks/01b_analiza_burimeve.ipynb): publisher of each dataset from the GBIF API, grouped by publisher / dataset, `basisOfRecord` and `license` → [`processed/sources_summary.csv`](processed/sources_summary.csv)
 
 Key findings (full tables in [`reports/`](reports/)):
