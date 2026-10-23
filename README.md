@@ -191,6 +191,7 @@ Key findings (full tables in [`reports/`](reports/)):
 - [x] Join: municipality key from the bilingual names, left join with area and population, 38/38 matched and 46,831 rows before and after → [`processed/biodiversity_municipalities.csv`](processed/biodiversity_municipalities.csv), [`reports/municipalities_join.md`](reports/municipalities_join.md)
 - [ ] **Integration** – merge records coming from different `datasetKey` sources and harmonize column values
 - [x] Aggregation by municipality: records, unique species, threatened species, species/km², records per 1,000 residents, plus the municipality × taxon_group matrix for PCA → [`processed/agg_municipality.csv`](processed/agg_municipality.csv), [`processed/agg_municipality_taxon.csv`](processed/agg_municipality_taxon.csv), [`reports/aggregation_municipality.md`](reports/aggregation_municipality.md)
+- [x] Aggregation by time: records and unique species per year and a year × month table; 3,598 HabiProt literature records with the placeholder date 30 November flagged → [`processed/agg_time.csv`](processed/agg_time.csv), [`reports/aggregation_time.md`](reports/aggregation_time.md)
 - [ ] **Aggregation** – summarize occurrences per species, district, municipality, year and IUCN category
 - [ ] **Sampling** – draw a stratified sample (e.g. by `kingdom` or `district`) for faster exploration
 - [ ] **Cleaning** – apply the documented column-specific decisions, use species-level exclusions only where needed, and fix inconsistent text values
