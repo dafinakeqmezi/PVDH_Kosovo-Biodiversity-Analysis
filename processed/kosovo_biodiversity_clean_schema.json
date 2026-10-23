@@ -15690,6 +15690,7 @@
         "Gryka e Rugovës",
         "Gryka e lumit Bistrica",
         "Gërmia",
+        "Jashtë zonës së mbrojtur",
         "Kanioni i Drinit të Bardhë te Ura e Fshajtë",
         "Ligatina e Hencit/ Radevës",
         "Lokaliteti i Boshtres (Forsytha europea) Golesh",
@@ -15713,6 +15714,7 @@
         "National Park",
         "Natural Monument",
         "Nature Park",
+        "Nuk aplikohet",
         "Protected Landscape",
         "Wetlands"
       ],
@@ -16199,8 +16201,8 @@
     "protected_area_status": {
       "dtype": "category",
       "categories": [
-        "reported_protected_area",
-        "unknown"
+        "outside_recorded_protected_areas",
+        "reported_protected_area"
       ],
       "ordered": false,
       "categories_dtype": "str"

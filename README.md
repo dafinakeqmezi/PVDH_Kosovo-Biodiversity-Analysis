@@ -189,8 +189,8 @@ Key findings (full tables in [`reports/`](reports/)):
 - [ ] **Cleaning** – apply the documented column-specific decisions, use species-level exclusions only where needed, and fix inconsistent text values
 - [ ] **Apply missing-value strategy** – implement [`reports/strategjia_e_mungesave.md`](reports/strategjia_e_mungesave.md) in a derived dataset and log transformations; recover only explicit date components, use analysis-specific exclusions, and verify protection coverage before assigning "Not protected"
 - [x] Apply column removals, confirmed missing tokens and missingness flags to a separate working dataset; flag zero elevations without replacing them yet
-- [x] Separate IAS structural missingness with status flags; retain unknown protected-area values
-- [ ] Verify protected-area spatial coverage before replacing blanks with "outside protected area"
+- [x] Separate IAS structural missingness with status flags
+- [x] Replace blank protected-area names with "Jashtë zonës së mbrojtur" based on the user's clarification of dataset semantics; designation becomes "Nuk aplikohet" for those rows. This is not independent GIS verification
 - [x] Parse dates into `event_start`, `event_end` and `date_precision`, preserving interval endpoints and original text
 - [x] Convert nullable integers, booleans and unordered categories; leave IUCN ordinal encoding to notebook 03
 
@@ -201,7 +201,7 @@ Current outputs:
 - [`reports/mungesat_e_fshehura.csv`](reports/mungesat_e_fshehura.csv) and [`reports/raporti_i_mungesave_efektive.csv`](reports/raporti_i_mungesave_efektive.csv) – literal-token audit and effective missingness without double counting
 - [`reports/lartesia_zero_sipas_grupeve.csv`](reports/lartesia_zero_sipas_grupeve.csv), [`reports/regjistrimet_me_lartesi_zero.csv`](reports/regjistrimet_me_lartesi_zero.csv) and [`reports/vendimi_per_lartesine_zero.md`](reports/vendimi_per_lartesine_zero.md) – source/location evidence and the zero-elevation decision
 - [`reports/mungesat_sipas_grupeve.csv`](reports/mungesat_sipas_grupeve.csv) and [`reports/mekanizmat_e_mungeses.md`](reports/mekanizmat_e_mungeses.md) – group denominators, missingness rates and interpretation limits
-- [`reports/strategjia_e_mungesave.md`](reports/strategjia_e_mungesave.md) – strategy for all 42 columns; column cleaning, flags and conservative year/month recovery are implemented; protected-area verification remains pending
+- [`reports/strategjia_e_mungesave.md`](reports/strategjia_e_mungesave.md) – initial strategy for all 42 columns; the subsequent protected-area clarification and its implementation are documented in [`reports/vendimet_per_mungesat_strukturore.md`](reports/vendimet_per_mungesat_strukturore.md)
 - [`processed/kosovo_biodiversity_clean.csv`](processed/kosovo_biodiversity_clean.csv) – intermediate working dataset through the type-conversion stage; not the final `biodiversity_clean.csv` checkpoint. The original CSV remains unchanged and all records are retained
 - [`processed/kosovo_biodiversity_clean_schema.json`](processed/kosovo_biodiversity_clean_schema.json) – type/category metadata and source hash; use `load_clean_dataset()` in notebook 02 to restore CSV types
 - [`reports/kolonat_para_pas_pastrimit.csv`](reports/kolonat_para_pas_pastrimit.csv), [`reports/numerimet_e_pastrimit.csv`](reports/numerimet_e_pastrimit.csv) and [`reports/tipet_para_pas_pastrimit.csv`](reports/tipet_para_pas_pastrimit.csv) – column changes, affected counts and types before/after
@@ -211,7 +211,11 @@ Current outputs:
 - [x] Check missing year/month for unambiguous recovery from complete eventDate values or complete interval endpoints within one month; 0 eligible replacements in the current dataset
 - [`reports/plotesimi_year_month_para_pas.csv`](reports/plotesimi_year_month_para_pas.csv), [`reports/gjurma_e_plotesimit_year_month.csv`](reports/gjurma_e_plotesimit_year_month.csv) and [`reports/vendimi_per_plotesimin_year_month.md`](reports/vendimi_per_plotesimin_year_month.md) – before/after missingness, per-cell decisions and rationale
 
-Current scope for notebook 02: tasks through year/month recovery (19 October). Protected-area replacement remains pending evidence. Duplicate decisions await Dafina's candidate analysis; no duplicates are removed. Category harmonization, invalid-value replacement, individualCount treatment and the final checkpoint remain pending. Zero elevations remain in the intermediate CSV with a flag; the earlier diagnostic missingness reports count them as unusable values for strategy planning.
+- [x] Decide duplicate groups and select the most complete survivor, with a deterministic tie-break and explicit count-conflict exclusions
+- [`reports/vendimi_per_duplikatet.md`](reports/vendimi_per_duplikatet.md), [`reports/vendimet_e_grupeve_duplikate.csv`](reports/vendimet_e_grupeve_duplikate.csv) and [`reports/renditja_e_kandidateve_duplikate.csv`](reports/renditja_e_kandidateve_duplikate.csv) – duplicate policy, group decisions and survivor ranking
+- [`processed/rreshtat_per_fshirje_duplikate.csv`](processed/rreshtat_per_fshirje_duplikate.csv) – 375 selected rows in 235 groups, not yet removed; each row links to its retained gbifID
+
+Current scope for notebook 02: tasks through the duplicate decision (20 October). Dafina's candidate analysis is read from Git commit `d2708c640de830014edf4c4f35a528849c98455f`; run `git fetch origin` first if that commit is unavailable locally. No teammate files are overwritten by this import. Protected-area replacement uses the user's clarification of dataset semantics, with that source and its limits documented. No duplicates are removed. Category harmonization, invalid-value replacement, individualCount treatment and the final checkpoint remain pending. Zero elevations remain in the intermediate CSV with a flag; the earlier diagnostic missingness reports count them as unusable values for strategy planning.
 
 ### 3. Dimensionality reduction, feature selection, feature creation, discretization, binarization and transformation — [`03_vetite.ipynb`](notebooks/03_vetite.ipynb)
 - [x] Document preprocessing plan v1 with decision and rationale
