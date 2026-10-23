@@ -63,5 +63,5 @@ Qëllimi i këtij fjalori është të shkruajë, për secilën nga 42 kolonat, k
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 / 42.
 - **Pse u bë:** Për të dokumentuar kuptimin e atributeve para hapave të pastrimit dhe të preprocessing-ut.
-- **Output:** `reports/data_dictionary.md`.
+- **Output:** `reports/fjalori_i_te_dhenave.md`.
 - **Commit:**`Add data dictionary for the 42 columns`.

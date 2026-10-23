@@ -6,14 +6,14 @@
 
 ## Varësia
 
-Ky task përdor rëndësinë e 12.10.2026 (`reports/column_importance.md`), redundancën e 11.10.2026 (`reports/redundancy.md`), mungesat e 11.10.2026 (`processed/missing_report.csv`) dhe tipet e 12.10.2026 (`reports/data_types.md`). Qëllimi i analizës mbetet: shpërndarja sipas komunës, grupi biologjik, koha, statusi IUCN, zonat e mbrojtura dhe kualiteti i të dhënave.
+Ky task përdor rëndësinë e 12.10.2026 (`reports/rendesia_e_kolonave.md`), redundancën e 11.10.2026 (`reports/redundanca.md`), mungesat e 11.10.2026 (`processed/missing_report.csv`) dhe tipet e 12.10.2026 (`reports/tipet_e_te_dhenave.md`). Qëllimi i analizës mbetet: shpërndarja sipas komunës, grupi biologjik, koha, statusi IUCN, zonat e mbrojtura dhe kualiteti i të dhënave.
 
 ## Si është vendosur
 
 - **Largohet** nëse është e tepërt, nëse rëndësia është e ulët dhe nuk i përgjigjet një pyetjeje, ose nëse mungon mbi 80% dhe nuk është kolonë e pyetjes.
 - **Mbahet** nëse rëndësia është e lartë për një pyetje, edhe kur ka mungesa.
 - **Mbahet** nëse rëndësia është e mesme, nuk është e tepërt dhe mungesa nuk e zbraz kolonën.
-- Tipi i synuar merret nga `reports/data_types.md`. Ai tregon si ruhet kolona që mbetet.
+- Tipi i synuar merret nga `reports/tipet_e_te_dhenave.md`. Ai tregon si ruhet kolona që mbetet.
 
 Numri nuk është caktuar paraprakisht. Pas 42 vendimeve mbeten **29** kolona dhe largohen **13**.
 
@@ -78,11 +78,11 @@ Nënbashkësia analitike ka 29 kolona. 13 kolonat e tjera nuk hyjnë në të, se
 
 ## Dokumentimi i detyrës
 
-- **Varësia:** `reports/column_importance.md` (12.10.2026), `reports/redundancy.md` (11.10.2026), `processed/missing_report.csv` (11.10.2026), `reports/data_types.md` (12.10.2026).
-- **Input:** `reports/column_importance.md`, `reports/redundancy.md`, `processed/missing_report.csv`, `reports/data_types.md`.
+- **Varësia:** `reports/rendesia_e_kolonave.md` (12.10.2026), `reports/redundanca.md` (11.10.2026), `processed/missing_report.csv` (11.10.2026), `reports/tipet_e_te_dhenave.md` (12.10.2026).
+- **Input:** `reports/rendesia_e_kolonave.md`, `reports/redundanca.md`, `processed/missing_report.csv`, `reports/tipet_e_te_dhenave.md`.
 - **Çka u bë:** Për 42 kolonat u vendos mbahet ose largohet. Plani i 9 tetorit u përditësua.
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 në CSV / 29 në nënbashkësinë analitike.
 - **Pse u bë:** Numri i kolonave duhet të dalë nga kriteret, jo të caktohet paraprakisht.
-- **Output:** `reports/feature_selection.md`, `notebooks/03_vetite.ipynb`.
+- **Output:** `reports/zgjedhja_e_vetive.md`, `notebooks/03_vetite.ipynb`.
 - **Commit:** `Add the feature selection list with a reason for each column`.

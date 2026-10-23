@@ -6,7 +6,7 @@
 
 ## Varësia
 
-Ky task zbaton kontrollin V9 të **Kornizës së kualitetit** (`reports/quality_framework.md`). Llogaritja është te seksioni 3.5 i `notebooks/01_mbledhja_kualiteti.ipynb`, dhe tabela ruhet në `reports/01_gbif_issues.csv`. Përshkrimet e flamujve merren nga dokumentacioni zyrtar i GBIF: [OccurrenceIssue](https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html).
+Ky task zbaton kontrollin V9 të **Kornizës së kualitetit** (`reports/korniza_e_kualitetit.md`). Llogaritja është te seksioni 3.5 i `notebooks/01_mbledhja_kualiteti.ipynb`, dhe tabela ruhet në `reports/01_flamujt_gbif.csv`. Përshkrimet e flamujve merren nga dokumentacioni zyrtar i GBIF: [OccurrenceIssue](https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html).
 
 ## Si matet
 
@@ -78,7 +78,7 @@ Seriozët së pari, pastaj sipas n.
 - **Taksonomia është problemi më i madh:** `TAXON_MATCH_HIGHERRANK` te 756 rreshta, dhe te 702 prej tyre `species` mungon. Kjo shpjegon pjesën më të madhe të 1,213 rreshtave pa species. `TAXON_MATCH_FUZZY` (190) e mban species-in, por taksoni mund të jetë i gabuar.
 - **Datat:** `RECORDED_DATE_INVALID` (508) shpjegon 497 nga 2,190 datat që mungojnë. `RECORDED_DATE_MISMATCH` (87) ka datë, por burimi jep data që kundërshtojnë njëra-tjetrën.
 - **Vlerat e hequra ose të zëvendësuara:** 351 `individualCount` dhe 7 `coordinateUncertaintyInMeters` u bënë NaN. 120 `basisOfRecord` të palexueshme u bënë `OCCURRENCE`, kështu që nuk dihet nëse janë vëzhgime apo ekzemplarë.
-- **Flamujt e koordinatave janë informativë.** Asnjë rresht nuk ka `COUNTRY_COORDINATE_MISMATCH`, `ZERO_COORDINATE` ose `PRESUMED_SWAPPED_COORDINATE`, dhe kontrollet VL1–VL3 (`reports/validity.md`) i konfirmojnë koordinatat.
+- **Flamujt e koordinatave janë informativë.** Asnjë rresht nuk ka `COUNTRY_COORDINATE_MISMATCH`, `ZERO_COORDINATE` ose `PRESUMED_SWAPPED_COORDINATE`, dhe kontrollet VL1–VL3 (`reports/vlefshmeria.md`) i konfirmojnë koordinatat.
 
 ## Vendimi dhe arsyetimi
 
@@ -96,5 +96,5 @@ Seriozët së pari, pastaj sipas n.
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 / 42.
 - **Pse u bë:** 96.96% e rreshtave kanë flamuj. Pa klasifikim, ose do të fshiheshin rreshta të mirë, ose do të mbeteshin pa shënim rreshtat me taksonomi, datë ose numër të gabuar.
-- **Output:** `reports/gbif_flags.md`, `reports/01_gbif_issues.csv` (Flamuri | n | % | Rëndësia | Kolona | Bosh te kolona | Arsyeja), seksioni 3.5 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+- **Output:** `reports/flamujt_gbif.md`, `reports/01_flamujt_gbif.csv` (Flamuri | n | % | Rëndësia | Kolona | Bosh te kolona | Arsyeja), seksioni 3.5 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 - **Commit:** `Add GBIF flag counts and severity classification`.

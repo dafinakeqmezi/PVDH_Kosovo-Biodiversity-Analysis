@@ -6,7 +6,7 @@
 
 ## Varësia
 
-Plani e lidh këtë detyrë me **plotësimin e `year`/`month`** nga Deliza (19 tetor). Ky hap ende nuk është bërë: te `processed/cleaning_log.csv`, `year` dhe `month` vetëm shënohen ("nuk imputohen vlera"). Prandaj përdoren `year` dhe `month` origjinale, dhe agregimi ri-ekzekutohet më 26 tetor. Efekti pritet të jetë i vogël: sipas `reports/completeness.md`, 78 vite dhe 222 muaj mund të plotësohen nga `eventDate`.
+Plani e lidh këtë detyrë me **plotësimin e `year`/`month`** nga Deliza (19 tetor). Ky hap është përfunduar me **0 plotësime të lejueshme** sipas rregullit konservativ: pa data të pjesshme, intervale ndërmujore/ndërvjetore ose konflikte me komponentët ekzistues. Rezultati dhe arsyet janë te `reports/plotesimi_year_month_para_pas.csv` dhe `reports/vendimi_per_plotesimin_year_month.md`; hapat `02_clean:recover:year` dhe `02_clean:recover:month` janë në log. Vlerat year/month mbeten të njëjta me origjinalin, prandaj ky rezultat nuk ndryshon agregimet aktuale. Vlerësimi i mëparshëm për 78 vite dhe 222 muaj të rikuperueshëm nuk zbatohet sipas këtij rregulli. Agregimi duhet të ri-ekzekutohet mbi dataset-in final pas pastrimit të mëvonshëm.
 
 Llogaritja është te seksioni 6.2 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 
@@ -18,7 +18,7 @@ Një rresht për çdo vit nga 1826 deri në 2026 (201 vite). Përfshihen edhe vi
 |---|---|
 | `regjistrime` | numri i rreshtave me këtë `year` |
 | `specie_unike` | numri i specieve të ndryshme në këtë vit |
-| `data_30_nentor_habiprot` | sa nga regjistrimet kanë datën zëvendësuese 30 nëntor (shih më poshtë) |
+| `data_30_nentor_habiprot` | numri i regjistrimeve të HabiProt me month = 11 dhe day = 30; flamur shqyrtimi, jo provë e një date zëvendësuese |
 | `perqindja_e_regjistrimeve` | % e të gjithë rreshtave me vit |
 | `01_jan` … `12_dhj` | tabela vit × muaj: regjistrime për çdo muaj |
 | `pa_muaj` | regjistrime me vit, por pa muaj (data vetëm me vit) |
@@ -114,7 +114,7 @@ Tabela e plotë, për të gjitha vitet, është te `processed/agg_time.csv`.
 | 2025 | 9 | 35 | 45 | 47 | 226 | 150 | 98 | 133 | 116 | 152 | 37 | 13 | 0 |
 | 2026 | 48 | 57 | 59 | 264 | 266 | 145 | 379 | 67 | 0 | 0 | 0 | 0 | 0 |
 
-## Sipas muajit dhe data zëvendësuese "30 nëntor"
+## Sipas muajit dhe datat e dyshimta "30 nëntor"
 
 | Muaji | Regjistrime | Specie unike | % | Pa 30 nëntor | % pa 30 nëntor |
 |---|---:|---:|---:|---:|---:|
@@ -131,7 +131,7 @@ Tabela e plotë, për të gjitha vitet, është te `processed/agg_time.csv`.
 | nën | 4,789 | 1,037 | 10.89 | 1,191 | 2.95 |
 | dhj | 739 | 140 | 1.68 | 739 | 1.83 |
 
-**Gjetja:** nëntori duket po aq i pasur sa vera (10.89% e regjistrimeve, 1,037 specie). Kjo është biologjikisht e pamundur për insektet. Shkaku: **3,598 regjistrime të HabiProt kanë datën 30 nëntor**. Të gjitha janë insekte nga literatura, nga atlase dhe libra të botuar:
+**Gjetja:** nëntori përmban 10.89% të regjistrimeve dhe 1,037 specie. **3,598 regjistrime të HabiProt kanë datën 30 nëntor**. Përqendrimi në një ditë dhe referencat e literaturës sugjerojnë një konventë të mundshme raportimi, por nuk provojnë se datat janë të pavlefshme. Flamuri në kod kontrollon vetëm publikuesin, muajin dhe ditën; nuk verifikon origjinën nga literatura për çdo rresht. Disa nga referencat e raportuara janë:
 
 | Burimi (`recordedBy`) | `year` | Regjistrime me 30 nëntor |
 |---|---:|---:|
@@ -145,7 +145,7 @@ Tabela e plotë, për të gjitha vitet, është te `processed/agg_time.csv`.
 | Ibrahimi, H. i sar. (2014) Trichoptera KiM | 2008 | 96 |
 | *të tjera (93)* | | 544 |
 
-Data 30 nëntor është datë zëvendësuese e burimit, jo data e vëzhgimit. Pa këto regjistrime, nëntori ka 1,191 regjistrime (2.95%), dhe shpërndarja sipas muajve ka kulmin në maj (15.74%) dhe minimumin në dhjetor–janar. Ky është modeli i pritshëm sezonal. Këto regjistrime fryjnë edhe disa vite të vjetra: p.sh. 1987 ka 1,348 regjistrime, nga të cilat 1,321 me 30 nëntor.
+Data 30 nëntor trajtohet si **kandidate për datë zëvendësuese**, jo si gabim i konfirmuar. Nevojitet dokumentacion ose konfirmim nga publikuesi përpara se month/day të ndryshohen. Si analizë ndjeshmërie, pa këto regjistrime nëntori ka 1,191 regjistrime (2.95%), ndërsa maji ka 15.74%. Një shpërndarje që duket më e pritshme nuk vërteton se përjashtimi është i saktë. Përqendrimi shfaqet edhe në vite të vjetra: p.sh. 1987 ka 1,348 regjistrime, nga të cilat 1,321 me 30 nëntor. Datat dhe regjistrimet ruhen në agregimin kryesor.
 
 ## Interpretimi
 
@@ -155,15 +155,15 @@ Data 30 nëntor është datë zëvendësuese e burimit, jo data e vëzhgimit. Pa
 
 ## Shënime për grupin
 
-- **Deliza (vlerat e pavlefshme, 23 tetor):** 3,598 rreshta të HabiProt me datë 30 nëntor nga literatura. Propozim: `month` dhe `day` të trajtohen si të panjohura, ose të shtohet flamur, sepse vetëm viti mund të jetë i besueshëm. Vendimi është i yti.
-- **Jeta (`season`):** këto rreshta do të dilnin si "vjeshtë" pa qenë të tilla. Duhen përjashtuar ose shënuar para analizës sezonale.
+- **Deliza (vlerat e pavlefshme, 23 tetor):** mbaje flamurin për shqyrtim. Mos i zëvendëso `month`/`day` vetëm nga ky përqendrim; kërko konfirmim nga burimi përpara se të klasifikohen si data zëvendësuese.
+- **Jeta (`season`):** këto data prodhojnë kategorinë "vjeshtë", por besueshmëria e datës duhet shqyrtuar. Raporto krahasimin me/pa rreshtat e shënuar si analizë ndjeshmërie, jo si provë që stina është e gabuar.
 
 ## Dokumentimi i detyrës
 
 - **Input:** `dataset/kosovo_overall_biodiversity.csv` (`year`, `month`, `day`, `species`), `processed/gbif_datasets_cache.csv` (publikuesit).
-- **Çka u bë:** U llogaritën regjistrimet dhe speciet unike për çdo vit dhe tabela vit × muaj. U gjet dhe u shënua data zëvendësuese 30 nëntor te 3,598 regjistrime të HabiProt.
+- **Çka u bë:** U llogaritën regjistrimet dhe speciet unike për çdo vit dhe tabela vit × muaj. U shënuan për shqyrtim 3,598 regjistrime të HabiProt me datë 30 nëntor, pa ndryshuar datat ose përjashtuar rreshta nga agregimi kryesor.
 - **Rreshta para / pas:** 46,831 rreshta → 201 rreshta (vite). 2,268 rreshta pa vit mbeten jashtë.
 - **Kolona para / pas:** `agg_time.csv` ka 17 kolona.
 - **Pse u bë:** Për të parë si ndryshojnë regjistrimet dhe speciet në kohë dhe sipas stinës, dhe për të gjetur artefaktet kohore para analizës.
-- **Output:** `processed/agg_time.csv`, `reports/aggregation_time.md`, `reports/01_koha_sipas_dekades.csv`, `reports/01_koha_sipas_muajit.csv`, seksioni 6.2 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+- **Output:** `processed/agg_time.csv`, `reports/agregimi_sipas_kohes.md`, `reports/01_koha_sipas_dekades.csv`, `reports/01_koha_sipas_muajit.csv`, seksioni 6.2 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 - **Commit:** `Add time aggregates by year and year x month`.

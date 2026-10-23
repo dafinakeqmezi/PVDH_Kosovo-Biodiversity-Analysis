@@ -6,7 +6,7 @@
 
 ## Varësia
 
-Ky task varet nga **Fjalori i të dhënave** (`reports/data_dictionary.md`) për kuptimin e kolonave dhe nga **Kandidatët për redundancë** (`reports/redundancy.md`) për kolonat që do të hiqen. Konvertimi bëhet te seksioni 2 i `notebooks/01_mbledhja_kualiteti.ipynb`, dhe rezultati ruhet në `reports/01_tipet_e_kolonave.csv`.
+Ky task varet nga **Fjalori i të dhënave** (`reports/fjalori_i_te_dhenave.md`) për kuptimin e kolonave dhe nga **Kandidatët për redundancë** (`reports/redundanca.md`) për kolonat që do të hiqen. Konvertimi bëhet te seksioni 2 i `notebooks/01_mbledhja_kualiteti.ipynb`, dhe rezultati ruhet në `reports/01_tipet_e_kolonave.csv`.
 
 ## Qëllimi
 
@@ -47,7 +47,7 @@ Për secilën kolonë përcaktohen tri gjëra:
 | `taxonKey` | `float64` | ID | `Int64` | Çelës numerik; lexohet `float64` vetëm për shkak të 37 mungesave. `Int64` e ruan si numër të plotë me NaN. |
 | `speciesKey` | `float64` | ID | `Int64` | Njësoj si `taxonKey` (1,213 mungesa). |
 | `iucnRedListCategory` | `str` | ordinal | `category (ordered)` | LC < NT < VU < EN < CR < EW < EX. `NE` (15,705) dhe `DD` (17) nuk janë shkallë rreziku dhe bëhen NaN. |
-| `iucnRedListStatus` | `str` | ordinal | `category (ordered)` | E njëjta shkallë me fjalë. Sipas `redundancy.md` hiqet në fazën e pastrimit. |
+| `iucnRedListStatus` | `str` | ordinal | `category (ordered)` | E njëjta shkallë me fjalë. Sipas `redundanca.md` hiqet në fazën e pastrimit. |
 | `eventDate` | `str` | datë | `datetime64` | 11 formate ISO 8601. Te 447 intervalet merret data e fillimit; precizioni ruhet te `eventDatePrecision` (seksioni 3.3). |
 | `year` | `float64` | interval | `Int64` | Viti nuk ka zero absolute; numër i plotë me mungesa. |
 | `month` | `float64` | ordinal | `Int64` | 12 muaj të renditur (ciklik). Mbetet numër për krijimin e `season`. |
@@ -104,10 +104,10 @@ Pas konvertimit, memoria bie nga **31.9 MB** në **13.6 MB**.
 
 ## Dokumentimi i detyrës
 
-- **Input:** `dataset/kosovo_overall_biodiversity.csv`, `reports/data_dictionary.md`, `reports/redundancy.md`.
+- **Input:** `dataset/kosovo_overall_biodiversity.csv`, `reports/fjalori_i_te_dhenave.md`, `reports/redundanca.md`.
 - **Çka u bë:** Për secilën nga 42 kolonat u përcaktua tipi konceptual dhe tipi i synuar. Konvertimi u zbatua te seksioni 2 i `01_mbledhja_kualiteti.ipynb`, dhe një `assert` kontrollon që çdo kolonë ka marrë tipin e synuar.
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 / 42.
 - **Pse u bë:** Tipet e sakta mundësojnë krahasime të sakta (renditja IUCN), veprime me data, numra të plotë pa `.0` dhe ulin memorien nga 31.9 MB në 13.6 MB.
-- **Output:** `reports/data_types.md`, `reports/01_tipet_e_kolonave.csv`, seksioni 2 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+- **Output:** `reports/tipet_e_te_dhenave.md`, `reports/01_tipet_e_kolonave.csv`, seksioni 2 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 - **Commit:** `Add data types for the 42 columns`.

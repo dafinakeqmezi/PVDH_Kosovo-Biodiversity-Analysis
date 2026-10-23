@@ -6,11 +6,11 @@
 
 ## Varësia
 
-Ky task zbaton dimensionin **Vlefshmëria** nga **Korniza e kualitetit** (`reports/quality_framework.md`). Kolona "Korniza" lidh çdo kontroll me ID-në atje (V1–V9, P5, A2). Kontrollet e reja, të shënuara me "–", janë shtuar këtu. Llogaritja është te seksioni 3.9 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+Ky task zbaton dimensionin **Vlefshmëria** nga **Korniza e kualitetit** (`reports/korniza_e_kualitetit.md`). Kolona "Korniza" lidh çdo kontroll me ID-në atje (V1–V9, P5, A2). Kontrollet e reja, të shënuara me "–", janë shtuar këtu. Llogaritja është te seksioni 3.9 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 
 ## Si matet
 
-- **Aplikohet te:** rreshtat ku vlera ekziston. Mungesat i takojnë plotësisë (`reports/completeness.md`).
+- **Aplikohet te:** rreshtat ku vlera ekziston. Mungesat i takojnë plotësisë (`reports/plotesia.md`).
 - **% e vlefshme** = (aplikohen − të pavlefshme) / aplikohen × 100.
 - Kontrollet me veprim "shëno" nuk tregojnë gabim, por vlera që kufizojnë përdorimin e rreshtit.
 
@@ -165,10 +165,10 @@ Pesë ekzemplarët e Herbarium WU në të njëjtën pikë në Kaçanik kanë 2,7
 
 ## Dokumentimi i detyrës
 
-- **Input:** `dataset/kosovo_overall_biodiversity.csv`, `processed/gbif_datasets_cache.csv` (publikuesit), `reports/quality_framework.md`.
+- **Input:** `dataset/kosovo_overall_biodiversity.csv`, `processed/gbif_datasets_cache.csv` (publikuesit), `reports/korniza_e_kualitetit.md`.
 - **Çka u bë:** U kontrolluan koordinatat brenda Kosovës, diapazoni i viteve, `month` dhe `day`, formatet e `eventDate`, frekuenca e vlerës 7071 te `coordinateUncertaintyInMeters` dhe diapazoni i `elevation`, me 17 kontrolle.
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 / 42.
 - **Pse u bë:** Për të gjetur vlerat që janë të pranishme, por të gabuara ose të pasakta, para pastrimit.
-- **Output:** `reports/validity.md`, `reports/01_vlefshmeria_rregullat.csv`, `reports/01_vlefshmeria.csv`, `reports/01_eventdate_formatet.csv`, `reports/01_pasiguria_vlerat.csv`, `reports/01_lartesia_jashte_diapazonit.csv`, seksioni 3.9 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+- **Output:** `reports/vlefshmeria.md`, `reports/01_vlefshmeria_rregullat.csv`, `reports/01_vlefshmeria.csv`, `reports/01_formatet_e_datave.csv`, `reports/01_pasiguria_vlerat.csv`, `reports/01_lartesia_jashte_diapazonit.csv`, seksioni 3.9 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 - **Commit:** `Add validity checks for coordinates, dates, uncertainty and elevation`.

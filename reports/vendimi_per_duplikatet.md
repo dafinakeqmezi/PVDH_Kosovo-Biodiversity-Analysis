@@ -2,7 +2,7 @@
 
 ## Evidenca
 
-Analiza e Dafinës: commit `d2708c640de830014edf4c4f35a528849c98455f`, `reports/uniqueness.md`, `reports/01_duplikatet_shqyrtimi.csv` dhe `processed/duplicate_candidates.csv`. Këto lexohen me git show nga versioni i fiksuar, pa i ndryshuar. Nëse mungon commit-i, kërkohet git fetch origin. SHA-256 e kandidatëve: `65632c8f989f1d70caac47d9338127e7518bb747ac749db2fbb99ff7c25e09a3`. Dataset-i burimor i atij commit-i përputhet me origjinalin lokal.
+Analiza e Dafinës: commit `d2708c640de830014edf4c4f35a528849c98455f`, `reports/unikaliteti.md`, `reports/01_duplikatet_shqyrtimi.csv` dhe `processed/duplicate_candidates.csv`. Këto lexohen me git show nga versioni i fiksuar, pa i ndryshuar. Nëse mungon commit-i, kërkohet git fetch origin. SHA-256 e kandidatëve: `65632c8f989f1d70caac47d9338127e7518bb747ac749db2fbb99ff7c25e09a3`. Dataset-i burimor i atij commit-i përputhet me origjinalin lokal.
 
 Ka 3,132 rreshta në 1,288 grupe kandidatë. Dafina propozon 378 rreshta të tepërt. Vendimi këtu pranon 235 grupe dhe liston 375 rreshta për fshirjen e ardhshme. Asnjë rresht nuk është fshirë.
 

@@ -7,7 +7,7 @@
 
 ## Varësia
 
-Ky task varet nga **Fjalori i të dhënave** i përfunduar më 16.10.2026: `reports/data_dictionary.md`, versioni 1.0. Kuptimi semantik i secilës kolonë merret prej atij fjalori. Numri i vlerave unike dhe përputhja 1:1 llogariten te `dataset/kosovo_overall_biodiversity.csv`.
+Ky task varet nga **Fjalori i të dhënave** i përfunduar më 16.10.2026: `reports/fjalori_i_te_dhenave.md`, versioni 1.0. Kuptimi semantik i secilës kolonë merret prej atij fjalori. Numri i vlerave unike dhe përputhja 1:1 llogariten te `dataset/kosovo_overall_biodiversity.csv`.
 
 ## Qëllimi
 
@@ -109,11 +109,11 @@ Nga gjashtë çiftet, vetëm `iucnRedListStatus` është redundant dhe hiqet. Pe
 
 ## Dokumentimi i detyrës
 
-- **Varësia:** `reports/data_dictionary.md`, 16.10.2026.
+- **Varësia:** `reports/fjalori_i_te_dhenave.md`, 16.10.2026.
 - **Input:** `dataset/kosovo_overall_biodiversity.csv` dhe fjalori i varësisë.
 - **Çka u bë:** Për gjashtë çiftet u krahasuan vlerat unike, përputhja 1:1 dhe kuptimi semantik, pastaj u vendos cila kolonë ruhet dhe cila hiqet.
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 / 42. Asnjë kolonë nuk u fshi nga CSV-ja. Vendimi është për përdorimin në analizë.
 - **Pse u bë:** Për të mos hequr kolona që duken të ngjashme, por nuk përmbajnë të njëjtin informacion.
-- **Output:** `reports/redundancy.md`.
+- **Output:** `reports/redundanca.md`.
 - **Commit:** `Add redundancy decisions for six column pairs`.

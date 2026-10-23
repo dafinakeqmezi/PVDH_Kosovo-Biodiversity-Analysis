@@ -6,7 +6,7 @@
 
 ## Varësia
 
-Ky task përdor `processed/municipalities.csv` nga **Të dhënat e jashtme** (19 tetor, `reports/municipalities_source.md`). Bashkimi është te seksioni 5.2 i `notebooks/01_mbledhja_kualiteti.ipynb`. Rezultati, `processed/biodiversity_municipalities.csv`, është input për agregimet e 21–23 tetorit.
+Ky task përdor `processed/municipalities.csv` nga **Të dhënat e jashtme** (19 tetor, `reports/burimet_e_te_dhenave_te_komunave.md`). Bashkimi është te seksioni 5.2 i `notebooks/01_mbledhja_kualiteti.ipynb`. Rezultati, `processed/biodiversity_municipalities.csv`, është input për agregimet e 21–23 tetorit.
 
 ## Çelësi i komunës
 
@@ -120,5 +120,5 @@ Madhësia: 24.7 MB, nën kufirin prej 100 MB të GitHub.
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 / 50.
 - **Pse u bë:** Që agregimet sipas komunës (21 tetor) të llogarisin specie për km² dhe regjistrime për 1,000 banorë.
-- **Output:** `processed/biodiversity_municipalities.csv`, `reports/municipalities_join.md`, `reports/01_bashkimi_celesat.csv`, `reports/01_bashkimi_kontrolli.csv`, seksioni 5.2 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+- **Output:** `processed/biodiversity_municipalities.csv`, `reports/bashkimi_i_komunave.md`, `reports/01_bashkimi_celesat.csv`, `reports/01_bashkimi_kontrolli.csv`, seksioni 5.2 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 - **Commit:** `Join the dataset with municipality area and population`.

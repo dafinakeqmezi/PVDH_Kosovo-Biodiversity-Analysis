@@ -6,7 +6,7 @@
 
 ## Varësia
 
-Kjo kornizë mbështetet te **Fjalori i të dhënave** (`reports/data_dictionary.md`), **Definimi i tipeve** (`reports/data_types.md`) dhe **Kandidatët për redundancë** (`reports/redundancy.md`). Kontrollet janë të implementuara te seksioni 3.7 i `notebooks/01_mbledhja_kualiteti.ipynb`, dhe rezultatet ruhen në `reports/01_korniza_e_kualitetit.csv`.
+Kjo kornizë mbështetet te **Fjalori i të dhënave** (`reports/fjalori_i_te_dhenave.md`), **Definimi i tipeve** (`reports/tipet_e_te_dhenave.md`) dhe **Kandidatët për redundancë** (`reports/redundanca.md`). Kontrollet janë të implementuara te seksioni 3.7 i `notebooks/01_mbledhja_kualiteti.ipynb`, dhe rezultatet ruhen në `reports/01_korniza_e_kualitetit.csv`.
 
 ## Qëllimi
 
@@ -55,7 +55,7 @@ Për secilin dimension: metrika, kontrolli dhe kolonat. Vlerat fillestare dhe ve
 |  | % e rreshtave ku komuna lidhet me një rajon | **K6** – Çdo komunë i përket një rajoni | `municipality`, `district` |
 |  | % e rreshtave ku zona e mbrojtur dhe lloji i saj përputhen | **K7** – protectedArea dhe protectedAreaDesignation bashkë; një zonë = një lloj | `protectedArea`, `protectedAreaDesignation` |
 |  | % e rreshtave me iasAppliesFrom ku iasUnionConcern = TRUE | **K8** – iasAppliesFrom e plotë ⇒ iasUnionConcern = TRUE | `iasAppliesFrom`, `iasUnionConcern` |
-|  | % e rreshtave pa hapësira të tepërta ose variante shkronjash | **K9** – Kategoritë pa hapësira të tepërta dhe pa variante të shkronjave | 18 kolonat nominale (shih `data_types.md`) |
+|  | % e rreshtave pa hapësira të tepërta ose variante shkronjash | **K9** – Kategoritë pa hapësira të tepërta dhe pa variante të shkronjave | 18 kolonat nominale (shih `tipet_e_te_dhenave.md`) |
 | **Unikaliteti** | % e gbifID unike | **U1** – gbifID unik | `gbifID` |
 |  | % e rreshtave që nuk janë kopje e një rreshti tjetër | **U2** – Pa rreshta identikë | të 42 kolonat |
 |  | % e catalogNumber unike brenda datasetKey | **U3** – catalogNumber unik brenda dataset-it | `datasetKey`, `catalogNumber` |
@@ -107,7 +107,7 @@ Plotësia matet edhe për mungesat e fshehura: `NE`/`DD` te IUCN (15,722) dhe `e
 | V9 | Pa flamuj seriozë të GBIF¹ | `issue` | 46,831 | 1,645 | 96.49 | Shëno me flamur binar |
 | V10 | `individualCount` jo outlier (IQR: > 13.5) | `individualCount` | 29,134 | 3,630 | 87.54 | Shëno; `log1p` te transformimi |
 
-¹ 10 flamujt seriozë sipas klasifikimit te `reports/gbif_flags.md` (seksioni 3.5 i notebook-ut): `TAXON_MATCH_HIGHERRANK`, `TAXON_MATCH_FUZZY`, `TAXON_MATCH_NONE`, `TAXON_MATCH_NAME_AND_ID_AMBIGUOUS`, `SCIENTIFIC_NAME_AND_ID_INCONSISTENT`, `RECORDED_DATE_INVALID`, `RECORDED_DATE_MISMATCH`, `INDIVIDUAL_COUNT_INVALID`, `BASIS_OF_RECORD_INVALID`, `COORDINATE_UNCERTAINTY_METERS_INVALID`. Flamujt informativë (p.sh. `COORDINATE_ROUNDED`, `COUNTRY_DERIVED_FROM_COORDINATES`) nuk numërohen, sepse tregojnë si e ka interpretuar GBIF vlerën, jo që vlera është e gabuar.
+¹ 10 flamujt seriozë sipas klasifikimit te `reports/flamujt_gbif.md` (seksioni 3.5 i notebook-ut): `TAXON_MATCH_HIGHERRANK`, `TAXON_MATCH_FUZZY`, `TAXON_MATCH_NONE`, `TAXON_MATCH_NAME_AND_ID_AMBIGUOUS`, `SCIENTIFIC_NAME_AND_ID_INCONSISTENT`, `RECORDED_DATE_INVALID`, `RECORDED_DATE_MISMATCH`, `INDIVIDUAL_COUNT_INVALID`, `BASIS_OF_RECORD_INVALID`, `COORDINATE_UNCERTAINTY_METERS_INVALID`. Flamujt informativë (p.sh. `COORDINATE_ROUNDED`, `COUNTRY_DERIVED_FROM_COORDINATES`) nuk numërohen, sepse tregojnë si e ka interpretuar GBIF vlerën, jo që vlera është e gabuar.
 
 V10 është kontroll i besueshmërisë, jo i vlefshmërisë së rreptë: një tufë me 10,200 zogj është e mundshme, prandaj rreshtat vetëm shënohen.
 
@@ -173,10 +173,10 @@ Rreshtat që nuk plotësojnë kontrollet e aktualitetit nuk janë të gabuar. At
 
 ## Dokumentimi i detyrës
 
-- **Input:** `dataset/kosovo_overall_biodiversity.csv`, `reports/data_dictionary.md`, `reports/data_types.md`, `reports/redundancy.md`.
+- **Input:** `dataset/kosovo_overall_biodiversity.csv`, `reports/fjalori_i_te_dhenave.md`, `reports/tipet_e_te_dhenave.md`, `reports/redundanca.md`.
 - **Çka u bë:** U përcaktuan pesë dimensionet e kualitetit dhe 35 kontrolle me metrikë, rregull, kolona dhe veprim të propozuar. Kontrollet u implementuan te seksioni 3.7 i `01_mbledhja_kualiteti.ipynb` dhe u llogaritën vlerat fillestare.
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 / 42.
 - **Pse u bë:** Për të pasur një bazë të përbashkët dhe të matshme për kontrollet e 14–18 tetorit dhe për të krahasuar kualitetin para dhe pas pastrimit.
-- **Output:** `reports/quality_framework.md`, `reports/01_korniza_e_kualitetit.csv`, seksioni 3.7 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+- **Output:** `reports/korniza_e_kualitetit.md`, `reports/01_korniza_e_kualitetit.csv`, seksioni 3.7 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 - **Commit:** `Add data quality framework with five dimensions`.

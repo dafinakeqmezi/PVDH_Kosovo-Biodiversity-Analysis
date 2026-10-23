@@ -6,7 +6,7 @@
 
 ## Varësia
 
-Zgjedhja e vetive e 13.10.2026 (`reports/feature_selection.md`). `class` dhe `iucnRedListCategory` mbahen. Funksioni i lexon ato kolona dhe nuk e ndryshon CSV-në.
+Zgjedhja e vetive e 13.10.2026 (`reports/zgjedhja_e_vetive.md`). `class` dhe `iucnRedListCategory` mbahen. Funksioni i lexon ato kolona dhe nuk e ndryshon CSV-në.
 
 ## Tabela e mapping-ut për `taxon_group`
 
@@ -49,7 +49,7 @@ Algat e gjelbra që në këtë dataset janë nën `Plantae` hyjnë te Bimë, sep
 
 ## Dokumentimi i detyrës
 
-- **Varësia:** `reports/feature_selection.md`, 13.10.2026.
+- **Varësia:** `reports/zgjedhja_e_vetive.md`, 13.10.2026.
 - **Input:** `class`, `iucnRedListCategory`.
 - **Çka u bë:** U shkrua mapping-u dhe funksioni për `taxon_group` dhe `is_threatened`. `EX` u dokumentua veçmas.
 - **Rreshta para / pas:** 46,831 / 46,831.

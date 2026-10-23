@@ -6,7 +6,7 @@
 
 ## Qëllimi
 
-Sipërfaqja dhe popullsia e komunave nevojiten për të normalizuar agregimet: specie për km² dhe regjistrime për 1,000 banorë (21 tetor). Pa to, numri i regjistrimeve për komunë mat kryesisht përpjekjen e vëzhgimit (`reports/consistency_bias.md`). Bashkimi me dataset-in bëhet më 20 tetor.
+Sipërfaqja dhe popullsia e komunave nevojiten për të normalizuar agregimet: specie për km² dhe regjistrime për 1,000 banorë (21 tetor). Pa to, numri i regjistrimeve për komunë mat kryesisht përpjekjen e vëzhgimit (`reports/konsistenca_dhe_anshmeria.md`). Bashkimi me dataset-in bëhet më 20 tetor.
 
 ## Burimet
 
@@ -96,5 +96,5 @@ Kontrollet janë `assert` te seksioni 5 i `notebooks/01_mbledhja_kualiteti.ipynb
 - **Rreshta para / pas:** dataset-i nuk ndryshoi (46,831). `processed/municipalities.csv`: 38 rreshta.
 - **Kolona para / pas:** dataset-i 42 / 42. `processed/municipalities.csv`: 16 kolona.
 - **Pse u bë:** Për të normalizuar agregimet sipas komunës me sipërfaqen dhe popullsinë, sepse numri i regjistrimeve vetëm mat përpjekjen e vëzhgimit.
-- **Output:** `processed/municipalities.csv`, `reports/municipalities_source.md`, seksioni 5 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+- **Output:** `processed/municipalities.csv`, `reports/burimet_e_te_dhenave_te_komunave.md`, seksioni 5 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 - **Commit:** `Add area and population of the 38 municipalities from official sources`.
