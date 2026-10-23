@@ -232,6 +232,7 @@ Current scope for notebook 02: tasks through the duplicate decision (20 October)
 - [ ] **Feature subset selection** – keep the attributes relevant for the analysis (taxonomy, time, location, conservation status)
 - [x] Time features: `season` from `month`, `decade` from `year`, and `is_recent` for `year >= 2017`. A missing `year` or `month` stays missing. Function `add_time_features()` in notebook 03 → [`reports/vetite_kohore.md`](reports/vetite_kohore.md)
 - [x] Taxonomic and conservation features: `taxon_group` from `class` (Zogj, Insekte, Bimë, Kërpudha, Tjera; missing class = "E panjohur") and `is_threatened` from the IUCN category (`VU`/`EN`/`CR` = 1, `LC`/`NT` = 0, `NE`/`DD`/NaN = NaN). The single `EX` row stays NaN and is documented separately. Function `add_taxon_features()` → [`reports/vetite_taksonomike.md`](reports/vetite_taksonomike.md)
+- [x] Source and spatial features: `in_protected_area` is 1 when `protectedArea` names an area and 0 when it is blank or "Jashtë zonës së mbrojtur". `is_citizen_science` is 1 only for a citizen-science publisher and `HUMAN_OBSERVATION`. `n_issues` counts serious GBIF flags. Function `add_source_spatial_features()` in notebook 03 → [`reports/vetite_e_burimit.md`](reports/vetite_e_burimit.md)
 - [ ] **Feature creation** – e.g. `season` from `month`, `decade` from `year`, `isThreatened` from IUCN category, record count per species
 - [ ] **Discretization** – bin `elevation` and `year` into ranges (e.g. lowland / hill / mountain, decades)
 - [ ] **Binarization** – one-hot encode `kingdom`, `basisOfRecord`; convert `strictlyProtected` and `iasUnionConcern` to 0/1
@@ -241,5 +242,6 @@ Current outputs:
 - [`reports/feature_selection.md`](reports/feature_selection.md) – final column decision; the original CSV is unchanged
 - [`reports/vetite_kohore.md`](reports/vetite_kohore.md) – month-to-season mapping and the `is_recent` threshold
 - [`reports/vetite_taksonomike.md`](reports/vetite_taksonomike.md) – class-to-group mapping and the IUCN decision, including the `EX` row
+- [`reports/vetite_e_burimit.md`](reports/vetite_e_burimit.md) – protected-area, citizen-science and serious-flag criteria
 
 ---
