@@ -6,7 +6,7 @@
 
 ## Varësia
 
-Ky task varet nga **Fjalori i të dhënave** i 16.10.2026: `reports/data_dictionary.md`. Pyetjet e projektit janë: shpërndarja sipas komunës, grupi biologjik, koha, statusi IUCN, zonat e mbrojtura dhe kualiteti i të dhënave.
+Ky task varet nga **Fjalori i të dhënave** i 16.10.2026: `reports/fjalori_i_te_dhenave.md`. Pyetjet e projektit janë: shpërndarja sipas komunës, grupi biologjik, koha, statusi IUCN, zonat e mbrojtura dhe kualiteti i të dhënave.
 
 ## Si është vlerësuar
 
@@ -79,11 +79,11 @@ Kolonat e ulëta që nuk hyjnë në asnjë pyetje janë identifikues (`gbifID`, 
 
 ## Dokumentimi i detyrës
 
-- **Varësia:** `reports/data_dictionary.md`, 16.10.2026.
+- **Varësia:** `reports/fjalori_i_te_dhenave.md`, 16.10.2026.
 - **Input:** fjalori i varësisë dhe pyetjet e projektit.
 - **Çka u bë:** Secila nga 42 kolonat u lidh me një pyetje dhe u vlerësua e lartë, e mesme ose e ulët.
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 / 42. CSV-ja nuk u ndryshua.
 - **Pse u bë:** Për të ditur cilat kolona i përgjigjen pyetjeve të projektit.
-- **Output:** `reports/column_importance.md`.
+- **Output:** `reports/rendesia_e_kolonave.md`.
 - **Commit:** `Add analytical importance for the 42 columns`.

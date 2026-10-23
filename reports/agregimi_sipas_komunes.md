@@ -165,5 +165,5 @@ Disa vlera u rillogaritën edhe me kod të pavarur nga CSV-ja origjinale (Graça
 - **Rreshta para / pas:** 46,831 rreshta → 38 rreshta (komuna).
 - **Kolona para / pas:** `agg_municipality.csv` 13 kolona; `agg_municipality_taxon.csv` 13 kolona (rajoni + 6 grupe × 2).
 - **Pse u bë:** Për të krahasuar komunat dhe për të përgatitur inputin e PCA-së.
-- **Output:** `processed/agg_municipality.csv`, `processed/agg_municipality_taxon.csv`, `reports/aggregation_municipality.md`, `reports/01_taxon_group_mapping.csv`, seksioni 6 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+- **Output:** `processed/agg_municipality.csv`, `processed/agg_municipality_taxon.csv`, `reports/agregimi_sipas_komunes.md`, `reports/01_hartezimi_i_grupeve_taksonomike.csv`, seksioni 6 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 - **Commit:** `Add municipality aggregates and municipality x taxon group matrix`.

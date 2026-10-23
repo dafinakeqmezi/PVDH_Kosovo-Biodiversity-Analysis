@@ -161,14 +161,14 @@ Goal: prepare the dataset for analysis and visualization.
 
 ### 1. Data collection, data types and data quality — [`01_mbledhja_kualiteti.ipynb`](notebooks/01_mbledhja_kualiteti.ipynb)
 - [x] Describe the data source (GBIF) and the meaning of each attribute
-- [x] Assign correct data types for all 42 columns: pandas type, conceptual type and target type → [`reports/data_types.md`](reports/data_types.md), [`reports/01_tipet_e_kolonave.csv`](reports/01_tipet_e_kolonave.csv)
+- [x] Assign correct data types for all 42 columns: pandas type, conceptual type and target type → [`reports/tipet_e_te_dhenave.md`](reports/tipet_e_te_dhenave.md), [`reports/01_tipet_e_kolonave.csv`](reports/01_tipet_e_kolonave.csv)
 - [x] Assess data quality: missing values, invalid coordinates, outliers, inconsistent values, GBIF `issue` flags
-- [x] Quality framework: completeness, validity, consistency, uniqueness and timeliness, with 35 checks (metric, rule, columns, baseline value) → [`reports/quality_framework.md`](reports/quality_framework.md), [`reports/01_korniza_e_kualitetit.csv`](reports/01_korniza_e_kualitetit.csv)
-- [x] Completeness per column (including hidden missing values) and per row (key fields: species, date, coordinates, municipality) → [`reports/completeness.md`](reports/completeness.md)
-- [x] Validity: coordinates inside Kosovo, year range, month/day ranges, `eventDate` formats, frequency of 7071 in `coordinateUncertaintyInMeters`, `elevation` range → [`reports/validity.md`](reports/validity.md)
-- [x] GBIF flags: count and % for each of the 35 `issue` flags, classified as serious or informative with a reason → [`reports/gbif_flags.md`](reports/gbif_flags.md)
-- [x] Uniqueness: `gbifID` unique; logical duplicates by species + date + coordinates + observer, 18 groups reviewed manually, proposed definition → [`reports/uniqueness.md`](reports/uniqueness.md), [`processed/duplicate_candidates.csv`](processed/duplicate_candidates.csv)
-- [x] Consistency (species → genus → family, municipality → district) and bias by class, region and source → [`reports/consistency_bias.md`](reports/consistency_bias.md)
+- [x] Quality framework: completeness, validity, consistency, uniqueness and timeliness, with 35 checks (metric, rule, columns, baseline value) → [`reports/korniza_e_kualitetit.md`](reports/korniza_e_kualitetit.md), [`reports/01_korniza_e_kualitetit.csv`](reports/01_korniza_e_kualitetit.csv)
+- [x] Completeness per column (including hidden missing values) and per row (key fields: species, date, coordinates, municipality) → [`reports/plotesia.md`](reports/plotesia.md)
+- [x] Validity: coordinates inside Kosovo, year range, month/day ranges, `eventDate` formats, frequency of 7071 in `coordinateUncertaintyInMeters`, `elevation` range → [`reports/vlefshmeria.md`](reports/vlefshmeria.md)
+- [x] GBIF flags: count and % for each of the 35 `issue` flags, classified as serious or informative with a reason → [`reports/flamujt_gbif.md`](reports/flamujt_gbif.md)
+- [x] Uniqueness: `gbifID` unique; logical duplicates by species + date + coordinates + observer, 18 groups reviewed manually, proposed definition → [`reports/unikaliteti.md`](reports/unikaliteti.md), [`processed/duplicate_candidates.csv`](processed/duplicate_candidates.csv)
+- [x] Consistency (species → genus → family, municipality → district) and bias by class, region and source → [`reports/konsistenca_dhe_anshmeria.md`](reports/konsistenca_dhe_anshmeria.md)
 - [x] Source analysis — [`01b_analiza_burimeve.ipynb`](notebooks/01b_analiza_burimeve.ipynb): publisher of each dataset from the GBIF API, grouped by publisher / dataset, `basisOfRecord` and `license` → [`processed/sources_summary.csv`](processed/sources_summary.csv)
 
 Key findings (full tables in [`reports/`](reports/)):
@@ -187,11 +187,11 @@ Key findings (full tables in [`reports/`](reports/)):
 - [x] Audit hidden missing-value tokens and document the decision for `elevation = 0`
 - [x] Compare missingness by source, `basisOfRecord`, class and district, with cautious interpretation of missingness mechanisms
 - [x] Define a column-specific missing-value strategy using analytical importance and recoverability
-- [x] External data for integration: area (km²) and population of the 38 municipalities with source, year and link → [`processed/municipalities.csv`](processed/municipalities.csv), [`reports/municipalities_source.md`](reports/municipalities_source.md)
-- [x] Join: municipality key from the bilingual names, left join with area and population, 38/38 matched and 46,831 rows before and after → [`processed/biodiversity_municipalities.csv`](processed/biodiversity_municipalities.csv), [`reports/municipalities_join.md`](reports/municipalities_join.md)
+- [x] External data for integration: area (km²) and population of the 38 municipalities with source, year and link → [`processed/municipalities.csv`](processed/municipalities.csv), [`reports/burimet_e_te_dhenave_te_komunave.md`](reports/burimet_e_te_dhenave_te_komunave.md)
+- [x] Join: municipality key from the bilingual names, left join with area and population, 38/38 matched and 46,831 rows before and after → [`processed/biodiversity_municipalities.csv`](processed/biodiversity_municipalities.csv), [`reports/bashkimi_i_komunave.md`](reports/bashkimi_i_komunave.md)
 - [ ] **Integration** – merge records coming from different `datasetKey` sources and harmonize column values
-- [x] Aggregation by municipality: records, unique species, threatened species, species/km², records per 1,000 residents, plus the municipality × taxon_group matrix for PCA → [`processed/agg_municipality.csv`](processed/agg_municipality.csv), [`processed/agg_municipality_taxon.csv`](processed/agg_municipality_taxon.csv), [`reports/aggregation_municipality.md`](reports/aggregation_municipality.md)
-- [x] Aggregation by time: records and unique species per year and a year × month table; 3,598 HabiProt literature records with the placeholder date 30 November flagged → [`processed/agg_time.csv`](processed/agg_time.csv), [`reports/aggregation_time.md`](reports/aggregation_time.md)
+- [x] Aggregation by municipality: records, unique species, threatened species, species/km², records per 1,000 residents, plus the municipality × taxon_group matrix for PCA → [`processed/agg_municipality.csv`](processed/agg_municipality.csv), [`processed/agg_municipality_taxon.csv`](processed/agg_municipality_taxon.csv), [`reports/agregimi_sipas_komunes.md`](reports/agregimi_sipas_komunes.md)
+- [x] Aggregation by time: records and unique species per year and a year × month table; 3,598 HabiProt records dated 30 November flagged for investigation as possible placeholders, not confirmed invalid dates → [`processed/agg_time.csv`](processed/agg_time.csv), [`reports/agregimi_sipas_kohes.md`](reports/agregimi_sipas_kohes.md)
 - [ ] **Aggregation** – summarize occurrences per species, district, municipality, year and IUCN category
 - [ ] **Sampling** – draw a stratified sample (e.g. by `kingdom` or `district`) for faster exploration
 - [ ] **Cleaning** – apply the documented column-specific decisions, use species-level exclusions only where needed, and fix inconsistent text values
@@ -228,7 +228,7 @@ Current scope for notebook 02: tasks through the duplicate decision (20 October)
 ### 3. Dimensionality reduction, feature selection, feature creation, discretization, binarization and transformation — [`03_vetite.ipynb`](notebooks/03_vetite.ipynb)
 - [x] Document preprocessing plan v1 with decision and rationale
 - [ ] **Dimensionality reduction** – remove redundant attributes (`iucnRedListStatus` vs. `iucnRedListCategory`, `taxonKey` vs. `scientificName`)
-- [x] Feature subset decision: 29 columns kept and 13 dropped, with a reason for each column. The original CSV stays at 42 columns. Only `iucnRedListStatus` is a 1:1 duplicate; `taxonKey` and `scientificName` are both kept → [`reports/feature_selection.md`](reports/feature_selection.md)
+- [x] Feature subset decision: 29 columns kept and 13 dropped, with a reason for each column. The original CSV stays at 42 columns. Only `iucnRedListStatus` is a 1:1 duplicate; `taxonKey` and `scientificName` are both kept → [`reports/zgjedhja_e_vetive.md`](reports/zgjedhja_e_vetive.md)
 - [ ] **Feature subset selection** – keep the attributes relevant for the analysis (taxonomy, time, location, conservation status)
 - [x] Time features: `season` from `month`, `decade` from `year`, and `is_recent` for `year >= 2017`. A missing `year` or `month` stays missing. Function `add_time_features()` in notebook 03 → [`reports/vetite_kohore.md`](reports/vetite_kohore.md)
 - [x] Taxonomic and conservation features: `taxon_group` from `class` (Zogj, Insekte, Bimë, Kërpudha, Tjera; missing class = "E panjohur") and `is_threatened` from the IUCN category (`VU`/`EN`/`CR` = 1, `LC`/`NT` = 0, `NE`/`DD`/NaN = NaN). The single `EX` row stays NaN and is documented separately. Function `add_taxon_features()` → [`reports/vetite_taksonomike.md`](reports/vetite_taksonomike.md)
@@ -239,7 +239,7 @@ Current scope for notebook 02: tasks through the duplicate decision (20 October)
 - [ ] **Transformation** – normalize/scale numeric attributes (`elevation`, `individualCount`), apply log transform to skewed counts
 
 Current outputs:
-- [`reports/feature_selection.md`](reports/feature_selection.md) – final column decision; the original CSV is unchanged
+- [`reports/zgjedhja_e_vetive.md`](reports/zgjedhja_e_vetive.md) – final column decision; the original CSV is unchanged
 - [`reports/vetite_kohore.md`](reports/vetite_kohore.md) – month-to-season mapping and the `is_recent` threshold
 - [`reports/vetite_taksonomike.md`](reports/vetite_taksonomike.md) – class-to-group mapping and the IUCN decision, including the `EX` row
 - [`reports/vetite_e_burimit.md`](reports/vetite_e_burimit.md) – protected-area, citizen-science and serious-flag criteria

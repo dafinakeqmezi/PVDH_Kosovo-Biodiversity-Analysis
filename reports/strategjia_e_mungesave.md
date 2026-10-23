@@ -1,6 +1,6 @@
 # Strategjia për vlerat e zbrazëta
 
-Input: dataset-i origjinal, `raporti_i_mungesave_efektive.csv`, `mungesat_sipas_grupeve.csv`, `mekanizmat_e_mungeses.md`, `column_importance.md` dhe `redundancy.md`.
+Input: dataset-i origjinal, `raporti_i_mungesave_efektive.csv`, `mungesat_sipas_grupeve.csv`, `mekanizmat_e_mungeses.md`, `rendesia_e_kolonave.md` dhe `redundanca.md`.
 
 **Missing %** është përqindja efektive: bashkimi i NaN, tokenëve literalë të mungesës dhe elevation = 0. Inventari fillestar mbetet në `processed/missing_report.csv`; numërimet e krahasueshme janë në `reports/raporti_i_mungesave_efektive.csv`. NE/DD janë kategori IUCN; mungesat potencialisht strukturore ende numërohen dhe interpretohen veçmas.
 
@@ -22,7 +22,7 @@ Input: dataset-i origjinal, `raporti_i_mungesave_efektive.csv`, `mungesat_sipas_
 | taxonKey | 0.08 | e mesme | Hierarki taksonomike e verifikuar nga çelësi GBIF. | keep + flag | Ruaj nivelin e identifikimit; rikuperim vetëm kur lidhja është e qartë dhe dokumentohet. |
 | speciesKey | 2.59 | e mesme | Vetëm lidhje e verifikuar me speciesKey/taksonominë. | keep + flag | Mos shpik species nga gjinia. Përjashto vetëm nga analiza në nivel species, jo nga dataset-i i përgjithshëm. |
 | iucnRedListCategory | 2.59 | e lartë | Vetëm vlerësim IUCN i verifikuar për taksonin dhe versionin. | keep + flag | NE dhe DD janë kategori reale, jo NaN dhe jo LC; mos imputo status rreziku. |
-| iucnRedListStatus | 2.59 | e ulët | Rindërtohet nga harta e kodeve të IUCN. | delete (pamja analitike) | Redundant sipas reports/redundancy.md; jo vendim i bazuar në përqindjen e mungesës. |
+| iucnRedListStatus | 2.59 | e ulët | Rindërtohet nga harta e kodeve të IUCN. | delete (pamja analitike) | Redundant sipas reports/redundanca.md; jo vendim i bazuar në përqindjen e mungesës. |
 | eventDate | 4.68 | e lartë | Komponentë year/month/day vetëm nëse janë të vlefshëm e konsistentë. | keep + impute + flag | Ruaj intervalet dhe precision; mos krijo muaj/ditë nga data vetëm me vit. Rikuperimi i ardhshëm shënohet. |
 | year | 4.84 | e lartë | Nga eventDate vetëm kur komponenti është shprehimisht i pranishëm dhe i vlefshëm. | keep + impute + flag | Mos përdor 1 janar si datë reale; rreshtat pa komponentin e nevojshëm përjashtohen vetëm nga analiza kohore përkatëse. |
 | month | 6.12 | e lartë | Nga eventDate vetëm kur komponenti është shprehimisht i pranishëm dhe i vlefshëm. | keep + impute + flag | Mos përdor 1 janar si datë reale; rreshtat pa komponentin e nevojshëm përjashtohen vetëm nga analiza kohore përkatëse. |

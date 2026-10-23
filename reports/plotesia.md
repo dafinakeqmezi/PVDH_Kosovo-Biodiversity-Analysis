@@ -6,7 +6,7 @@
 
 ## Varësia
 
-Ky task zbaton dimensionin **Plotësia** nga **Korniza e kualitetit** (`reports/quality_framework.md`, kontrollet P1–P8). Llogaritja është te seksioni 3.8 i `notebooks/01_mbledhja_kualiteti.ipynb`, dhe rezultatet ruhen në `reports/01_plotesia_kolona.csv` dhe `reports/01_plotesia_rreshta.csv`.
+Ky task zbaton dimensionin **Plotësia** nga **Korniza e kualitetit** (`reports/korniza_e_kualitetit.md`, kontrollet P1–P8). Llogaritja është te seksioni 3.8 i `notebooks/01_mbledhja_kualiteti.ipynb`, dhe rezultatet ruhen në `reports/01_plotesia_kolona.csv` dhe `reports/01_plotesia_rreshta.csv`.
 
 ## Si matet
 
@@ -120,10 +120,10 @@ Plotësia e të 42 kolonave për rresht llogaritet me mungesat e fshehura dhe pa
 
 ## Dokumentimi i detyrës
 
-- **Input:** `dataset/kosovo_overall_biodiversity.csv`, `reports/quality_framework.md`.
+- **Input:** `dataset/kosovo_overall_biodiversity.csv`, `reports/korniza_e_kualitetit.md`.
 - **Çka u bë:** U llogarit plotësia e dukshme dhe reale për secilën nga 42 kolonat, me mungesat e fshehura, dhe plotësia për rresht për fushat kyçe species, data, koordinata dhe komuna.
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 / 42.
 - **Pse u bë:** Për të ditur sa të dhëna janë realisht të përdorshme për secilën pyetje dhe për të vendosur strategjinë e trajtimit të mungesave.
-- **Output:** `reports/completeness.md`, `reports/01_plotesia_kolona.csv`, `reports/01_plotesia_rreshta.csv`, seksioni 3.8 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+- **Output:** `reports/plotesia.md`, `reports/01_plotesia_kolona.csv`, `reports/01_plotesia_rreshta.csv`, seksioni 3.8 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 - **Commit:** `Add completeness per column and per row`.

@@ -6,7 +6,7 @@
 
 ## Varësia
 
-Ky task zbaton dimensionin **Konsistenca** nga **Korniza e kualitetit** (`reports/quality_framework.md`, K2–K6) dhe përdor publikuesit nga **Analiza e burimeve** (`processed/sources_summary.csv`, 11 tetor). Llogaritja është te seksioni 3.11 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+Ky task zbaton dimensionin **Konsistenca** nga **Korniza e kualitetit** (`reports/korniza_e_kualitetit.md`, K2–K6) dhe përdor publikuesit nga **Analiza e burimeve** (`processed/sources_summary.csv`, 11 tetor). Llogaritja është te seksioni 3.11 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 
 ## Tabela e konsistencës
 
@@ -118,5 +118,5 @@ Sa regjistrime jep vlera më e shpeshtë e secilës kolonë, dhe sa japin 3 vler
 - **Rreshta para / pas:** 46,831 / 46,831.
 - **Kolona para / pas:** 42 / 42.
 - **Pse u bë:** Mospërputhjet taksonomike dhe administrative do të prishnin agregimet sipas gjinisë dhe rajonit. Anshmëria tregon çka mat realisht numri i regjistrimeve.
-- **Output:** `reports/consistency_bias.md`, `reports/01_konsistenca.csv`, `reports/01_anshmeria_klasa.csv`, `reports/01_anshmeria_rajoni.csv`, `reports/01_anshmeria_burimi.csv`, `reports/01_anshmeria_perqendrimi.csv`, `reports/01_anshmeria_paragrafi.md`, seksioni 3.11 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+- **Output:** `reports/konsistenca_dhe_anshmeria.md`, `reports/01_konsistenca.csv`, `reports/01_anshmeria_klasa.csv`, `reports/01_anshmeria_rajoni.csv`, `reports/01_anshmeria_burimi.csv`, `reports/01_anshmeria_perqendrimi.csv`, `reports/01_anshmeria_paragrafi.md`, seksioni 3.11 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 - **Commit:** `Add consistency checks and bias by class, region and source`.

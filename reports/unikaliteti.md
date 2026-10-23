@@ -6,7 +6,7 @@
 
 ## Varësia
 
-Ky task zbaton dimensionin **Unikaliteti** nga **Korniza e kualitetit** (`reports/quality_framework.md`, U1–U5). Llogaritja është te seksioni 3.10 i `notebooks/01_mbledhja_kualiteti.ipynb`. **Vendimin final dhe largimin e duplikateve i bën Deliza** (20–21 tetor), duke u nisur nga ky definicion dhe nga `processed/duplicate_candidates.csv`.
+Ky task zbaton dimensionin **Unikaliteti** nga **Korniza e kualitetit** (`reports/korniza_e_kualitetit.md`, U1–U5). Llogaritja është te seksioni 3.10 i `notebooks/01_mbledhja_kualiteti.ipynb`. **Vendimin final dhe largimin e duplikateve i bën Deliza** (20–21 tetor), duke u nisur nga ky definicion dhe nga `processed/duplicate_candidates.csv`.
 
 ## Si matet
 
@@ -114,5 +114,5 @@ Me këtë definicion: **238 grupe, 616 rreshta, 378 rreshta të tepërta** (në 
 - **Rreshta para / pas:** 46,831 / 46,831. Asnjë rresht nuk u fshi.
 - **Kolona para / pas:** 42 / 42.
 - **Pse u bë:** Duplikatet e fryjnë numrin e vëzhgimeve dhe të specieve për komunë. Fshirja pa definicion të qartë do të hiqte ekzemplarë dhe numërime të vërteta.
-- **Output:** `processed/duplicate_candidates.csv`, `reports/uniqueness.md`, `reports/01_unikaliteti.csv`, `reports/01_duplikatet_sipas_llojit.csv`, `reports/01_duplikatet_shqyrtimi.csv`, seksioni 3.10 i `notebooks/01_mbledhja_kualiteti.ipynb`.
+- **Output:** `processed/duplicate_candidates.csv`, `reports/unikaliteti.md`, `reports/01_unikaliteti.csv`, `reports/01_duplikatet_sipas_llojit.csv`, `reports/01_duplikatet_shqyrtimi.csv`, seksioni 3.10 i `notebooks/01_mbledhja_kualiteti.ipynb`.
 - **Commit:** `Add uniqueness check, duplicate candidates and proposed definition`.
