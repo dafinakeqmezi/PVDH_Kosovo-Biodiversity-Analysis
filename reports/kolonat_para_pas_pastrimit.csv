@@ -80,3 +80,5 @@ event_end_precision,False,True,added
 date_parse_status,False,True,added
 year_was_filled,False,True,added
 month_was_filled,False,True,added
+municipality_original,False,True,added
+municipality_sq,False,True,added

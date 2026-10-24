@@ -1,7 +1,7 @@
 {
   "source": "dataset/kosovo_overall_biodiversity.csv",
   "source_sha256": "68593b9e19dbfcb8cfff9d5b74ae947bb60e794d8d5d11ecd3df542d51296b8e",
-  "rows": 46831,
+  "rows": 46456,
   "columns": {
     "gbifID": {
       "dtype": "int64"
@@ -4658,7 +4658,7 @@
         "Zygophlyctidales"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "species": {
       "dtype": "category",
@@ -8760,7 +8760,7 @@
         "Zygaena viciae"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "vernacularName": {
       "dtype": "category",
@@ -12081,7 +12081,7 @@
         "more-Modest Plump Bush-Cricket"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "kingdom": {
       "dtype": "category",
@@ -12095,7 +12095,7 @@
         "incertae sedis"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "phylum": {
       "dtype": "category",
@@ -12127,7 +12127,7 @@
         "Tracheophyta"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "class": {
       "dtype": "category",
@@ -12202,7 +12202,7 @@
         "Tubothalamea"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "order": {
       "dtype": "category",
@@ -12435,7 +12435,7 @@
         "Zygophlyctidales"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "family": {
       "dtype": "category",
@@ -13125,7 +13125,7 @@
         "Zygaenidae"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "genus": {
       "dtype": "category",
@@ -15553,7 +15553,7 @@
         "Zygaena"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "taxonRank": {
       "dtype": "category",
@@ -15571,7 +15571,7 @@
         "VARIETY"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "taxonKey": {
       "dtype": "Int64"
@@ -15592,7 +15592,7 @@
         "VU"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "eventDate": {
       "dtype": "str"
@@ -15664,7 +15664,7 @@
         "Zveçan / Zvečan"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "district": {
       "dtype": "category",
@@ -15678,7 +15678,7 @@
         "Prizren"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "protectedArea": {
       "dtype": "category",
@@ -15706,7 +15706,7 @@
         "Ujëvarat e Mirushës"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "protectedAreaDesignation": {
       "dtype": "category",
@@ -15719,7 +15719,7 @@
         "Wetlands"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "strictlyProtected": {
       "dtype": "bool"
@@ -15736,7 +15736,7 @@
         "PRESERVED_SPECIMEN"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "individualCount": {
       "dtype": "Int64"
@@ -16100,7 +16100,7 @@
         "CC_BY_NC_4_0"
       ],
       "ordered": false,
-      "categories_dtype": "str"
+      "categories_dtype": "string"
     },
     "issue": {
       "dtype": "str"
@@ -16267,6 +16267,54 @@
     },
     "month_was_filled": {
       "dtype": "bool"
+    },
+    "municipality_original": {
+      "dtype": "string"
+    },
+    "municipality_sq": {
+      "dtype": "category",
+      "categories": [
+        "Deçan",
+        "Dragash",
+        "Ferizaj",
+        "Fushë Kosovë",
+        "Gjakovë",
+        "Gjilan",
+        "Gllogoc",
+        "Graçanicë",
+        "Hani i Elezit",
+        "Istog",
+        "Junik",
+        "Kamenicë",
+        "Kaçanik",
+        "Klinë",
+        "Kllokot",
+        "Leposaviq",
+        "Lipjan",
+        "Malishevë",
+        "Mamushë",
+        "Mitrovicë e Jugut",
+        "Mitrovicë e Veriut",
+        "Novobërdë",
+        "Obiliq",
+        "Partesh",
+        "Pejë",
+        "Podujevë",
+        "Prishtinë",
+        "Prizren",
+        "Rahovec",
+        "Ranillug",
+        "Shtime",
+        "Shtërpcë",
+        "Skenderaj",
+        "Suharekë",
+        "Viti",
+        "Vushtrri",
+        "Zubin Potok",
+        "Zveçan"
+      ],
+      "ordered": false,
+      "categories_dtype": "str"
     }
   }
 }

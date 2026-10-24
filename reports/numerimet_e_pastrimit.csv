@@ -3,7 +3,7 @@ tokens:locality,38,46831,46831,42,42,Token literal i mungesës -> NA; pa ndryshu
 tokens:recordedBy,1,46831,46831,42,42,Token literal i mungesës -> NA; pa ndryshuar tekstet e tjera.
 tokens:identifiedBy,1,46831,46831,42,42,Token literal i mungesës -> NA; pa ndryshuar tekstet e tjera.
 elevation_zero,3634,46831,46831,42,43,Vetëm flamur për zerot origjinale; zëvendësimi me NA shtyhet te vlerat e pavlefshme.
-drop:iucnRedListStatus,46831,46831,46831,43,42,Redundant sipas reports/redundancy.md; jo vendim i bazuar në përqindjen e mungesës.
+drop:iucnRedListStatus,46831,46831,46831,43,42,Redundant sipas reports/redundanca.md; jo vendim i bazuar në përqindjen e mungesës.
 drop:establishmentMeans,46831,46831,46831,42,41,Pothuajse bosh dhe jashtë pyetjeve kryesore sipas rëndësisë; ruaj origjinalin për analizë të specializuar.
 flag:scientificName,37,46831,46831,41,42,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
 flag:taxonRank,37,46831,46831,42,43,Flamur mungese; nuk fshihen rreshta dhe nuk imputohen vlera.
@@ -75,4 +75,24 @@ dtype:event_end_precision,44641,46831,46831,77,77,Kategori pa renditje; asnjë v
 dtype:date_parse_status,46831,46831,46831,77,77,Kategori pa renditje; asnjë vlerë nuk hiqet dhe nuk bëhet kodim ordinal.
 recover:year,0,46831,46831,77,78,Plotësim determinist nga eventDate e plotë ose interval brenda të njëjtit muaj; pa mbishkrim.
 recover:month,0,46831,46831,78,79,Plotësim determinist nga eventDate e plotë ose interval brenda të njëjtit muaj; pa mbishkrim.
-export,0,46831,46831,79,79,CSV e veçantë + schema; verifikuar rikthimi i tipeve dhe hash-i i origjinalit.
+remove_duplicates,375,46831,46456,79,79,Zbato vetëm vendimin e grupeve të pranuara; mbaj fituesin dhe të gjitha grupet e përjashtuara.
+preserve:municipality,46456,46456,46456,79,80,Ruaj tekstin origjinal përpara normalizimit dhe nxjerrjes së emrit shqip.
+normalize:scientificName,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:species,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:vernacularName,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:kingdom,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:phylum,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:class,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:order,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:family,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:genus,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:taxonRank,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:iucnRedListCategory,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:municipality,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:district,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:protectedArea,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:protectedAreaDesignation,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:basisOfRecord,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+normalize:license,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
+derive:municipality_sq,46456,46456,46456,80,81,Pjesa shqip përpara /; ruhet municipality_original dhe emri dygjuhësh.
+export,0,46456,46456,81,81,CSV e veçantë + schema; verifikuar rikthimi i tipeve dhe hash-i i origjinalit.
