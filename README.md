@@ -236,6 +236,7 @@ Current scope for notebook 02: tasks through the duplicate decision (20 October)
 - [ ] **Feature creation** – e.g. `season` from `month`, `decade` from `year`, `isThreatened` from IUCN category, record count per species
 - [x] Elevation zones: `elevation_zone` is Fushë (297–800 m), Kodrinore (801–1,500 m) or Malore (1,501–2,656 m). Missing elevation (79.03%), `elevation = 0` and nine values outside 297–2,656 m are `E panjohur`. Function `add_elevation_zone()` in notebook 03 → [`reports/zona_e_lartesise.md`](reports/zona_e_lartesise.md)
 - [x] Time periods: `period` from the original `year`, with cuts at 1900, 1950, 2000, 2010 and 2020. A missing `year` stays missing. Function `add_period()` in notebook 03 → [`reports/periudhat_kohore.md`](reports/periudhat_kohore.md)
+- [x] Count classes: `count_class` from the original `individualCount` with `pd.qcut` (`q=4`, duplicate edge at 1 dropped). Equal-width `pd.cut` places 99.82% of known counts in one bin. A missing count stays missing. Function `add_count_class()` in notebook 03 → [`reports/klasa_e_numrit.md`](reports/klasa_e_numrit.md)
 - [ ] **Discretization** – bin `elevation` and `year` into ranges (e.g. lowland / hill / mountain, decades)
 - [ ] **Binarization** – one-hot encode `kingdom`, `basisOfRecord`; convert `strictlyProtected` and `iasUnionConcern` to 0/1
 - [ ] **Transformation** – normalize/scale numeric attributes (`elevation`, `individualCount`), apply log transform to skewed counts
@@ -247,5 +248,6 @@ Current outputs:
 - [`reports/vetite_e_burimit.md`](reports/vetite_e_burimit.md) – protected-area, citizen-science and serious-flag criteria
 - [`reports/zona_e_lartesise.md`](reports/zona_e_lartesise.md) – elevation zone boundaries and the unknown-elevation count
 - [`reports/periudhat_kohore.md`](reports/periudhat_kohore.md) – year-period boundaries and the count in each period
+- [`reports/klasa_e_numrit.md`](reports/klasa_e_numrit.md) – equal-width and equal-frequency comparison, and the chosen `count_class` counts
 
 ---
