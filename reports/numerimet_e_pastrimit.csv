@@ -95,4 +95,7 @@ normalize:protectedAreaDesignation,0,46456,46456,80,80,"NFC, hapësira të norma
 normalize:basisOfRecord,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
 normalize:license,0,46456,46456,80,80,"NFC, hapësira të normalizuara dhe variante shkronjash; pa bashkim të përafërt."
 derive:municipality_sq,46456,46456,46456,80,81,Pjesa shqip përpara /; ruhet municipality_original dhe emri dygjuhësh.
-export,0,46456,46456,81,81,CSV e veçantë + schema; verifikuar rikthimi i tipeve dhe hash-i i origjinalit.
+invalid:elevation_zero,3634,46456,46456,81,81,Zbato vendimin ekzistues: elevation=0 -> NA; ruaj flamurin dhe çdo lartësi tjetër.
+flag:coordinate_uncertainty_status,40904,46456,46456,81,82,"Status nga min(mediana pozitive, rrezja ekuivalente minimale e komunave me sipërfaqe të njohur); jo garanci GIS."
+flag:is_species_level,1082,46456,46456,82,83,True: SPECIES ose më poshtë me species të plotësuar; False: rang i njohur më lart; NA: rang i paqartë ose specie e paplotësuar.
+export,0,46456,46456,83,83,CSV e veçantë + schema; verifikuar rikthimi i tipeve dhe hash-i i origjinalit.

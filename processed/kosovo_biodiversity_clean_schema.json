@@ -16315,6 +16315,19 @@
       ],
       "ordered": false,
       "categories_dtype": "str"
+    },
+    "coordinate_uncertainty_status": {
+      "dtype": "category",
+      "categories": [
+        "above_screening_threshold",
+        "unknown",
+        "within_screening_threshold"
+      ],
+      "ordered": false,
+      "categories_dtype": "string"
+    },
+    "is_species_level": {
+      "dtype": "boolean"
     }
   }
 }

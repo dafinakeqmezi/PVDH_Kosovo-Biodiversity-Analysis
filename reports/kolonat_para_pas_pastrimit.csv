@@ -82,3 +82,5 @@ year_was_filled,False,True,added
 month_was_filled,False,True,added
 municipality_original,False,True,added
 municipality_sq,False,True,added
+coordinate_uncertainty_status,False,True,added
+is_species_level,False,True,added

@@ -1,0 +1,7 @@
+kolona,rregulla,veprimi,rreshta
+elevation,= 0,NA; ruaj elevation_was_zero,3634
+coordinateUncertaintyInMeters,> 1866.094894 m,above_screening_threshold; ruaj vlerën dhe rreshtin,9091
+coordinateUncertaintyInMeters,mungon,unknown; jo pasiguri zero,31813
+coordinateUncertaintyInMeters,<=0 ose jo finite,invalid; ruaj për auditim,0
+taxonRank,rang i njohur mbi specie,is_species_level=False; ruaj rreshtin,1082
+taxonRank/species,rang i paqartë ose species mungon në rang specie/më poshtë,is_species_level=NA,234
