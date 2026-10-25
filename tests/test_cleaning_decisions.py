@@ -49,5 +49,33 @@ class InvalidValuesTests(unittest.TestCase):
         pd.testing.assert_series_equal(result, expected)
 
 
+class IndividualCountTests(unittest.TestCase):
+    def setUp(self):
+        self.summarize = notebook_helpers("count-decision")["count_statistics"]
+
+    def test_missing_is_not_zero_and_reported_zero_is_kept(self):
+        values = pd.Series([0, 1, 5, pd.NA], dtype="Int64")
+        original = values.copy()
+        stats = self.summarize(values)
+        self.assertEqual(stats["mungesa_pct"], 25)
+        self.assertEqual(stats["mediana"], 1)
+        self.assertEqual(stats["zero"], 1)
+        self.assertEqual(stats["te_plotesuara"], 3)
+        pd.testing.assert_series_equal(values, original)
+
+    def test_no_observations_does_not_invent_a_median(self):
+        stats = self.summarize(pd.Series([pd.NA, pd.NA], dtype="Int64"))
+        self.assertEqual(stats["mungesa_pct"], 100)
+        self.assertEqual(stats["te_plotesuara"], 0)
+        self.assertTrue(np.isnan(stats["mediana"]))
+        self.assertTrue(np.isnan(stats["skewness"]))
+
+    def test_empty_and_small_groups(self):
+        self.assertTrue(np.isnan(self.summarize(pd.Series([], dtype="Int64"))["mungesa_pct"]))
+        stats = self.summarize(pd.Series([2], dtype="Int64"))
+        self.assertEqual(stats["mediana"], 2)
+        self.assertTrue(np.isnan(stats["skewness"]))
+
+
 if __name__ == "__main__":
     unittest.main()
