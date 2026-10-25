@@ -7,7 +7,7 @@
 ## Varësia
 
 - **Integrimi** (20 tetor): `processed/biodiversity_municipalities.csv` jep sipërfaqen dhe popullsinë e çdo komune.
-- **`taxon_group` dhe `is_threatened`** (Jeta, 15 tetor): funksioni i Jetës ende nuk është te `03_vetite.ipynb`. Prandaj përdoret një version i përkohshëm, që ndjek saktësisht definicionin e planit, dhe zëvendësohet kur Jeta ta shtojë funksionin e saj.
+- **`taxon_group` dhe `is_threatened`** (Jeta, 15 tetor): merren nga funksioni `add_taxon_features()` i Jetës te `03_vetite.ipynb`, që të dy notebook-ët të përdorin të njëjtin definicion. Versioni i përkohshëm i përdorur fillimisht u krahasua me funksionin e saj dhe dha të njëjtin rezultat te të 46,831 rreshtat, pastaj u zëvendësua (25 tetor).
 
 Llogaritja është te seksioni 6 i `notebooks/01_mbledhja_kualiteti.ipynb`. Puna bëhet mbi dataset-in origjinal. Më 26 tetor ri-ekzekutohet mbi `biodiversity_clean.csv`.
 
@@ -21,7 +21,7 @@ Llogaritja është te seksioni 6 i `notebooks/01_mbledhja_kualiteti.ipynb`. Puna
 | `specie_per_km2` | `specie_unike` / `siperfaqja_njesise_km2`. Te dy Mitrovicat llogaritet për njësinë e përbashkët (336.18 km²), që speciet e përbashkëta të mos numërohen dy herë. |
 | `regjistrime_per_1000_banore` | `regjistrime` / `popullsia_2024` × 1,000. Te 4 komunat veriore, popullsia është vlerësim i ASK. |
 
-**`taxon_group`** (sipas planit, nga `class`):
+**`taxon_group`** (funksioni i Jetës, nga `class`):
 
 | taxon_group | Rregulla | Regjistrime | Klasa | Klasat kryesore |
 |---|---|---:|---:|---|
@@ -156,7 +156,7 @@ Disa vlera u rillogaritën edhe me kod të pavarur nga CSV-ja origjinale (Graça
 
 - Për PCA-në përdor njërin bllok: `regjistrime_*` (përpjekja/bollëku) ose `specie_*` (pasuria). Mos i përziej.
 - Siç thotë plani, kthej numrat në proporcione ose `log1p` para standardizimit. Graçanica dhe Fushë Kosova kanë mbi 3,400 regjistrime zogjsh secila dhe do ta dominonin PCA-në me numra absolutë.
-- Kur ta shtosh `taxon_group` te `03_vetite.ipynb`, ma thuaj, që ta zëvendësoj versionin e përkohshëm në seksionin 6.
+- `taxon_group` në seksionin 6 tani merret nga `add_taxon_features()` jote. Nëse e ndryshon mapping-un, agregimi e ndjek vetë pas ri-ekzekutimit.
 
 ## Dokumentimi i detyrës
 
