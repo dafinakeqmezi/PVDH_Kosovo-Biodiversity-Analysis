@@ -251,6 +251,7 @@ Current scope for notebook 02: tasks through the individualCount decision (24 Oc
 - [x] IUCN and flag encoding: `iucn_rank` is LC=1, NT=2, VU=3, EN=4, CR=5, EX=6, read once from `iucnRedListCategory`. `NE`, `DD` and missing stay missing, and `iucn_evaluated` is 0 for those rows. The 10 serious GBIF flags are 0/1 columns. Function `add_iucn_and_flags()` in notebook 03 → [`reports/kodimi_iucn_dhe_flamujve.md`](reports/kodimi_iucn_dhe_flamujve.md)
 - [ ] **Binarization** – one-hot encode `kingdom`, `basisOfRecord`; convert `strictlyProtected` and `iasUnionConcern` to 0/1
 - [x] Log transform: `individualCount_log1p` and `coordinateUncertaintyInMeters_log1p`. On the cleaned dataset, skewness falls from 26.63 to 2.07 and from 101.73 to −1.00. Missing values stay missing. Function `add_log1p()` in notebook 03 → [`reports/transformimi_log1p.md`](reports/transformimi_log1p.md)
+- [x] PCA scaling: Z-scores of the municipality × `taxon_group` record proportions. `year`, latitude and longitude are not scaled. Function `standardize_pca_matrix()` in notebook 03 → [`reports/shkallezimi_pca.md`](reports/shkallezimi_pca.md)
 - [ ] **Transformation** – normalize/scale numeric attributes (`elevation`, `individualCount`), apply log transform to skewed counts
 
 Current outputs:
@@ -264,5 +265,6 @@ Current outputs:
 - [`reports/kolonat_dummy.md`](reports/kolonat_dummy.md) – one-hot columns for `taxon_group`, `district` and `basisOfRecord`, and the `drop_first` decision
 - [`reports/kodimi_iucn_dhe_flamujve.md`](reports/kodimi_iucn_dhe_flamujve.md) – IUCN rank, `iucn_evaluated`, and the 10 serious-flag columns
 - [`reports/transformimi_log1p.md`](reports/transformimi_log1p.md) – skewness before and after `log1p` for counts and coordinate uncertainty
+- [`reports/shkallezimi_pca.md`](reports/shkallezimi_pca.md) – Z-scores of municipality by taxon-group record proportions for PCA
 
 ---
