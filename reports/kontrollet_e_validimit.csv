@@ -1,0 +1,24 @@
+kontrolli,statusi,detaje
+"CSV lexohet me tipet, kategoritë dhe renditjen në schema",PASS,Kontrolli kaloi.
+SHA-256 përputhet me manifestin: source,PASS,Kontrolli kaloi.
+SHA-256 përputhet me manifestin: dataset,PASS,Kontrolli kaloi.
+SHA-256 përputhet me manifestin: schema,PASS,Kontrolli kaloi.
+dataset/ i paprekur kundrejt Git HEAD dhe origjinalit historik,PASS,Kontrolli kaloi.
+Dimensionet përputhen me manifestin,PASS,Kontrolli kaloi.
+gbifID unik dhe pa mungesa,PASS,Kontrolli kaloi.
+Pa duplikate të mbetura sipas definicionit të miratuar; grupet e përjashtuara ruhen,PASS,Kontrolli kaloi.
+ID-të finale janë saktësisht origjinali minus lista e largimit,PASS,Kontrolli kaloi.
+Tipet e kërkuara dhe flamujt e mungesës janë të saktë,PASS,Kontrolli kaloi.
+Numrat e plotësuar janë finite,PASS,Kontrolli kaloi.
+"Latitude brenda [-90,90], pa mungesa",PASS,Kontrolli kaloi.
+"Longitude brenda [-180,180], pa mungesa",PASS,Kontrolli kaloi.
+Muajt e njohur janë 1-12,PASS,Kontrolli kaloi.
+Ditët e njohura janë 1-31,PASS,Kontrolli kaloi.
+Vitet e njohura janë 1 deri në vitin aktual,PASS,Kontrolli kaloi.
+Kombinimet e plota year/month/day formojnë data reale,PASS,Kontrolli kaloi.
+individualCount i njohur është i plotë dhe jo negativ,PASS,Kontrolli kaloi.
+Pasiguria e njohur është pozitive,PASS,Kontrolli kaloi.
+Nuk mbetet placeholder elevation=0,PASS,Kontrolli kaloi.
+"Datat e njohura parsueshme, intervalet të renditura dhe flamuri taksonomik konsistent",PASS,Kontrolli kaloi.
+"Log-u: plotësia, rendi, dimensionet, rreshtat e larguar dhe hash-i",PASS,Kontrolli kaloi.
+"Validimi nuk ndryshoi origjinalin, checkpoint-in ose cleaning_log",PASS,Kontrolli kaloi.

@@ -134,5 +134,41 @@ class FinalCheckpointTests(unittest.TestCase):
         self.assertFalse(data["elevation"].eq(0).any())
 
 
+class ValidationTests(unittest.TestCase):
+    def setUp(self):
+        self.helpers = notebook_helpers("validation")
+
+    def test_failures_are_recorded_without_skipping_later_checks(self):
+        results = []
+        self.helpers["capture_validation"](results, "bad", lambda: False)
+        self.helpers["capture_validation"](results, "good", lambda: True)
+        self.assertEqual([r["statusi"] for r in results], ["FAIL", "PASS"])
+
+    def test_duplicate_winner_and_excluded_groups(self):
+        candidates = pd.DataFrame({"dup_group": [1, 1, 2, 2], "gbifID": [10, 11, 20, 21]})
+        decisions = pd.DataFrame({"grupi": [1, 2], "pranohet": [True, False], "gbifID_per_ruajtje": [10, np.nan]})
+        removed = pd.DataFrame({"gbifID": [11]})
+        check = self.helpers["assert_duplicate_survivors"]
+        check(pd.DataFrame({"gbifID": [10, 20, 21]}), candidates, decisions, removed)
+        for ids in [[10, 11, 20, 21], [11, 20, 21], [10, 20], [10, 10, 20, 21]]:
+            with self.assertRaises(AssertionError):
+                check(pd.DataFrame({"gbifID": ids}), candidates, decisions, removed)
+
+    def test_impossible_values_fail_but_retained_extremes_pass(self):
+        frame = pd.DataFrame({"year": [2024], "month": [2], "day": [29],
+                              "decimalLatitude": [42.5], "decimalLongitude": [21.1],
+                              "individualCount": [10200], "coordinateUncertaintyInMeters": [4226661],
+                              "elevation": [3050]})
+        check = self.helpers["validation_value_rules"]
+        self.assertTrue(all(check(frame).values()))
+        for column, value in [("year", 2023), ("month", 13), ("day", 30),
+                              ("decimalLatitude", 91), ("decimalLongitude", -181),
+                              ("individualCount", -1), ("individualCount", 1.5),
+                              ("coordinateUncertaintyInMeters", 0), ("elevation", 0), ("elevation", np.inf)]:
+            bad = frame.astype(float)
+            bad.loc[0, column] = value
+            self.assertFalse(all(check(bad).values()), column)
+
+
 if __name__ == "__main__":
     unittest.main()
