@@ -1,0 +1,16 @@
+{
+  "status": "frozen",
+  "source": "dataset/kosovo_overall_biodiversity.csv",
+  "source_sha256": "68593b9e19dbfcb8cfff9d5b74ae947bb60e794d8d5d11ecd3df542d51296b8e",
+  "rows": 46456,
+  "column_count": 83,
+  "cleaning_steps": 102,
+  "dataset": "processed/biodiversity_clean.csv",
+  "dataset_sha256": "e83b0cab86ef5021cc23fbd1029071883c16a203d61cdc118bdafac6cb30117a",
+  "schema": "processed/biodiversity_clean_schema.json",
+  "schema_sha256": "5120a124f47c05a08e85a2d56d11e6640a3c4d020441908935a7670e8835220c",
+  "log": "processed/cleaning_log.csv",
+  "log_scope": "hapi starts with 02_clean:, in execution order",
+  "cleaning_log_sha256": "45fee2d54c29181ad768f0ca7da2f01da77f56eca4bf99108ad8bbf26bf47df1",
+  "duplicate_source_commit": "d2708c640de830014edf4c4f35a528849c98455f"
+}

@@ -77,5 +77,62 @@ class IndividualCountTests(unittest.TestCase):
         self.assertTrue(np.isnan(stats["skewness"]))
 
 
+class FinalCheckpointTests(unittest.TestCase):
+    def setUp(self):
+        self.helpers = notebook_helpers("final-checkpoint")
+        self.counts = [dict(hapi="first", rreshta_para=10, kolona_para=2, rreshta_pas=9, kolona_pas=2),
+                       dict(hapi="freeze", rreshta_para=9, kolona_para=2, rreshta_pas=9, kolona_pas=2)]
+        self.log = pd.DataFrame([{**row, "hapi": "02_clean:" + row["hapi"], "input": "raw.csv",
+                                  "arsyeja": "reason", "output": "clean.csv", "commit": "message"}
+                                 for row in self.counts])
+
+    def test_complete_log_and_unrelated_steps(self):
+        other = self.log.iloc[[0]].assign(hapi="01:quality")
+        log = pd.concat([other, self.log], ignore_index=True)
+        result = self.helpers["validate_cleaning_log"](log, self.counts, (10, 2), (9, 2))
+        self.assertEqual(len(result), 2)
+
+    def test_reject_missing_duplicate_or_reordered_steps(self):
+        for log in [self.log.iloc[:1], pd.concat([self.log, self.log.iloc[:1]]), self.log.iloc[::-1]]:
+            with self.assertRaises(AssertionError):
+                self.helpers["validate_cleaning_log"](log, self.counts, (10, 2), (9, 2))
+
+    def test_reject_incorrect_dimensions_and_blank_reason(self):
+        for field, value in [("rreshta_para", 8), ("arsyeja", " ")]:
+            log = self.log.copy()
+            log.loc[1, field] = value
+            with self.assertRaises(AssertionError):
+                self.helpers["validate_cleaning_log"](log, self.counts, (10, 2), (9, 2))
+
+    def test_freeze_allows_identical_content_only(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "checkpoint.csv"
+            self.helpers["ensure_frozen_content"](path, b"first")
+            path.write_bytes(b"first")
+            self.helpers["ensure_frozen_content"](path, b"first")
+            with self.assertRaises(ValueError):
+                self.helpers["ensure_frozen_content"](path, b"different")
+            self.assertEqual(path.read_bytes(), b"first")
+
+    def test_saved_checkpoint_matches_manifest_and_log(self):
+        import hashlib
+        root = NOTEBOOK.parent.parent
+        manifest = json.loads((root / "processed/biodiversity_clean_manifest.json").read_text())
+        for key in ["source", "dataset", "schema"]:
+            actual = hashlib.sha256((root / manifest[key]).read_bytes()).hexdigest()
+            self.assertEqual(actual, manifest[key + "_sha256"])
+        log = pd.read_csv(root / manifest["log"])
+        own = log.loc[log["hapi"].str.startswith("02_clean:")]
+        self.assertEqual(len(own), manifest["cleaning_steps"])
+        self.assertEqual(hashlib.sha256(own.to_csv(index=False).encode("utf-8")).hexdigest(), manifest["cleaning_log_sha256"])
+        counts = pd.read_csv(root / "reports/numerimet_e_pastrimit.csv").to_dict("records")
+        self.helpers["validate_cleaning_log"](log, counts, (46831, 42), (manifest["rows"], manifest["column_count"]))
+        data = pd.read_csv(root / manifest["dataset"], low_memory=False)
+        self.assertEqual(data.shape, (manifest["rows"], manifest["column_count"]))
+        self.assertTrue(data["gbifID"].is_unique)
+        self.assertFalse(data["elevation"].eq(0).any())
+
+
 if __name__ == "__main__":
     unittest.main()

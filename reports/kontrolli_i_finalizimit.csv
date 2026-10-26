@@ -1,0 +1,14 @@
+kontrolli,kalon
+Origjinali nuk ndryshoi,True
+gbifID është unik dhe i plotë,True
+Hiqen vetëm duplikatet e miratuara,True
+Ruhet numri i pritshëm i rreshtave,True
+Nuk mbetet elevation zero,True
+Flamuri elevation përputhet me mungesën,True
+individualCount ruan të gjitha vlerat dhe mungesat,True
+Flamuri individualCount përputhet me mungesën,True
+Datat e parsueshme kanë rend të vlefshëm,True
+Ruhet emri origjinal i komunës,True
+Log-u përmban çdo hap të këtij ekzekutimi në rend,True
+CSV final rikthen vlerat dhe tipet me schema,True
+CSV final është identik me rezultatin e ekzekutuar,True
