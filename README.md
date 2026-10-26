@@ -252,6 +252,7 @@ Current scope for notebook 02: tasks through the individualCount decision (24 Oc
 - [ ] **Binarization** – one-hot encode `kingdom`, `basisOfRecord`; convert `strictlyProtected` and `iasUnionConcern` to 0/1
 - [x] Log transform: `individualCount_log1p` and `coordinateUncertaintyInMeters_log1p`. On the cleaned dataset, skewness falls from 26.63 to 2.07 and from 101.73 to −1.00. Missing values stay missing. Function `add_log1p()` in notebook 03 → [`reports/transformimi_log1p.md`](reports/transformimi_log1p.md)
 - [x] PCA scaling: Z-scores of the municipality × `taxon_group` record proportions. `year`, latitude and longitude are not scaled. Function `standardize_pca_matrix()` in notebook 03 → [`reports/shkallezimi_pca.md`](reports/shkallezimi_pca.md)
+- [x] PCA: PC1–PC3 on the standardized municipality × `taxon_group` matrix. Components with `explained_variance_` above 1 are kept; cumulative `explained_variance_ratio_` is 0.770411. PC6 is 0 because the six proportions sum to 1. Function `run_municipality_pca()` in notebook 03 → [`reports/pca_komunat.md`](reports/pca_komunat.md)
 - [ ] **Transformation** – normalize/scale numeric attributes (`elevation`, `individualCount`), apply log transform to skewed counts
 
 Current outputs:
@@ -266,5 +267,6 @@ Current outputs:
 - [`reports/kodimi_iucn_dhe_flamujve.md`](reports/kodimi_iucn_dhe_flamujve.md) – IUCN rank, `iucn_evaluated`, and the 10 serious-flag columns
 - [`reports/transformimi_log1p.md`](reports/transformimi_log1p.md) – skewness before and after `log1p` for counts and coordinate uncertainty
 - [`reports/shkallezimi_pca.md`](reports/shkallezimi_pca.md) – Z-scores of municipality by taxon-group record proportions for PCA
+- [`reports/pca_komunat.md`](reports/pca_komunat.md) – variance, loadings and municipality scores in [`processed/pca_municipalities.csv`](processed/pca_municipalities.csv)
 
 ---
