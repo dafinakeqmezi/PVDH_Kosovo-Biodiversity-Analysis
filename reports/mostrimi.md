@@ -1,12 +1,12 @@
 # Mostrimi
 
-**Versioni:** 1.0  
+**Versioni:** 1.1  
 **Data:** 27.10.2026  
 **Statusi:** `processed/sample_random.csv`, `processed/sample_stratified.csv` dhe tabela e krahasimit.
 
 ## Varësia
 
-Mostrat nxirren nga dataset-i origjinal (46,831 rreshta), si gjithë puna deri te checkpoint-i. Llogaritja është te seksioni 7 i `notebooks/01_mbledhja_kualiteti.ipynb`. Mostrat ruajnë 42 kolonat ashtu siç janë në CSV-në burimore. Interpretimi i plotë (kur përdoret secila mostër dhe si ndikon anshmëria) vjen te detyra e 25 tetorit.
+Mostrat nxirren nga dataset-i origjinal (46,831 rreshta), si gjithë puna deri te checkpoint-i. Llogaritja është te seksioni 7 i `notebooks/01_mbledhja_kualiteti.ipynb`. Mostrat ruajnë 42 kolonat ashtu siç janë në CSV-në burimore. Interpretimi (kur përdoret secila mostër dhe si ndikon anshmëria) është te seksioni "Përfundimi" më poshtë.
 
 ## Metoda
 
@@ -91,6 +91,49 @@ Shtresëzimi sipas klasës nuk e përmirëson shpërndarjen sipas rajonit: të d
 - **Rreshtat pa `class` janë shtresë më vete.** Kështu mostra i ruan edhe mungesat në të njëjtën përqindje (0.83%), në vend që t'i hedhë ose t'i përzjejë me klasat e tjera.
 - **Pa minimum prej 1 rreshti për klasë.** Me minimum, 27 klasa me 1–2 regjistrime do të futeshin me peshë deri në 5 herë më të madhe se në dataset. Shpërndarja do të prishej për të fituar klasa që nuk mund të analizohen me 1 rresht. Për grupe të rralla përdoret dataset-i i plotë.
 - **Përfundimi i krahasimit:** **mostra e shtresëzuar e ruan më mirë shpërndarjen sipas klasës.** TVD e saj është 0.104 pp kundrejt 0.703 pp, dhe diferenca maksimale 0.006 pp kundrejt 0.222 pp. Mostra e rastësishme mbetet si referencë pa supozime për variablat që nuk janë të shtresëzuara.
+
+## Përfundimi: kur përdoret secila mostër dhe anshmëria (25 tetor)
+
+Numrat janë nga dataset-i origjinal (46,831 rreshta) dhe nga tabelat e seksioneve 7 dhe 7.2.
+
+### Cila mostër e ruan më mirë shpërndarjen
+
+**Mostra e shtresëzuar sipas klasës.** Ajo e ruan % e çdo klase brenda **0.006 pp**, me TVD **0.104 pp**. Mostra e rastësishme ka diferencë maksimale **0.222 pp** dhe TVD **0.703 pp**. Dallimi nuk varet nga fara: me 200 vlera të `random_state`, mostra e rastësishme ka mesatarisht 0.89 pp TVD, dhe në 95% të rasteve nën 1.36 pp. Te variablat që nuk janë të shtresëzuara, si rajoni, të dyja mostrat janë njësoj afër dataset-it (deri në ~0.6 pp).
+
+### Kur përdoret secila
+
+| Përdorimi | Mostra |
+|---|---|
+| Eksplorim dhe grafikë sipas grupit taksonomik; provë e shpejtë e kodit të Pjesës II | **e shtresëzuar** (përbërja taksonomike e saktë) |
+| Vlerësime për variabla që nuk janë të shtresëzuara (rajoni, koha, burimi) dhe si referencë pa supozime | **e rastësishme** |
+| Numri i specieve, speciet e kërcënuara, speciet e rralla, speciet për komunë, numrat finalë të raportit | **asnjëra, dataset-i i plotë** |
+
+Arsyeja e rreshtit të fundit: secila mostër ruan vetëm **1,909 nga 4,095 specie (46.6%)**, **14 nga 37 speciet e kërcënuara**, dhe vetëm 365–378 nga 1,727 speciet me një regjistrim. Mostrimi i ruan përqindjet e regjistrimeve, por jo pasurinë e specieve.
+
+### Si ndikon anshmëria
+
+Të dyja mostrat e **përsërisin anshmërinë** e dataset-it, sepse e marrin atë nga burimi:
+
+| Treguesi | Dataset-i | E rastësishme | E shtresëzuar |
+|---|---:|---:|---:|
+| Graçanicë | 31.33% | 31.19% | 31.49% |
+| pika e Ligatinave të Henc | 27.86% | 27.66% | 28.01% |
+| eBird | 55.54% | 55.71% | 55.72% |
+| një vëzhgues (obsr1505715) | 35.18% | 35.44% | 35.35% |
+| zogj (Aves) | 61.47% | 61.58% | 61.47% |
+
+Një mostër përfaqësuese e dataset-it është përfaqësuese edhe e anshmërisë së tij. Graçanica mbetet me rreth një të tretën e regjistrimeve në çdo mostër. Mostrimi nuk e korrigjon anshmërinë. Për ta zvogëluar, Pjesa II mund të përdorë:
+- shtresëzim sipas rajonit ose burimit;
+- kufi për numrin e regjistrimeve për pikë dhe ditë;
+- analizë të kontrollit pa eBird ose pa pikën e Henc-it.
+
+Por atëherë mostra nuk përfaqëson më dataset-in, por një dizajn të zgjedhur, dhe kjo duhet shkruar.
+
+### Përfundimi
+
+**Mostra e shtresëzuar është zgjedhja e parazgjedhur për eksplorim.** Mostra e rastësishme përdoret si referencë, dhe dataset-i i plotë për çdo numër final dhe për çdo analizë të specieve. Asnjë mostër nuk e heq anshmërinë e vëzhgimit. Ajo trajtohet me normalizim (seksioni 6: specie/km², regjistrime/1,000 banorë) dhe me kontrolle pa burimet dominuese.
+
+Tabelat: `reports/01_mostrimi_anshmeria.csv` dhe `reports/01_mostrimi_speciet.csv` (seksioni 7.2 i notebook-ut).
 
 ## Dokumentimi i detyrës
 
