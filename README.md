@@ -6,6 +6,7 @@
       <p>Faculty of Electrical and Computer Engineering</p>
       <p>Computer and Software Engineering — Master's Program</p>
       <p>Professor: Prof. Mergim Hoti</p>
+      <p>Assistant: Blend Berisha</p>
       <p>Course: Data Preparation and Visualization</p>
     </td>
  </tr>
@@ -197,6 +198,7 @@ Key findings (full tables in [`reports/`](reports/)):
 - [x] **Sampling** – random sample (10,000) and sample stratified by class (proportional), `random_state = 42`, with the % by class compared to the full dataset → [`processed/sample_random.csv`](processed/sample_random.csv), [`processed/sample_stratified.csv`](processed/sample_stratified.csv), [`reports/mostrimi.md`](reports/mostrimi.md)
 - [x] Sampling conclusion: the stratified sample keeps the class distribution best; both samples keep the bias (Graçanica ~31%) and only 46.6% of species, so species analyses use the full dataset → section 7.3 of the notebook, [`reports/mostrimi.md`](reports/mostrimi.md)
 - [x] Recalculation on the cleaned data (Deliza's checkpoint, 46,456 rows): integration and aggregates re-run with logic verified against v1; only record counts change (−375 duplicates, −0.80%), no species, class, year or municipality lost → `processed/agg_*_v2.csv`, [`reports/rikalkulimi.md`](reports/rikalkulimi.md)
+- [x] Report sections (Dafina): collection, sources, types, quality, integration, aggregation and sampling, with numbers from the notebook → [`reports/raporti_seksionet_dafina.md`](reports/raporti_seksionet_dafina.md)
 - [ ] **Cleaning** – apply the documented column-specific decisions, use species-level exclusions only where needed, and fix inconsistent text values
 - [ ] **Apply missing-value strategy** – implement [`reports/strategjia_e_mungesave.md`](reports/strategjia_e_mungesave.md) in a derived dataset and log transformations; recover only explicit date components, use analysis-specific exclusions, and verify protection coverage before assigning "Not protected"
 - [x] Apply column removals, confirmed missing tokens and missingness flags to a separate working dataset; initially flag zero elevations, then replace them in the invalid-value step
