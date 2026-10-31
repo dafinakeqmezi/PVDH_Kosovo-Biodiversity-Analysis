@@ -216,7 +216,7 @@ Goal: prepare the dataset for analysis and visualization.
 | Cleaning | done | 02 | `reports/finalizimi_i_datasetit.md`, `validimi.md`, `processed/cleaning_log.csv` |
 | Missing values | done | 02 | `reports/strategjia_e_mungesave.md`, `vendimet_per_mungesat_strukturore.md`, `vendimi_per_numrin_e_individeve.md` |
 | Dimensionality reduction | done | 03 | redundant columns dropped (`reports/redundanca.md`, `zgjedhja_e_vetive.md`); municipality PCA (`reports/pca_komunat.md`) |
-| Feature subset selection | done | 03 | `reports/zgjedhja_e_vetive.md` |
+| Feature subset selection | done | 03 | `reports/rendesia_e_kolonave.md` (analytical importance of each column), `zgjedhja_e_vetive.md` |
 | Feature creation | done | 03 | `reports/vetite_kohore.md`, `vetite_taksonomike.md`, `vetite_e_burimit.md` |
 | Discretization | done | 03 | `reports/zona_e_lartesise.md`, `periudhat_kohore.md`, `klasa_e_numrit.md` |
 | Binarization | done | 03 | `reports/kolonat_dummy.md`, `kodimi_iucn_dhe_flamujve.md` |
@@ -242,6 +242,25 @@ Key findings (full tables in [`reports/`](reports/)):
 - 3,634 records have `elevation = 0` (37% of filled elevations), which acts as a placeholder for "unknown"
 - `individualCount` is highly skewed (median 2, max 10,200); `coordinateUncertaintyInMeters` reaches 4,226 km
 - All coordinates fall inside Kosovo; no future dates; `eventDate` and `year` are consistent
+
+Tables written by notebook 01 (`reports/`):
+
+| Notebook section | Tables |
+|---|---|
+| §3.1–3.4 First quality checks | [`01_vlerat_e_zbrazeta.csv`](reports/01_vlerat_e_zbrazeta.csv), [`01_kontrollet_e_kualitetit.csv`](reports/01_kontrollet_e_kualitetit.csv) |
+| §2 Types | [`01_tipet_e_kolonave.csv`](reports/01_tipet_e_kolonave.csv) |
+| §3.5 GBIF flags | [`01_flamujt_gbif.csv`](reports/01_flamujt_gbif.csv) |
+| §3.7 Quality framework | [`01_korniza_e_kualitetit.csv`](reports/01_korniza_e_kualitetit.csv) |
+| §3.8 Completeness | [`01_plotesia_kolona.csv`](reports/01_plotesia_kolona.csv), [`01_plotesia_rreshta.csv`](reports/01_plotesia_rreshta.csv) |
+| §3.9 Validity | [`01_vlefshmeria_rregullat.csv`](reports/01_vlefshmeria_rregullat.csv), [`01_vlefshmeria.csv`](reports/01_vlefshmeria.csv), [`01_formatet_e_datave.csv`](reports/01_formatet_e_datave.csv), [`01_pasiguria_vlerat.csv`](reports/01_pasiguria_vlerat.csv), [`01_lartesia_jashte_diapazonit.csv`](reports/01_lartesia_jashte_diapazonit.csv) |
+| §3.10 Uniqueness | [`01_unikaliteti.csv`](reports/01_unikaliteti.csv), [`01_duplikatet_sipas_llojit.csv`](reports/01_duplikatet_sipas_llojit.csv), [`01_duplikatet_shqyrtimi.csv`](reports/01_duplikatet_shqyrtimi.csv) |
+| §3.11 Consistency and bias | [`01_konsistenca.csv`](reports/01_konsistenca.csv), [`01_anshmeria_klasa.csv`](reports/01_anshmeria_klasa.csv), [`01_anshmeria_rajoni.csv`](reports/01_anshmeria_rajoni.csv), [`01_anshmeria_burimi.csv`](reports/01_anshmeria_burimi.csv), [`01_anshmeria_perqendrimi.csv`](reports/01_anshmeria_perqendrimi.csv), [`01_anshmeria_paragrafi.md`](reports/01_anshmeria_paragrafi.md) |
+| §5.2 Join | [`01_bashkimi_celesat.csv`](reports/01_bashkimi_celesat.csv), [`01_bashkimi_kontrolli.csv`](reports/01_bashkimi_kontrolli.csv) |
+| §6 Aggregation by municipality | [`01_hartezimi_i_grupeve_taksonomike.csv`](reports/01_hartezimi_i_grupeve_taksonomike.csv) |
+| §6.2 Aggregation by time | [`01_koha_sipas_dekades.csv`](reports/01_koha_sipas_dekades.csv), [`01_koha_sipas_muajit.csv`](reports/01_koha_sipas_muajit.csv) |
+| §6.3 Species and district | [`01_specie_permbledhje.csv`](reports/01_specie_permbledhje.csv), [`01_specie_te_kercenuara.csv`](reports/01_specie_te_kercenuara.csv) |
+| §7 Sampling | [`01_mostrimi_krahasimi_klasa.csv`](reports/01_mostrimi_krahasimi_klasa.csv), [`01_mostrimi_permbledhje.csv`](reports/01_mostrimi_permbledhje.csv), [`01_mostrimi_krahasimi_rajoni.csv`](reports/01_mostrimi_krahasimi_rajoni.csv), [`01_mostrimi_anshmeria.csv`](reports/01_mostrimi_anshmeria.csv), [`01_mostrimi_speciet.csv`](reports/01_mostrimi_speciet.csv) |
+| §8 Recalculation | [`01_rikalkulimi_diferencat.csv`](reports/01_rikalkulimi_diferencat.csv), [`01_rikalkulimi_komunat.csv`](reports/01_rikalkulimi_komunat.csv), [`01_rikalkulimi_klasat.csv`](reports/01_rikalkulimi_klasat.csv), [`01_rikalkulimi_vitet.csv`](reports/01_rikalkulimi_vitet.csv), [`01_rikalkulimi_speciet.csv`](reports/01_rikalkulimi_speciet.csv) |
 
 ### 2. Integration, aggregation, sampling, cleaning and missing values — [`02_pastrimi.ipynb`](notebooks/02_pastrimi.ipynb)
 - [x] Create the documentation template and `log_step()` helper for cleaning steps
@@ -292,7 +311,7 @@ Current outputs:
 - [x] Normalize category whitespace and case variants; preserve `municipality_original` and derive `municipality_sq`
 - [`reports/kategorite_para_pas.csv`](reports/kategorite_para_pas.csv), [`reports/permbledhja_e_pastrimit_te_kategorive.csv`](reports/permbledhja_e_pastrimit_te_kategorive.csv), [`reports/emrat_shqip_te_komunave.csv`](reports/emrat_shqip_te_komunave.csv) and [`reports/pastrimi_i_kategorive.md`](reports/pastrimi_i_kategorive.md) – category mappings, counts and rationale
 
-- [x] Apply the zero-elevation decision and add coordinate-uncertainty status and nullable `is_species_level`, without deleting rows or other extreme values. The uncertainty threshold combines the observed positive median with the smallest known municipality's equivalent radius; it is a screening policy, not GIS verification. See [`reports/vendimi_per_vlerat_e_pavlefshme.md`](reports/vendimi_per_vlerat_e_pavlefshme.md) and [`reports/rregullat_e_vlerave_te_pavlefshme.csv`](reports/rregullat_e_vlerave_te_pavlefshme.csv).
+- [x] Apply the zero-elevation decision and add coordinate-uncertainty status and nullable `is_species_level`, without deleting rows or other extreme values. The uncertainty threshold combines the observed positive median with the smallest known municipality's equivalent radius; it is a screening policy, not GIS verification. See [`reports/vendimi_per_vlerat_e_pavlefshme.md`](reports/vendimi_per_vlerat_e_pavlefshme.md) and [`reports/rregullat_e_vlerave_te_pavlefshme.csv`](reports/rregullat_e_vlerave_te_pavlefshme.csv). Supporting tables: [`reports/shperndarja_e_pasigurise.csv`](reports/shperndarja_e_pasigurise.csv), [`reports/frekuencat_e_pasigurise.csv`](reports/frekuencat_e_pasigurise.csv), [`reports/pasiguria_sipas_komunes.csv`](reports/pasiguria_sipas_komunes.csv), [`reports/shkalla_hapesinore_e_komunave.csv`](reports/shkalla_hapesinore_e_komunave.csv), [`reports/ndjeshmeria_e_pragut_te_pasigurise.csv`](reports/ndjeshmeria_e_pragut_te_pasigurise.csv), [`reports/niveli_taksonomik.csv`](reports/niveli_taksonomik.csv).
 
 - [x] Analyze `individualCount` missingness and distribution overall and by source, record basis, class and district. Keep missing counts without imputation; preserve the existing missingness flag. See [`reports/vendimi_per_numrin_e_individeve.md`](reports/vendimi_per_numrin_e_individeve.md), [`reports/shperndarja_e_numrit_te_individeve.csv`](reports/shperndarja_e_numrit_te_individeve.csv), [`reports/numri_i_individeve_sipas_grupeve.csv`](reports/numri_i_individeve_sipas_grupeve.csv) and [`reports/numri_i_individeve_para_pas.csv`](reports/numri_i_individeve_para_pas.csv).
 
@@ -320,6 +339,7 @@ Current scope for notebook 02: cleaning finalized through the 25 October checkpo
 - [x] Feature build: `build_features(df, datasets)` runs the nine occurrence-level feature steps on the 46,456-row checkpoint and adds 45 columns. Municipality PCA stays a separate matrix. Function in notebook 03 → [`reports/lista_e_vetive.md`](reports/lista_e_vetive.md)
 
 Current outputs:
+- [`reports/rendesia_e_kolonave.md`](reports/rendesia_e_kolonave.md) – analytical importance (high / medium / low) of the 42 columns for the project questions
 - [`reports/zgjedhja_e_vetive.md`](reports/zgjedhja_e_vetive.md) – final column decision; the original CSV is unchanged
 - [`reports/vetite_kohore.md`](reports/vetite_kohore.md) – month-to-season mapping and the `is_recent` threshold
 - [`reports/vetite_taksonomike.md`](reports/vetite_taksonomike.md) – class-to-group mapping and the IUCN decision, including the `EX` row
