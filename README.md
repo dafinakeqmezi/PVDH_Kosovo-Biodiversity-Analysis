@@ -204,36 +204,4 @@ Other observations:
 
 Report sections: [`reports/raporti_pjesa_1.md`](reports/raporti_pjesa_1.md) (collection to sampling).
 
-## Phase I – Data Preprocessing (15%)
-
-Goal: prepare the dataset for analysis and visualization.
-
-### Phase I checklist
-
-| Requirement | Status | Notebook | Main documents |
-|---|---|---|---|
-| Data collection | done | 01, 01b | README "Dataset", `reports/fjalori_i_te_dhenave.md` |
-| Data types | done | 01 §2 | `reports/tipet_e_te_dhenave.md` |
-| Data quality | done | 01 §3 | `reports/korniza_e_kualitetit.md`, `plotesia.md`, `vlefshmeria.md`, `flamujt_gbif.md`, `unikaliteti.md`, `konsistenca_dhe_anshmeria.md` |
-| Integration | done | 01 §5, 02 | `reports/burimet_e_te_dhenave_te_komunave.md`, `bashkimi_i_komunave.md`; cross-source duplicates and category harmonization in `largimi_i_duplikateve.md`, `pastrimi_i_kategorive.md` |
-| Aggregation | done | 01 §6, §8 | `reports/agregimi_sipas_komunes.md`, `agregimi_sipas_kohes.md`, `agregimi_sipas_specieve_dhe_rajonit.md`, `rikalkulimi.md`. IUCN: threatened species per municipality and the IUCN category of each species |
-| Sampling | done | 01 §7 | `reports/mostrimi.md` |
-| Cleaning | done | 02 | `reports/finalizimi_i_datasetit.md`, `validimi.md`, `processed/cleaning_log.csv` |
-| Missing values | done | 02 | `reports/strategjia_e_mungesave.md`, `vendimet_per_mungesat_strukturore.md`, `vendimi_per_numrin_e_individeve.md` |
-| Dimensionality reduction | done | 03 | redundant columns dropped (`reports/redundanca.md`, `zgjedhja_e_vetive.md`); municipality PCA (`reports/pca_komunat.md`) |
-| Feature subset selection | done | 03 | `reports/rendesia_e_kolonave.md` (analytical importance of each column), `zgjedhja_e_vetive.md` |
-| Feature creation | done | 03 | `reports/vetite_kohore.md`, `vetite_taksonomike.md`, `vetite_e_burimit.md` |
-| Discretization | done | 03 | `reports/zona_e_lartesise.md`, `periudhat_kohore.md`, `klasa_e_numrit.md` |
-| Binarization | done | 03 | `reports/kolonat_dummy.md`, `kodimi_iucn_dhe_flamujve.md` |
-| Transformation | done | 03 | `reports/transformimi_log1p.md`, `shkallezimi_pca.md` |
-
-Key findings (full tables in [`reports/`](reports/)):
-- `eventDate` uses 11 different ISO 8601 formats, including year-only, year-month and date ranges (447 records); the start date and its precision were extracted
-- 3,336 records share the same taxon, coordinates and date (possible duplicates across sources)
-- 3,634 records have `elevation = 0` (37% of filled elevations), which acts as a placeholder for "unknown"
-- `individualCount` is highly skewed (median 2, max 10,200); `coordinateUncertaintyInMeters` reaches 4,226 km
-- All coordinates fall inside Kosovo; no future dates; `eventDate` and `year` are consistent
-
-Tables written by notebook 01 (`reports/`):
-
 ---
