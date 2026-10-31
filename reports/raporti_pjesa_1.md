@@ -483,8 +483,8 @@ Verifikimi vetëm për lexim është dokumentuar te [verifikimi i të dhënave t
 - Datat 30 nëntor të dyshuara si placeholder nuk janë konfirmuar nga burimi dhe nuk u ndryshuan.
 - Numri i regjistrimeve ndikohet nga përpjekja e vëzhgimit. Mostrimi dhe normalizimi nuk e zhdukin anshmërinë.
 - Nënbashkësia prej 29 kolonash është vendim analitik; CSV-ja e plotë e vetive ka 128 kolona. Nuk paraqitet si një skedar i eksportuar me vetëm 29 kolona.
-- Notebook-u 03 ofron funksionet e ndërtimit të vetive dhe PCA-së; mungon një qelizë fundore që lexon input-et, thërret këto funksione dhe eksporton të gjitha daljet. Rezultatet e ruajtura mund të verifikohen, por Restart & Run All nuk mjafton ende për rigjenerimin e tyre.
-- Prezantimi, prova në mjedis të pastër, versionet e varësive dhe etiketa Git e dorëzimit mbeten kontrolle më vete.
+- Notebook-u 03 ka qelizën e ekzekutimit dhe eksportimit të vetive dhe PCA-së. Pipeline-i kaloi në një venv të ri me Python 3.13.5; varësitë janë të fiksuara. [Raporti i riprodhueshmërisë](riprodhueshmeria.md) dokumenton rendin dhe kufizimet e provës.
+- Citimi GBIF dhe veprimet e dorëzimit mbeten për përfundim sipas [listës së dorëzimit](lista_e_dorezimit.md).
 
 ## 7. Dokumentimi i raportit
 

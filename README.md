@@ -25,7 +25,9 @@ Academic Year: 2026 / 2027
 
 The consolidated [Part I report](reports/raporti_pjesa_1.md) covers all preprocessing stages by topic, without individual task attribution. Detailed task reports and CSV tables remain supporting evidence.
 
-The [processed-output audit](reports/verifikimi_i_te_dhenave_te_perpunuara.md) reports 22 passing checks. Run `python scripts/verify_processed.py` for read-only verification. The samples use the original data, not the cleaned checkpoint; they contain 85 and 89 IDs subsequently removed as duplicates. Saved feature/PCA outputs match their inputs, but notebook 03 still needs an end-to-end execution/export cell for full reproducibility.
+The GBIF download DOI/date remain unconfirmed; no citation was invented.
+
+The [processed-output audit](reports/verifikimi_i_te_dhenave_te_perpunuara.md) reports 22 passing checks. Run `python scripts/verify_processed.py` for read-only verification. The samples use the original data, not the cleaned checkpoint; they contain 85 and 89 IDs subsequently removed as duplicates. Notebook 03 now executes and exports its outputs end to end. The full pipeline passed in a fresh environment; see the [reproducibility report](reports/riprodhueshmeria.md) and [submission checklist](reports/lista_e_dorezimit.md).
 
 ## Repository structure
 
@@ -58,18 +60,23 @@ PVDH/
 
 ```bash
 python -m venv .venv
-.venv\Scripts\activate
+source .venv/bin/activate
 pip install -r requirements.txt
+python scripts/run_pipeline.py
 ```
 
-The notebooks were run with Python 3.14 and pandas 3.0.1. Run them from the repository root (or from `notebooks/`; the paths are resolved in both cases) in this order:
+Tested with Python 3.13.5 and pandas 3.0.6 in a newly installed virtual environment on macOS arm64. On Windows use `.venv\Scripts\activate` instead. Direct dependencies are pinned in `requirements.txt`; `requirements-lock.txt` records the complete tested macOS environment.
+
+`run_pipeline.py` executes in a temporary local clone and prints the paths to the execution record and executed notebooks. It uses the invoking Python environment for every kernel and leaves this checkout's data unchanged. Keep the Git history containing duplicate-reference commit `d2708c6`. The bootstrap pass regenerates the municipality reference table before cleaning; this avoids the dependency between notebook 02 and notebook 01's final aggregate section.
+
+For manual execution, use the repo root or `notebooks/` as working directory. With the committed municipality reference table available, use the following order. For regeneration without existing derived files, use the script's bootstrap pass first:
 
 | Order | Notebook | Input | Output |
 |---|---|---|---|
 | 1 | `01b_analiza_burimeve.ipynb` | original dataset, GBIF API (results cached in `processed/gbif_datasets_cache.csv`; internet only for datasets not yet cached) | `processed/sources_summary.csv` |
-| 2 | `02_pastrimi.ipynb` | original dataset; duplicate candidates read from Git commit `d2708c6` | `processed/biodiversity_clean.csv` (frozen: the notebook refuses to overwrite it with different content), `processed/cleaning_log.csv` |
+| 2 | `02_pastrimi.ipynb` | original dataset, `municipalities.csv`; duplicate candidates read from Git commit `d2708c6` | `processed/biodiversity_clean.csv` (frozen: the notebook refuses to overwrite it with different content), `processed/cleaning_log.csv` |
 | 3 | `01_mbledhja_kualiteti.ipynb` | original dataset; `add_taxon_features()` read from `03_vetite.ipynb`; `biodiversity_clean.csv` for section 8 | `reports/01_*.csv`, `processed/municipalities.csv`, aggregates (`agg_*.csv`, `agg_*_v2.csv`), samples |
-| 4 | `03_vetite.ipynb` | `biodiversity_clean.csv` (features); `processed/agg_municipality_taxon.csv` (PCA matrix, original data; `agg_municipality_taxon_v2.csv` is the cleaned version) | feature functions (`build_features()`), `processed/biodiversity_features.csv`, `processed/matrica_pca_komuna_taxon.csv`, `processed/pca_municipalities.csv` |
+| 4 | `03_vetite.ipynb` | cleaned CSV/schema/manifest, publisher cache, municipality taxon matrices v1/v2 | `biodiversity_features.csv`, standardized matrices and PCA scores for both v1 and v2; the final execution cell exports all five files |
 
 To run a notebook from start to end without opening it (the same as Restart & Run All):
 
@@ -327,7 +334,7 @@ Current outputs:
 
 Current scope for notebook 02: cleaning finalized through the 25 October checkpoint; team notification still requires confirmation. Dafina's candidate analysis is read from Git commit `d2708c640de830014edf4c4f35a528849c98455f`; run `git fetch origin` first if that commit is unavailable locally. No teammate files are overwritten by this import. Protected-area replacement uses the user's clarification of dataset semantics, with that source and its limits documented. Zero elevations are missing in the final CSV, while `elevation_was_zero` preserves their provenance. Individual counts are not imputed: 17,587 missing values remain among 46,456 records. The notebook verifies all its cleaning-log steps and refuses to overwrite a frozen checkpoint with different content. Subsequent corrections require an agreed new version. Teammates must regenerate aggregates, samples, features and PCA from this final input as applicable; notebook 02 does not regenerate their results.
 
-- [x] Group report, cleaning and validation: missing values, applied strategy, conversions, duplicates, cleaning, log summary and validation → [`reports/raporti_pjesa_1.md`](reports/raporti_pjesa_1.md). This documentation does not change the frozen checkpoint or mark presentation/full-pipeline checks complete.
+- [x] Group report, cleaning and validation: missing values, applied strategy, conversions, duplicates, cleaning, log summary and validation → [`reports/raporti_pjesa_1.md`](reports/raporti_pjesa_1.md). This documentation does not change the frozen checkpoint. Full-pipeline verification is documented in [`reports/riprodhueshmeria.md`](reports/riprodhueshmeria.md).
 
 ### 3. Dimensionality reduction, feature selection, feature creation, discretization, binarization and transformation — [`03_vetite.ipynb`](notebooks/03_vetite.ipynb)
 - [x] Document preprocessing plan v1 with decision and rationale

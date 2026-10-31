@@ -21,7 +21,8 @@ PROCESSED = ROOT / "processed"
 
 def cells(name):
     notebook = json.loads((ROOT / "notebooks" / name).read_text())
-    return ["".join(c["source"]) for c in notebook["cells"] if c["cell_type"] == "code"]
+    return ["".join(c["source"]) for c in notebook["cells"]
+            if c["cell_type"] == "code" and c.get("id") != "execute-feature-pipeline"]
 
 
 def definitions(source, namespace, functions, assignments=()):

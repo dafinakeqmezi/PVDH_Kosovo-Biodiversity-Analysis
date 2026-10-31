@@ -42,7 +42,7 @@ Këto nuk janë mostra të pastrimit. Janë të vlefshme për krahasimin e metod
 - Krahasimi konfirmon konsistencën me kodin dhe input-et lokale; nuk provon saktësinë biologjike ose gjeografike të burimit.
 - Nuk u rikontrolluan burimet e jashtme/API dhe nuk u krye verifikim GIS i zonave të mbrojtura.
 - Për shumicën e daljeve përdoren funksionet ekzistuese për rindërtim, krahas kontrolleve të pavarura për ID, one-hot, rangun IUCN dhe log1p. Një gabim konceptual i përbashkët mes kodit dhe vendimit mund të kërkojë shqyrtim tjetër.
-- Notebook-u 03 përmban funksionet por jo një qelizë fundore që lexon input-et, i thërret dhe eksporton të gjitha daljet. Verifikimi i rezultateve të ruajtura kalon, por kjo nuk është provë e riprodhueshmërisë me Restart & Run All në mjedis të pastër.
+- Notebook-u 03 tani ka qelizë fundore që lexon input-et, thërret funksionet dhe eksporton daljet. Prova e veçantë në mjedis të pastër përfundoi me sukses; shih [riprodhueshmërinë](riprodhueshmeria.md). Ky audit vetë mbetet vetëm për lexim.
 - Vlerat ekstreme të ruajtura, NaN-të e lejuara, kufijtë e diskretizimit dhe supozimi semantik për protectedArea mbeten kufizime të dokumentuara, jo gabime që korrigjohen automatikisht këtu.
 
 ## Riekzekutimi

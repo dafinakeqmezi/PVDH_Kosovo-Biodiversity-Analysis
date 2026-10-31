@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-31",
+  "python": "3.13.5 (main, Jun 11 2025, 15:36:57) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "platform": "macOS arm64",
+  "isolated_venv": true,
+  "isolated_local_clone": true,
+  "source_data_unchanged": true,
+  "retained_inputs": [
+    "gbif_datasets_cache.csv",
+    "biodiversity_clean.csv",
+    "biodiversity_clean_schema.json",
+    "biodiversity_clean_manifest.json"
+  ],
+  "stages": [
+    {
+      "stage": "01b_analiza_burimeve.ipynb",
+      "status": "PASS",
+      "seconds": 5.87
+    },
+    {
+      "stage": "01_mbledhja_kualiteti.ipynb (bootstrap before clean aggregates)",
+      "status": "PASS",
+      "seconds": 6.19
+    },
+    {
+      "stage": "02_pastrimi.ipynb",
+      "status": "PASS",
+      "seconds": 13.92
+    },
+    {
+      "stage": "01_mbledhja_kualiteti.ipynb",
+      "status": "PASS",
+      "seconds": 6.84
+    },
+    {
+      "stage": "03_vetite.ipynb",
+      "status": "PASS",
+      "seconds": 14.9
+    },
+    {
+      "stage": "saved-output audit and tests",
+      "status": "PASS"
+    }
+  ],
+  "output_checks": {
+    "passed": 22,
+    "failed": 0
+  },
+  "unit_tests": {
+    "passed": 14,
+    "failed": 0
+  }
+}
