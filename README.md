@@ -337,6 +337,7 @@ Current scope for notebook 02: cleaning finalized through the 25 October checkpo
 - [x] PCA: PC1–PC3 on the standardized municipality × `taxon_group` matrix. Components with `explained_variance_` above 1 are kept; cumulative `explained_variance_ratio_` is 0.770411. PC6 is 0 because the six proportions sum to 1. Function `run_municipality_pca()` in notebook 03 → [`reports/pca_komunat.md`](reports/pca_komunat.md)
 - [x] Variance and correlation: among the one-hot, IUCN/flag and `log1p` columns, five columns have fewer than 47 ones and one flag pair has correlation 0.8227. None are removed. Function `review_variance_correlation()` in notebook 03 → [`reports/varianca_dhe_korrelacioni.md`](reports/varianca_dhe_korrelacioni.md)
 - [x] Feature build: `build_features(df, datasets)` runs the nine occurrence-level feature steps on the 46,456-row checkpoint and adds 45 columns. Municipality PCA stays a separate matrix. Function in notebook 03 → [`reports/lista_e_vetive.md`](reports/lista_e_vetive.md)
+- [x] PCA on the cleaned data: the same proportion and Z-score rules on `agg_municipality_taxon_v2.csv`. PC1–PC3 stay, cumulative `explained_variance_ratio_` is 0.769403. Report sections cover selection, creation, discretization, binarization, transformation and reduction. Function `run_pca_on_clean_matrix()` in notebook 03 → [`reports/raporti_seksionet_jeta.md`](reports/raporti_seksionet_jeta.md)
 
 Current outputs:
 - [`reports/rendesia_e_kolonave.md`](reports/rendesia_e_kolonave.md) – analytical importance (high / medium / low) of the 42 columns for the project questions
@@ -354,5 +355,6 @@ Current outputs:
 - [`reports/pca_komunat.md`](reports/pca_komunat.md) – variance, loadings and municipality scores in [`processed/pca_municipalities.csv`](processed/pca_municipalities.csv)
 - [`reports/varianca_dhe_korrelacioni.md`](reports/varianca_dhe_korrelacioni.md) – low-variance columns and the high-correlation flag pair, all kept
 - [`reports/lista_e_vetive.md`](reports/lista_e_vetive.md) – the 45 feature columns built on the cleaned dataset in [`processed/biodiversity_features.csv`](processed/biodiversity_features.csv)
+- [`reports/raporti_seksionet_jeta.md`](reports/raporti_seksionet_jeta.md) – selection, creation, discretization, binarization, transformation, reduction, and the final PCA scores in [`processed/pca_municipalities_v2.csv`](processed/pca_municipalities_v2.csv)
 
 ---
