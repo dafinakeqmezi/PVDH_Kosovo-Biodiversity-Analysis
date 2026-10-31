@@ -25,27 +25,53 @@ Academic Year: 2026 / 2027
 
 ```
 PVDH/
-├── dataset/                
-│   └── kosovo_overall_biodiversity.csv
-├── processed/              
-├── notebooks/            
-│   ├── 01_mbledhja_kualiteti.ipynb
-│   ├── 01b_analiza_burimeve.ipynb
-│   ├── 02_pastrimi.ipynb
-│   └── 03_vetite.ipynb
-├── reports/             
+├── dataset/
+│   └── kosovo_overall_biodiversity.csv      original GBIF download (never modified)
+├── notebooks/
+│   ├── 01b_analiza_burimeve.ipynb           sources: publishers from the GBIF API (Dafina)
+│   ├── 01_mbledhja_kualiteti.ipynb          collection, types, quality, integration, aggregation, sampling (Dafina)
+│   ├── 02_pastrimi.ipynb                    missing values, duplicates, cleaning, validation (Deliza)
+│   └── 03_vetite.ipynb                      feature selection and creation, encoding, transformation, PCA (Jeta)
+├── processed/
+│   ├── biodiversity_clean.csv               frozen cleaned dataset (46,456 rows) + schema and manifest
+│   ├── cleaning_log.csv                     every cleaning step with rows/columns before and after
+│   ├── municipalities.csv                   area and population of the 38 municipalities
+│   ├── agg_*.csv / agg_*_v2.csv             aggregates on the original / cleaned data
+│   ├── sample_random.csv, sample_stratified.csv
+│   ├── biodiversity_features.csv            feature columns on the cleaned data
+│   └── pca_municipalities.csv               municipality PCA scores
+├── reports/
+│   ├── 01_*.csv                             tables written by notebook 01
+│   ├── *.md                                 one document per task, with decision and rationale
+│   └── raporti_seksionet_dafina.md          report sections: collection to sampling
 ├── requirements.txt
 └── README.md
 ```
 
-## Setup
+## Setup and how to run
 
 ```bash
 python -m venv .venv
-.venv\Scripts\activate        
+.venv\Scripts\activate
 pip install -r requirements.txt
-jupyter notebook notebooks/
 ```
+
+The notebooks were run with Python 3.14 and pandas 3.0.1. Run them from the repository root (or from `notebooks/`; the paths are resolved in both cases) in this order:
+
+| Order | Notebook | Input | Output |
+|---|---|---|---|
+| 1 | `01b_analiza_burimeve.ipynb` | original dataset, GBIF API (results cached in `processed/gbif_datasets_cache.csv`; internet only for datasets not yet cached) | `processed/sources_summary.csv` |
+| 2 | `02_pastrimi.ipynb` | original dataset; duplicate candidates read from Git commit `d2708c6` | `processed/biodiversity_clean.csv` (frozen: the notebook refuses to overwrite it with different content), `processed/cleaning_log.csv` |
+| 3 | `01_mbledhja_kualiteti.ipynb` | original dataset; `add_taxon_features()` read from `03_vetite.ipynb`; `biodiversity_clean.csv` for section 8 | `reports/01_*.csv`, `processed/municipalities.csv`, aggregates (`agg_*.csv`, `agg_*_v2.csv`), samples |
+| 4 | `03_vetite.ipynb` | `biodiversity_clean.csv` (features); `processed/agg_municipality_taxon.csv` (PCA matrix, original data; `agg_municipality_taxon_v2.csv` is the cleaned version) | feature functions (`build_features()`), `processed/biodiversity_features.csv`, `processed/matrica_pca_komuna_taxon.csv`, `processed/pca_municipalities.csv` |
+
+To run a notebook from start to end without opening it (the same as Restart & Run All):
+
+```bash
+python -m jupyter nbconvert --to notebook --execute --inplace notebooks/01_mbledhja_kualiteti.ipynb
+```
+
+Notebook 01 takes a few minutes, mostly for the 200 repeated samples in section 7. Every section ends with a "Dokumentimi i hapit" cell (input, what was done, rows/columns before and after, why, output, commit).
 
 ---
 
@@ -156,9 +182,47 @@ Other observations:
 
 ---
 
+## Phase I results
+
+| Step | Result |
+|---|---|
+| Data | 46,831 records × 42 columns from GBIF; after cleaning 46,456 records × 83 columns (`processed/biodiversity_clean.csv`) |
+| Sources | 125 datasets from 80 publishers; eBird, HabiProt and iNaturalist supply 82.03% of records; 90.71% are human observations |
+| Types | 42 columns typed (18 nominal, 5 ID, 5 ordinal, 4 interval, 4 text, 2 ratio, 2 binary, 2 date); memory 31.9 → 13.6 MB |
+| Quality | 35 checks in 5 dimensions. Coordinates and dates 100% valid; 93.16% of rows have species, date, coordinates and municipality; real IUCN completeness 63.84% (`NE`/`DD` are hidden missing values); 8,225 records are 10 km grid centroids (uncertainty 7071 m); 1,645 rows (3.51%) have a serious GBIF flag |
+| Bias | One location (Henc wetland) holds 27.86% of records and one observer 35.18%; birds are 61.47% of records but 6.23% of species |
+| Cleaning | 375 duplicates removed (235 groups); `elevation = 0` set to missing; blank protected areas named "Jashtë zonës së mbrojtur"; `individualCount` not imputed (17,587 missing); 102 logged steps |
+| Integration | Area and population of the 38 municipalities from official sources (ASK census 2024, 2017 territory measurement); join 38/38 with no row lost |
+| Aggregation | By municipality, time, class × district and species; on the cleaned data only record counts change (−0.80%), no species, class, year or municipality is lost |
+| Sampling | Random and class-stratified samples of 10,000; the stratified sample keeps the class distribution best (TVD 0.104 vs 0.703 pp); both keep only 46.6% of species, so species analyses use the full dataset |
+| Features | 45 feature columns (time, taxonomy, IUCN, protection, source, elevation zone, period, count class, one-hot, flags, `log1p`); municipality PCA keeps PC1–PC3 (77.04% of variance) |
+
+Report sections: [`reports/raporti_seksionet_dafina.md`](reports/raporti_seksionet_dafina.md) (collection to sampling).
+
 ## Phase I – Data Preprocessing (15%)
 
 Goal: prepare the dataset for analysis and visualization.
+
+### Phase I checklist
+
+| Requirement | Status | Notebook | Main documents |
+|---|---|---|---|
+| Data collection | done | 01, 01b | README "Dataset", `reports/fjalori_i_te_dhenave.md` |
+| Data types | done | 01 §2 | `reports/tipet_e_te_dhenave.md` |
+| Data quality | done | 01 §3 | `reports/korniza_e_kualitetit.md`, `plotesia.md`, `vlefshmeria.md`, `flamujt_gbif.md`, `unikaliteti.md`, `konsistenca_dhe_anshmeria.md` |
+| Integration | done | 01 §5, 02 | `reports/burimet_e_te_dhenave_te_komunave.md`, `bashkimi_i_komunave.md`; cross-source duplicates and category harmonization in `largimi_i_duplikateve.md`, `pastrimi_i_kategorive.md` |
+| Aggregation | done | 01 §6, §8 | `reports/agregimi_sipas_komunes.md`, `agregimi_sipas_kohes.md`, `agregimi_sipas_specieve_dhe_rajonit.md`, `rikalkulimi.md`. IUCN: threatened species per municipality and the IUCN category of each species |
+| Sampling | done | 01 §7 | `reports/mostrimi.md` |
+| Cleaning | done | 02 | `reports/finalizimi_i_datasetit.md`, `validimi.md`, `processed/cleaning_log.csv` |
+| Missing values | done | 02 | `reports/strategjia_e_mungesave.md`, `vendimet_per_mungesat_strukturore.md`, `vendimi_per_numrin_e_individeve.md` |
+| Dimensionality reduction | done | 03 | redundant columns dropped (`reports/redundanca.md`, `zgjedhja_e_vetive.md`); municipality PCA (`reports/pca_komunat.md`) |
+| Feature subset selection | done | 03 | `reports/zgjedhja_e_vetive.md` |
+| Feature creation | done | 03 | `reports/vetite_kohore.md`, `vetite_taksonomike.md`, `vetite_e_burimit.md` |
+| Discretization | done | 03 | `reports/zona_e_lartesise.md`, `periudhat_kohore.md`, `klasa_e_numrit.md` |
+| Binarization | done | 03 | `reports/kolonat_dummy.md`, `kodimi_iucn_dhe_flamujve.md` |
+| Transformation | done | 03 | `reports/transformimi_log1p.md`, `shkallezimi_pca.md` |
+
+The detailed task lists of each notebook follow.
 
 ### 1. Data collection, data types and data quality — [`01_mbledhja_kualiteti.ipynb`](notebooks/01_mbledhja_kualiteti.ipynb)
 - [x] Describe the data source (GBIF) and the meaning of each attribute
@@ -190,17 +254,13 @@ Key findings (full tables in [`reports/`](reports/)):
 - [x] Define a column-specific missing-value strategy using analytical importance and recoverability
 - [x] External data for integration: area (km²) and population of the 38 municipalities with source, year and link → [`processed/municipalities.csv`](processed/municipalities.csv), [`reports/burimet_e_te_dhenave_te_komunave.md`](reports/burimet_e_te_dhenave_te_komunave.md)
 - [x] Join: municipality key from the bilingual names, left join with area and population, 38/38 matched and 46,831 rows before and after → [`processed/biodiversity_municipalities.csv`](processed/biodiversity_municipalities.csv), [`reports/bashkimi_i_komunave.md`](reports/bashkimi_i_komunave.md)
-- [ ] **Integration** – merge records coming from different `datasetKey` sources and harmonize column values
 - [x] Aggregation by municipality: records, unique species, threatened species, species/km², records per 1,000 residents, plus the municipality × taxon_group matrix for PCA → [`processed/agg_municipality.csv`](processed/agg_municipality.csv), [`processed/agg_municipality_taxon.csv`](processed/agg_municipality_taxon.csv), [`reports/agregimi_sipas_komunes.md`](reports/agregimi_sipas_komunes.md)
 - [x] Aggregation by time: records and unique species per year and a year × month table; 3,598 HabiProt records dated 30 November flagged for investigation as possible placeholders, not confirmed invalid dates → [`processed/agg_time.csv`](processed/agg_time.csv), [`reports/agregimi_sipas_kohes.md`](reports/agregimi_sipas_kohes.md)
 - [x] Aggregation by species and district: class × district table and a species-level table (first and last year, municipalities, records) → [`processed/agg_class_district.csv`](processed/agg_class_district.csv), [`processed/agg_species.csv`](processed/agg_species.csv), [`reports/agregimi_sipas_specieve_dhe_rajonit.md`](reports/agregimi_sipas_specieve_dhe_rajonit.md)
-- [ ] **Aggregation** – summarize occurrences per species, district, municipality, year and IUCN category
 - [x] **Sampling** – random sample (10,000) and sample stratified by class (proportional), `random_state = 42`, with the % by class compared to the full dataset → [`processed/sample_random.csv`](processed/sample_random.csv), [`processed/sample_stratified.csv`](processed/sample_stratified.csv), [`reports/mostrimi.md`](reports/mostrimi.md)
 - [x] Sampling conclusion: the stratified sample keeps the class distribution best; both samples keep the bias (Graçanica ~31%) and only 46.6% of species, so species analyses use the full dataset → section 7.3 of the notebook, [`reports/mostrimi.md`](reports/mostrimi.md)
 - [x] Recalculation on the cleaned data (Deliza's checkpoint, 46,456 rows): integration and aggregates re-run with logic verified against v1; only record counts change (−375 duplicates, −0.80%), no species, class, year or municipality lost → `processed/agg_*_v2.csv`, [`reports/rikalkulimi.md`](reports/rikalkulimi.md)
 - [x] Report sections (Dafina): collection, sources, types, quality, integration, aggregation and sampling, with numbers from the notebook → [`reports/raporti_seksionet_dafina.md`](reports/raporti_seksionet_dafina.md)
-- [ ] **Cleaning** – apply the documented column-specific decisions, use species-level exclusions only where needed, and fix inconsistent text values
-- [ ] **Apply missing-value strategy** – implement [`reports/strategjia_e_mungesave.md`](reports/strategjia_e_mungesave.md) in a derived dataset and log transformations; recover only explicit date components, use analysis-specific exclusions, and verify protection coverage before assigning "Not protected"
 - [x] Apply column removals, confirmed missing tokens and missingness flags to a separate working dataset; initially flag zero elevations, then replace them in the invalid-value step
 - [x] Separate IAS structural missingness with status flags
 - [x] Replace blank protected-area names with "Jashtë zonës së mbrojtur" based on the user's clarification of dataset semantics; designation becomes "Nuk aplikohet" for those rows. This is not independent GIS verification
@@ -244,26 +304,20 @@ Current scope for notebook 02: cleaning finalized through the 25 October checkpo
 
 ### 3. Dimensionality reduction, feature selection, feature creation, discretization, binarization and transformation — [`03_vetite.ipynb`](notebooks/03_vetite.ipynb)
 - [x] Document preprocessing plan v1 with decision and rationale
-- [ ] **Dimensionality reduction** – remove redundant attributes (`iucnRedListStatus` vs. `iucnRedListCategory`, `taxonKey` vs. `scientificName`)
 - [x] Feature subset decision: 29 columns kept and 13 dropped, with a reason for each column. The original CSV stays at 42 columns. Only `iucnRedListStatus` is a 1:1 duplicate; `taxonKey` and `scientificName` are both kept → [`reports/zgjedhja_e_vetive.md`](reports/zgjedhja_e_vetive.md)
-- [ ] **Feature subset selection** – keep the attributes relevant for the analysis (taxonomy, time, location, conservation status)
 - [x] Time features: `season` from `month`, `decade` from `year`, and `is_recent` for `year >= 2017`. A missing `year` or `month` stays missing. Function `add_time_features()` in notebook 03 → [`reports/vetite_kohore.md`](reports/vetite_kohore.md)
 - [x] Taxonomic and conservation features: `taxon_group` from `class` (Zogj, Insekte, Bimë, Kërpudha, Tjera; missing class = "E panjohur") and `is_threatened` from the IUCN category (`VU`/`EN`/`CR` = 1, `LC`/`NT` = 0, `NE`/`DD`/NaN = NaN). The single `EX` row stays NaN and is documented separately. Function `add_taxon_features()` → [`reports/vetite_taksonomike.md`](reports/vetite_taksonomike.md)
 - [x] Source and spatial features: `in_protected_area` is 1 when `protectedArea` names an area and 0 when it is blank or "Jashtë zonës së mbrojtur". `is_citizen_science` is 1 only for a citizen-science publisher and `HUMAN_OBSERVATION`. `n_issues` counts serious GBIF flags. Function `add_source_spatial_features()` in notebook 03 → [`reports/vetite_e_burimit.md`](reports/vetite_e_burimit.md)
-- [ ] **Feature creation** – e.g. `season` from `month`, `decade` from `year`, `isThreatened` from IUCN category, record count per species
 - [x] Elevation zones: `elevation_zone` is Fushë (297–800 m), Kodrinore (801–1,500 m) or Malore (1,501–2,656 m). Missing elevation (79.03%), `elevation = 0` and nine values outside 297–2,656 m are `E panjohur`. Function `add_elevation_zone()` in notebook 03 → [`reports/zona_e_lartesise.md`](reports/zona_e_lartesise.md)
 - [x] Time periods: `period` from the original `year`, with cuts at 1900, 1950, 2000, 2010 and 2020. A missing `year` stays missing. Function `add_period()` in notebook 03 → [`reports/periudhat_kohore.md`](reports/periudhat_kohore.md)
 - [x] Count classes: `count_class` from the original `individualCount` with `pd.qcut` (`q=4`, duplicate edge at 1 dropped). Equal-width `pd.cut` places 99.82% of known counts in one bin. A missing count stays missing. Function `add_count_class()` in notebook 03 → [`reports/klasa_e_numrit.md`](reports/klasa_e_numrit.md)
-- [ ] **Discretization** – bin `elevation` and `year` into ranges (e.g. lowland / hill / mountain, decades)
 - [x] One-hot encoding: 20 dummy columns for `taxon_group`, `district` and `basisOfRecord`. A category with fewer than 47 rows is merged into `Tjera`; only `OBSERVATION` (1 row) is merged. `drop_first` is false. Function `add_one_hot()` in notebook 03 → [`reports/kolonat_dummy.md`](reports/kolonat_dummy.md)
 - [x] IUCN and flag encoding: `iucn_rank` is LC=1, NT=2, VU=3, EN=4, CR=5, EX=6, read once from `iucnRedListCategory`. `NE`, `DD` and missing stay missing, and `iucn_evaluated` is 0 for those rows. The 10 serious GBIF flags are 0/1 columns. Function `add_iucn_and_flags()` in notebook 03 → [`reports/kodimi_iucn_dhe_flamujve.md`](reports/kodimi_iucn_dhe_flamujve.md)
-- [ ] **Binarization** – one-hot encode `kingdom`, `basisOfRecord`; convert `strictlyProtected` and `iasUnionConcern` to 0/1
 - [x] Log transform: `individualCount_log1p` and `coordinateUncertaintyInMeters_log1p`. On the cleaned dataset, skewness falls from 26.63 to 2.07 and from 101.73 to −1.00. Missing values stay missing. Function `add_log1p()` in notebook 03 → [`reports/transformimi_log1p.md`](reports/transformimi_log1p.md)
 - [x] PCA scaling: Z-scores of the municipality × `taxon_group` record proportions. `year`, latitude and longitude are not scaled. Function `standardize_pca_matrix()` in notebook 03 → [`reports/shkallezimi_pca.md`](reports/shkallezimi_pca.md)
 - [x] PCA: PC1–PC3 on the standardized municipality × `taxon_group` matrix. Components with `explained_variance_` above 1 are kept; cumulative `explained_variance_ratio_` is 0.770411. PC6 is 0 because the six proportions sum to 1. Function `run_municipality_pca()` in notebook 03 → [`reports/pca_komunat.md`](reports/pca_komunat.md)
 - [x] Variance and correlation: among the one-hot, IUCN/flag and `log1p` columns, five columns have fewer than 47 ones and one flag pair has correlation 0.8227. None are removed. Function `review_variance_correlation()` in notebook 03 → [`reports/varianca_dhe_korrelacioni.md`](reports/varianca_dhe_korrelacioni.md)
 - [x] Feature build: `build_features(df, datasets)` runs the nine occurrence-level feature steps on the 46,456-row checkpoint and adds 45 columns. Municipality PCA stays a separate matrix. Function in notebook 03 → [`reports/lista_e_vetive.md`](reports/lista_e_vetive.md)
-- [ ] **Transformation** – normalize/scale numeric attributes (`elevation`, `individualCount`), apply log transform to skewed counts
 
 Current outputs:
 - [`reports/zgjedhja_e_vetive.md`](reports/zgjedhja_e_vetive.md) – final column decision; the original CSV is unchanged
