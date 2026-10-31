@@ -33,31 +33,4 @@ Qeliza `execute-feature-pipeline` lexon checkpoint-in me schema-n ekzistuese, ko
 
 Kontrollohen ID-të unike, 83 kolonat bazë të pandryshuara, mbulimi i publikuesve, kodimi one-hot dhe standardizimi. Loader-i i schema-s importohet nga notebook-u 02 si përkufizim funksioni; qelizat e pastrimit nuk ekzekutohen nga notebook-u 03.
 
-## Riekzekutimi
-
-Nga rrënja e repo-s, pas aktivizimit të një mjedisi me Python 3.13.5:
-
-```bash
-python -m pip install -r requirements.txt
-python scripts/run_pipeline.py
-```
-
-Për të riprodhuar të njëjtin grup versionesh në macOS arm64 përdoret `requirements-lock.txt`. Skripti shfaq vendndodhjen e klonit, notebook-ëve të ekzekutuar dhe log-eve të testimit. Duhet historiku Git që përmban commit-in e referencës së duplikateve `d2708c640de830014edf4c4f35a528849c98455f`; një kopje vetëm me skedarë ose shallow clone pa këtë commit nuk mjafton.
-
-## Kufizimet
-
-- Nuk është testuar instalimi në Windows/Linux ose një version tjetër të Python-it.
-- Prova riprodhon analizën nga CSV-ja e projektit dhe cache-i i ruajtur. Nuk provon riprodhimin e shkarkimit origjinal GBIF, sepse data dhe DOI-ja mungojnë.
-- Mostrat mbeten mbi origjinalin, sipas eksperimentit të dokumentuar.
-- Rregullat dhe supozimet biologjike/hapësinore nuk bëhen të vërteta vetëm sepse kodi ekzekutohet.
-
-## Dokumentimi
-
-1. **Input:** dataset-i origjinal, cache-i GBIF, referenca Git, notebook-ët dhe checkpoint-i i ngrirë për krahasim.
-2. **Çka u bë:** Plotësimi i ekzekutimit në notebook-un 03, instalim i pastër dhe rigjenerim në klon të izoluar.
-3. **Rreshta para/pas:** 46,831 / 46,456 në pastrim; 46,456 / 46,456 në ndërtimin e vetive. Repo-ja e punës nuk ndryshoi të dhëna.
-4. **Pse u bë:** Për të provuar që rezultatet mund të prodhohen nga kodi me varësi të dokumentuara.
-5. **Output:** notebook-u 03, skripti i pipeline-it, kërkesat e fiksuara dhe ky raport.
-6. **Commit:** `Make Part I pipeline reproducible and prepare submission` (mesazh i propozuar).
-
 **Decision + Rationale:** Prova kryhet në kopje të izoluar për të ruajtur checkpoint-in. Daljet e rigjeneruara verifikohen para çdo propozimi për zëvendësim; këtu nuk nevojitet ndryshim i të dhënave të ruajtura.
