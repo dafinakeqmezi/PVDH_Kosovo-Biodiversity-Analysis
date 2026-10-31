@@ -21,6 +21,12 @@ Academic Year: 2026 / 2027
 
 ---
 
+## Part I group report
+
+The consolidated [Part I report](reports/raporti_pjesa_1.md) covers all preprocessing stages by topic, without individual task attribution. Detailed task reports and CSV tables remain supporting evidence.
+
+The [processed-output audit](reports/verifikimi_i_te_dhenave_te_perpunuara.md) reports 22 passing checks. Run `python scripts/verify_processed.py` for read-only verification. The samples use the original data, not the cleaned checkpoint; they contain 85 and 89 IDs subsequently removed as duplicates. Saved feature/PCA outputs match their inputs, but notebook 03 still needs an end-to-end execution/export cell for full reproducibility.
+
 ## Repository structure
 
 ```
@@ -43,7 +49,7 @@ PVDH/
 ├── reports/
 │   ├── 01_*.csv                             tables written by notebook 01
 │   ├── *.md                                 one document per task, with decision and rationale
-│   └── raporti_seksionet_dafina.md          report sections: collection to sampling
+│   └── raporti_pjesa_1.md          group report: all Part I stages
 ├── requirements.txt
 └── README.md
 ```
@@ -189,7 +195,7 @@ Other observations:
 | Data | 46,831 records × 42 columns from GBIF; after cleaning 46,456 records × 83 columns (`processed/biodiversity_clean.csv`) |
 | Sources | 125 datasets from 80 publishers; eBird, HabiProt and iNaturalist supply 82.03% of records; 90.71% are human observations |
 | Types | 42 columns typed (18 nominal, 5 ID, 5 ordinal, 4 interval, 4 text, 2 ratio, 2 binary, 2 date); memory 31.9 → 13.6 MB |
-| Quality | 35 checks in 5 dimensions. Coordinates and dates 100% valid; 93.16% of rows have species, date, coordinates and municipality; real IUCN completeness 63.84% (`NE`/`DD` are hidden missing values); 8,225 records are 10 km grid centroids (uncertainty 7071 m); 1,645 rows (3.51%) have a serious GBIF flag |
+| Quality | 35 checks in 5 dimensions. Format/range checks do not prove spatial or biological accuracy; 93.16% of rows have species, date, coordinates and municipality. IUCN evaluation availability is 63.84%; `NE`/`DD` are retained reported codes, not blank cells. 8,225 records have uncertainty 7071 m, consistent with grid-generalized coordinates; 1,645 rows (3.51%) have a serious GBIF flag |
 | Bias | One location (Henc wetland) holds 27.86% of records and one observer 35.18%; birds are 61.47% of records but 6.23% of species |
 | Cleaning | 375 duplicates removed (235 groups); `elevation = 0` set to missing; blank protected areas named "Jashtë zonës së mbrojtur"; `individualCount` not imputed (17,587 missing); 102 logged steps |
 | Integration | Area and population of the 38 municipalities from official sources (ASK census 2024, 2017 territory measurement); join 38/38 with no row lost |
@@ -197,7 +203,7 @@ Other observations:
 | Sampling | Random and class-stratified samples of 10,000; the stratified sample keeps the class distribution best (TVD 0.104 vs 0.703 pp); both keep only 46.6% of species, so species analyses use the full dataset |
 | Features | 45 feature columns (time, taxonomy, IUCN, protection, source, elevation zone, period, count class, one-hot, flags, `log1p`); municipality PCA keeps PC1–PC3 (77.04% of variance) |
 
-Report sections: [`reports/raporti_seksionet_dafina.md`](reports/raporti_seksionet_dafina.md) (collection to sampling).
+Report sections: [`reports/raporti_pjesa_1.md`](reports/raporti_pjesa_1.md) (collection to sampling).
 
 ## Phase I – Data Preprocessing (15%)
 
@@ -279,7 +285,7 @@ Tables written by notebook 01 (`reports/`):
 - [x] **Sampling** – random sample (10,000) and sample stratified by class (proportional), `random_state = 42`, with the % by class compared to the full dataset → [`processed/sample_random.csv`](processed/sample_random.csv), [`processed/sample_stratified.csv`](processed/sample_stratified.csv), [`reports/mostrimi.md`](reports/mostrimi.md)
 - [x] Sampling conclusion: the stratified sample keeps the class distribution best; both samples keep the bias (Graçanica ~31%) and only 46.6% of species, so species analyses use the full dataset → section 7.3 of the notebook, [`reports/mostrimi.md`](reports/mostrimi.md)
 - [x] Recalculation on the cleaned data (Deliza's checkpoint, 46,456 rows): integration and aggregates re-run with logic verified against v1; only record counts change (−375 duplicates, −0.80%), no species, class, year or municipality lost → `processed/agg_*_v2.csv`, [`reports/rikalkulimi.md`](reports/rikalkulimi.md)
-- [x] Report sections (Dafina): collection, sources, types, quality, integration, aggregation and sampling, with numbers from the notebook → [`reports/raporti_seksionet_dafina.md`](reports/raporti_seksionet_dafina.md)
+- [x] Group report: collection, sources, types, quality, integration, aggregation and sampling, with numbers from the notebook → [`reports/raporti_pjesa_1.md`](reports/raporti_pjesa_1.md)
 - [x] Apply column removals, confirmed missing tokens and missingness flags to a separate working dataset; initially flag zero elevations, then replace them in the invalid-value step
 - [x] Separate IAS structural missingness with status flags
 - [x] Replace blank protected-area names with "Jashtë zonës së mbrojtur" based on the user's clarification of dataset semantics; designation becomes "Nuk aplikohet" for those rows. This is not independent GIS verification
@@ -321,6 +327,8 @@ Current outputs:
 
 Current scope for notebook 02: cleaning finalized through the 25 October checkpoint; team notification still requires confirmation. Dafina's candidate analysis is read from Git commit `d2708c640de830014edf4c4f35a528849c98455f`; run `git fetch origin` first if that commit is unavailable locally. No teammate files are overwritten by this import. Protected-area replacement uses the user's clarification of dataset semantics, with that source and its limits documented. Zero elevations are missing in the final CSV, while `elevation_was_zero` preserves their provenance. Individual counts are not imputed: 17,587 missing values remain among 46,456 records. The notebook verifies all its cleaning-log steps and refuses to overwrite a frozen checkpoint with different content. Subsequent corrections require an agreed new version. Teammates must regenerate aggregates, samples, features and PCA from this final input as applicable; notebook 02 does not regenerate their results.
 
+- [x] Group report, cleaning and validation: missing values, applied strategy, conversions, duplicates, cleaning, log summary and validation → [`reports/raporti_pjesa_1.md`](reports/raporti_pjesa_1.md). This documentation does not change the frozen checkpoint or mark presentation/full-pipeline checks complete.
+
 ### 3. Dimensionality reduction, feature selection, feature creation, discretization, binarization and transformation — [`03_vetite.ipynb`](notebooks/03_vetite.ipynb)
 - [x] Document preprocessing plan v1 with decision and rationale
 - [x] Feature subset decision: 29 columns kept and 13 dropped, with a reason for each column. The original CSV stays at 42 columns. Only `iucnRedListStatus` is a 1:1 duplicate; `taxonKey` and `scientificName` are both kept → [`reports/zgjedhja_e_vetive.md`](reports/zgjedhja_e_vetive.md)
@@ -337,7 +345,7 @@ Current scope for notebook 02: cleaning finalized through the 25 October checkpo
 - [x] PCA: PC1–PC3 on the standardized municipality × `taxon_group` matrix. Components with `explained_variance_` above 1 are kept; cumulative `explained_variance_ratio_` is 0.770411. PC6 is 0 because the six proportions sum to 1. Function `run_municipality_pca()` in notebook 03 → [`reports/pca_komunat.md`](reports/pca_komunat.md)
 - [x] Variance and correlation: among the one-hot, IUCN/flag and `log1p` columns, five columns have fewer than 47 ones and one flag pair has correlation 0.8227. None are removed. Function `review_variance_correlation()` in notebook 03 → [`reports/varianca_dhe_korrelacioni.md`](reports/varianca_dhe_korrelacioni.md)
 - [x] Feature build: `build_features(df, datasets)` runs the nine occurrence-level feature steps on the 46,456-row checkpoint and adds 45 columns. Municipality PCA stays a separate matrix. Function in notebook 03 → [`reports/lista_e_vetive.md`](reports/lista_e_vetive.md)
-- [x] PCA on the cleaned data: the same proportion and Z-score rules on `agg_municipality_taxon_v2.csv`. PC1–PC3 stay, cumulative `explained_variance_ratio_` is 0.769403. Report sections cover selection, creation, discretization, binarization, transformation and reduction. Function `run_pca_on_clean_matrix()` in notebook 03 → [`reports/raporti_seksionet_jeta.md`](reports/raporti_seksionet_jeta.md)
+- [x] PCA on the cleaned data: the same proportion and Z-score rules on `agg_municipality_taxon_v2.csv`. PC1–PC3 stay, cumulative `explained_variance_ratio_` is 0.769403. Report sections cover selection, creation, discretization, binarization, transformation and reduction. Function `run_pca_on_clean_matrix()` in notebook 03 → [`reports/raporti_pjesa_1.md`](reports/raporti_pjesa_1.md)
 
 Current outputs:
 - [`reports/rendesia_e_kolonave.md`](reports/rendesia_e_kolonave.md) – analytical importance (high / medium / low) of the 42 columns for the project questions
@@ -355,6 +363,6 @@ Current outputs:
 - [`reports/pca_komunat.md`](reports/pca_komunat.md) – variance, loadings and municipality scores in [`processed/pca_municipalities.csv`](processed/pca_municipalities.csv)
 - [`reports/varianca_dhe_korrelacioni.md`](reports/varianca_dhe_korrelacioni.md) – low-variance columns and the high-correlation flag pair, all kept
 - [`reports/lista_e_vetive.md`](reports/lista_e_vetive.md) – the 45 feature columns built on the cleaned dataset in [`processed/biodiversity_features.csv`](processed/biodiversity_features.csv)
-- [`reports/raporti_seksionet_jeta.md`](reports/raporti_seksionet_jeta.md) – selection, creation, discretization, binarization, transformation, reduction, and the final PCA scores in [`processed/pca_municipalities_v2.csv`](processed/pca_municipalities_v2.csv)
+- [`reports/raporti_pjesa_1.md`](reports/raporti_pjesa_1.md) – selection, creation, discretization, binarization, transformation, reduction, and the final PCA scores in [`processed/pca_municipalities_v2.csv`](processed/pca_municipalities_v2.csv)
 
 ---
