@@ -472,27 +472,4 @@ PC1 peshon te zogjtë, PC2 te insektet kundrejt Tjera dhe bimëve, PC3 te kërpu
 
 Burimi: `reports/varianca_dhe_korrelacioni.md`, `reports/pca_komunat.md`, `reports/rikalkulimi.md`.
 
-
-## 6. Verifikimi i rezultateve dhe kufizimet
-
-Verifikimi vetëm për lexim është dokumentuar te [verifikimi i të dhënave të përpunuara](verifikimi_i_te_dhenave_te_perpunuara.md). Tipet, ID-të dhe hash-et e checkpoint-it kontrollohen; vetitë, agregimet dhe PCA rindërtohen në memorie dhe krahasohen me rezultatet e ruajtura. Ky kontroll nuk ndryshon dataset-in dhe nuk zëvendëson ekzekutimin e gjithë pipeline-it në një mjedis të pastër.
-
-- Mostrat janë nga origjinali: mostra e rastësishme përmban 85 ID dhe ajo e shtresëzuar 89 ID të larguara më vonë si duplikate. Për analiza mbi versionin e pastruar duhen mostra të reja, jo fshirje e heshtur e rreshtave nga këto mostra.
-- Data e saktë dhe DOI-ja e shkarkimit GBIF mbeten për plotësim. DOI-të e dataset-eve burimore nuk zëvendësojnë DOI-n e shkarkimit.
-- Statusi i zonës së mbrojtur mbështetet në sqarim semantik, jo në GIS të pavarur. Pragu i pasigurisë hapësinore nuk certifikon komunën.
-- Datat 30 nëntor të dyshuara si placeholder nuk janë konfirmuar nga burimi dhe nuk u ndryshuan.
-- Numri i regjistrimeve ndikohet nga përpjekja e vëzhgimit. Mostrimi dhe normalizimi nuk e zhdukin anshmërinë.
-- Nënbashkësia prej 29 kolonash është vendim analitik; CSV-ja e plotë e vetive ka 128 kolona. Nuk paraqitet si një skedar i eksportuar me vetëm 29 kolona.
-- Notebook-u 03 ka qelizën e ekzekutimit dhe eksportimit të vetive dhe PCA-së. Pipeline-i kaloi në një venv të ri me Python 3.13.5; varësitë janë të fiksuara. [Raporti i riprodhueshmërisë](riprodhueshmeria.md) dokumenton rendin dhe kufizimet e provës.
-- Citimi GBIF dhe veprimet e dorëzimit mbeten për përfundim sipas [listës së dorëzimit](lista_e_dorezimit.md).
-
-## 7. Dokumentimi i raportit
-
-1. **Input:** notebook-ët 01, 01b, 02 dhe 03; raportet mbështetëse dhe skedarët në `processed/`.
-2. **Çka u bë:** U bashkuan seksionet e Pjesës I, u harmonizua terminologjia dhe u dalluan origjinali, checkpoint-i dhe rezultatet e derivuara.
-3. **Rreshta para / pas:** 46,456 / 46,456 në checkpoint; **kolona para / pas:** 83 / 83. Dokumentimi dhe verifikimi nuk transformojnë të dhënat.
-4. **Pse u bë:** Për një raport të përbashkët me vendime, arsyetime dhe evidencë të kontrollueshme.
-5. **Output:** `reports/raporti_pjesa_1.md`, raporti i verifikimit dhe skripti vetëm për lexim `scripts/verify_processed.py`.
-6. **Commit:** `Consolidate Part I report and verify processed outputs` (mesazh i propozuar).
-
 **Decision + Rationale:** Ruhet origjinali dhe checkpoint-i. Mospërputhjet e formulimit korrigjohen në raport; rezultatet historike nuk mbishkruhen për t'i paraqitur si rezultate të pastrimit.
