@@ -1,0 +1,7 @@
+# Statistikat përmbledhëse numerike
+
+**Data:** 19.11.2026
+
+Tabela është `reports/eda_numerike.csv`. Janë 47 kolona numerike. `gbifID`, `taxonKey` dhe `speciesKey` nuk hyjnë, sepse janë identifikues.
+
+Mesatarja dhe mediana ndahen aty ku pak vlera ekstreme e tërheqin mesataren, ndërsa mediana mbetet te vlera e zakonshme. Te `individualCount` mesatarja është 23.14 dhe mediana 2: shumica e numërimeve të njohura janë 1 ose 2, kurse bishti shkon deri në 10200 dhe skewness është 26.63. `individualCount_log1p` i afron qendrat, 1.51 kundrejt 1.10, por shpërndarja mbetet e anuar djathtas. Te `coordinateUncertaintyInMeters` mediana është 7071 dhe mesatarja 4905, pra mesatarja është më e ulët: 8,225 nga 14,643 vlerat e njohura janë pikërisht 7,071 m, vlerat e vogla e tërheqin mesataren poshtë, dhe disa vlera deri në 4226661 m e bëjnë skewness 102 pa e kaluar medianën. Pas `log1p` mediana mbetet më lart se mesatarja, 8.86 kundrejt 7.01. Te `elevation` mesatarja 924 është mbi medianën 665, sepse lartësitë malore e tërheqin mesataren; njihen vetëm 6,168 vlera. Te `year` mesatarja 2016 është para medianës 2020, sepse shumica e rreshtave janë të viteve të fundit dhe pak rreshta historikë, që nga 1826, e tërheqin mesataren mbrapa; e njëjta ndodh te `decade`. Te gjerësia dhe gjatësia gjeografike dy qendrat janë pothuajse të njëjta. Te kolonat 0/1 mediana është 0 ose 1 dhe mesatarja është vetëm përqindja e njëshave, jo një bisht matjesh.
